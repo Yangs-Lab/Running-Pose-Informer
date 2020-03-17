@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">About</h1></div>
+        </div>	
+		
+        <ul id="menu_nav" class="nav nav-tabs" style="display:none">
+					<li><a data-toggle="tab" href="#info">About</a></li>
+				</ul>
+				
+				<div class="tab-content" id="tab-contents" style="display:none">
+					<div id="info" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+                <tr class="col-wow tr-top" style="display:none">
+                  <td class="col-lg-4px-mobile">Cordova version</td>
+									<td class="col-lg-4px" colspan="2"><label id="cordova" /></td>
+								</tr>
+								<tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Platform</td>
+									<td class="col-lg-4px" colspan="2"><label id="platform" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">OS version</td>
+									<td class="col-lg-4px" colspan="2"><label id="version" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Manufacturer</td>
+									<td class="col-lg-4px" colspan="2"><label id="manufacturer" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Product model</td>
+									<td class="col-lg-4px" colspan="2"><label id="model" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Serial number</td>
+									<td class="col-lg-4px" colspan="2"><label id="serial" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Device UUID</td>
+									<td class="col-lg-4px" colspan="2"><label id="uuid" /></td>
+								</tr>
+								<tr class="col-wow" style="display:none">
+									<td class="col-lg-4px-mobile">IP address</td>
+									<td class="col-lg-4px" colspan="2"><label id="ip" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Carrier IP address&emsp;&nbsp;</td>
+									<td class="col-lg-4px" colspan="2"><label id="carrier_ip" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">WiFi IP address</td>
+									<td class="col-lg-4px" colspan="2"><label id="wifi_ip" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">APP version</td>
+									<td class="col-lg-4px" colspan="2"><label id="app_version" /></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+	<script type="text/javascript">
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    function fresh_page(data) {
+    //_console_log(data);
+			eval(data);
+      $("#cordova").text(cordova);
+			$("#platform").text(platform);
+			$("#version").text(version);
+			$("#manufacturer").text(manufacturer=="unknown"?"(N/A)":manufacturer);
+			$("#model").text(model);
+			$("#serial").text(serial=="unknown"?"(N/A)":serial);
+			$("#uuid").text(uuid==""?"(N/A)":uuid);
+
+			$("#ip").text(typeof ip=="undefined"?"":ip);
+			$("#wifi_ip").text(typeof wifi_ip=="undefined"?"":wifi_ip);
+      $("#carrier_ip").text(typeof carrier_ip=="undefined"?"":carrier_ip);
+
+      $("#app_version").text(typeof app_version=="undefined"?"":app_version);
+    } 
+    
+	  function load_about() {
+      var doc = parent.document;
+      var data = 'var cordova="'+doc.getElementById("dev_cordova").innerHTML+'"\n' +
+                 'var platform="'+doc.getElementById("dev_platform").innerHTML+'"\n' +
+                 'var version="'+doc.getElementById("dev_version").innerHTML+'"\n' +
+                 'var manufacturer="'+doc.getElementById("dev_manufacturer").innerHTML+'"\n' +
+                 'var model="'+doc.getElementById("dev_model").innerHTML+'"\n' +
+                 'var serial="'+doc.getElementById("dev_serial").innerHTML+'"\n' +
+                 'var uuid="'+doc.getElementById("dev_uuid").innerHTML+'"\n' +
+                 'var ip="'+doc.getElementById("ip_addr").innerHTML+'"\n' +
+                 'var wifi_ip="'+doc.getElementById("wifi_ip_addr").innerHTML+'"\n' +
+                 'var carrier_ip="'+doc.getElementById("carrier_ip_addr").innerHTML+'"\n' +
+                 'var app_name="'+doc.getElementById("app_name").innerHTML+'"\n' +
+                 'var app_version="'+doc.getElementById("app_version").innerHTML+'"\n' +
+                 '';
+      fresh_page(data);
+      _check_to_page("info", false);
+	  }
+    //
+    adv_init();
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+    setTimeout(function(){load_about()}, 100);
+  </script>
+</body>
+</html>

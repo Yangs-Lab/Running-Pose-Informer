@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Stream</h1></div>
+        </div>
+        
+        <ul id="menu_nav" class="nav nav-tabs">
+          <li id="channel1_ul_li"><a data-toggle="tab" href="#info1" id="channel1_ul">Channel 1</a></li>
+          <li id="channel2_ul_li"><a data-toggle="tab" href="#info2" id="channel2_ul">Channel 2</a></li>
+        </ul>
+
+        <div class="tab-content" id="tab-contents" style="display:none">
+          <!-- channel 1 -->
+          <div id="info1" class="tab-pane fade">
+            <div class="table-responsive table-responsive-0">
+              <table class="table table-hover"><tbody>
+                <tr class="col-wow tr-top"><!-- Channel1 / Preset -->
+                  <td class="col-lg-4px-mobile">Preset</td>
+                  <td class="col-lg-4px Customize" colspan="3">
+                    <select id="channel1_preset" class="form-control small-control" />
+                    <label id="channel1_imgsize" style="display:none">Current video encoding is 1920x1028</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_Protocol1 col-wow"><!-- Channel1 / Protocol1 -->
+                  <td class="col-lg-4px-mobile">Protocol 1 ---</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel1_protocol1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_HLS col-wow">	<!-- Channel1 / HLS -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Duration (second)</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel1_hls_duration" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Segment</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel1_hls_segment" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Server URL</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_hls_srvurl" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Username</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_hls_user" maxlength="64" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Password</td>
+									<td class="col-lg-4px" colspan="3"><input type="password" id="channel1_hls_password" maxlength="32" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow"><!-- Channel1 / RTP1 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_ip1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_port1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_ttl1" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_video_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_audio_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel1_rtp_fec1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow channel1_RTP1_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel1_rtp_fec_L1" class="form-control small-control"></select>
+                    <label id="channel1_rtp_fec_L1_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP1 col-wow channel1_RTP1_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel1_rtp_fec_D1" class="form-control small-control"></select>
+                    <label id="channel1_rtp_fec_D1_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS1 col-wow"><!-- Channel1 / TS1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel1_ts_protocol1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_ip1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_port1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_ttl1" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_video_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_audio_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_RTMP1 col-wow"><!-- Channel1 / RTMP1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtmp_url1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_RTMP1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtmp_key1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_SRT1 col-wow"><!-- Channel1 / SRT1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_url1" class="form-control small-control" maxlength="64" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS (0~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_tos1" class="form-control small-control" min="0" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_ttl1" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU (228~1500)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_mtu1" class="form-control small-control" min="228" max="1500" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (20~8000)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_latency1" class="form-control small-control" min="20" max="8000" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel1_srt_encryption1" class="form-control small-control" />
+                    <input type="text" id="channel1_srt_encryptionkey1" class="form-control small-control" style="margin-top:4px" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_bandwidth_overhead1" class="form-control small-control" min="0" max="100" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow channel1_ZIXI1_none"><!-- Channel1 / Zixi 1 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Group</td>
+									<td class="col-lg-4px" colspan="3"><select type="text" id="channel1_zixi_group1" class="form-control small-control"><option value='nogroup' selected>No Group</option></select></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Stream ID</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_zixi_streamid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Password</td>
+									<td class="col-lg-4px" colspan="3"><input type="password" id="channel1_zixi_password1" maxlength="32" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Max. Bitrate (kbps)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_zixi_maxbps1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Max. Latency (msec)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_zixi_maxlatency1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TLS Certificate</td>
+									<td class="col-lg-4px" colspan="3"><select type="text" id="channel1_zixi_tls_cert1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr id="channel1_zixi_host1" class="channel1_ZIXI1 col-wow" value="0"><!-- Zixi HOST/PORT/IP -->
+									<td class="col-lg-4px-mobile">
+                    &nbsp;&nbsp;&nbsp;<i id="channel1_zixi_host1_add" class="fa fa-fw fa-plus zixi_add" style="border:1px solid #eee"></i>
+                    &nbsp;&nbsp;Host
+                  </td>
+									<td>&nbsp;&nbsp;IP addr.</td>
+									<td style="width:56px">&nbsp;&nbsp;Port</td>
+									<td>&nbsp;Limit&nbsp;</td>
+									<td style="width:30px">BKP</td>
+								</tr>
+								<tr id="channel1_zixi_host1_end" style="display:none"></tr><!-- endof Zixi HOST/PORT/IP -->
+								<tr class="channel1_ZIXI1 col-wow channel1_ZIXI1_none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;PCR Somthing Delay (msec.)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_zixi_pcr_delay1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel1_zixi_encryption1" class="form-control small-control" />
+                    <input type="text" id="channel1_zixi_encryptionkey1" class="form-control small-control" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow channel1_ZIXI1_none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;DSCP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_zixi_dscp1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow channel1_ZIXI1_none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ECN</td>
+									<td class="col-lg-4px" colspan="3"><select type="text" id="channel1_zixi_ecn1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 col-wow channel1_ZIXI1_none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;RTMP Input Feedback</td>
+									<td class="col-lg-4px" colspan="3"><select type="text" id="channel1_zixi_rtmp_fb1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_ZIXI1 channel1_ZIXI1_FB col-wow channel1_ZIXI1_none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Min. Bitrate (kbps)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_zixi_minbps1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_Protocol2 col-wow"><!-- Channel1 / Protocol2 -->
+									<td class="col-lg-4px-mobile">Protocol 2 ---</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel1_protocol2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow"><!-- Channel1 / RTP2 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_ip2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_port2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_ttl2" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_video_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_audio_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel1_rtp_fec2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow channel1_RTP2_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel1_rtp_fec_L2" class="form-control small-control"></select>
+                    <label id="channel1_rtp_fec_L2_err" colspan="2" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP2 col-wow channel1_RTP2_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel1_rtp_fec_D2" class="form-control small-control"></select>
+                    <label id="channel1_rtp_fec_D2_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS2 col-wow"><!-- Channel1 / TS2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel1_ts_protocol2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_ip2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_port2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_ttl2" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_video_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_audio_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_RTMP2 col-wow"><!-- Channel1 / RTMP2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtmp_url2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_RTMP2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtmp_key2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_SRT2 col-wow"><!-- Channel1 / SRT2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_url2" class="form-control small-control" maxlength="64" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS (0~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_tos2" class="form-control small-control" min="0" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_ttl2" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU (228~1500)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_mtu2" class="form-control small-control" min="228" max="1500" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (20~8000)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_latency2" class="form-control small-control" min="20" max="8000" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel1_srt_encryption2" class="form-control small-control" />
+                    <input type="text" id="channel1_srt_encryptionkey2" class="form-control small-control" style="margin-top:4px" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_bandwidth_overhead2" class="form-control small-control" min="0" max="100" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_Protocol3 col-wow"><!-- Channel1 / Protocol3 -->
+                  <td class="col-lg-4px-mobile">Protocol 3 ---</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel1_protocol3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow"><!-- Channel1 / RTP3 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_ip3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_port3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_ttl3" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_video_pid3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtp_audio_pid3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel1_rtp_fec3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow channel1_RTP3_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel1_rtp_fec_L3" class="form-control small-control"></select>
+                    <label id="channel1_rtp_fec_L3_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_RTP3 col-wow channel1_RTP3_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel1_rtp_fec_D3" class="form-control small-control"></select>
+                    <label id="channel1_rtp_fec_D3_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS3 col-wow"><!-- Channel1 / TS3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel1_ts_protocol3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_ip3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_port3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_ttl3" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_video_pid3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_ts_audio_pid3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_RTMP3 col-wow"><!-- Channel1 / RTMP3 --> 
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtmp_url3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_RTMP3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_rtmp_key3" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel1_SRT3 col-wow"><!-- Channel1 / SRT3 --> 
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_url3" class="form-control small-control" maxlength="64" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS (0~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_tos3" class="form-control small-control" min="0" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_ttl3" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU (228~1500)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_mtu3" class="form-control small-control" min="228" max="1500" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (20~8000)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_latency3" class="form-control small-control" min="20" max="8000" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel1_srt_encryption3" class="form-control small-control" />
+                    <input type="text" id="channel1_srt_encryptionkey3" class="form-control small-control" style="margin-top:4px" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_srt_bandwidth_overhead3" class="form-control small-control" min="0" max="100" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_multicast_rtsp col-wow"><!-- Channel1 / RTSP3 -->
+									<td class="col-lg-4px-mobile" colspan="4"><input type="checkbox" id="multicast_rtsp"> Multicast RTSP Enable</input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_multicast_rtsp_en col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_multicast_ip" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel1_multicast_rtsp_en col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel1_multicast_port" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="tr-btn">
+									<td colspan="4"><button type="submit" id="channel1_submit" class="btn btn-primary">Submit</button></td>
+                  <td></td>
+                </tr>
+              </tbody></table>
+            </div>
+          </div>
+          
+          <!-- channel 2 -->
+          <div id="info2" class="tab-pane fade">
+            <div class="table-responsive table-responsive-0">
+              <table class="table table-hover"><tbody>
+                <tr class="col-wow tr-top"><!-- Channel2 / Preset -->
+                  <td class="col-lg-4px-mobile">Preset</td>
+                  <td class="col-lg-4px Customize" colspan="3">
+                    <select id="channel2_preset" class="form-control small-control"></select>
+                    <label id="channel2_imgsize" style="display:none">Current video encoding is 1920x1028</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 col-wow"><!-- Channel1 / Protocol1 -->
+                  <td class="col-lg-4px-mobile">Protocol 1 ---</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_protocol1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_HLS col-wow"><!-- Channel2 / HLS -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Duration (second)</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_hls_duration" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Segment</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel2_hls_segment" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Server URL</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_hls_srvurl" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Username</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_hls_user" maxlength="64" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Password</td>
+									<td class="col-lg-4px" colspan="3"><input type="password" id="channel2_hls_password" maxlength="32" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 col-wow"><!-- Channel2 / RTP1 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_ip1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_port1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_ttl1" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_video_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_audio_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel2_rtp_fec1" class="form-control small-control"></select></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 channel2_RTP1_fec col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel2_rtp_fec_L1" class="form-control small-control"></select>
+                    <label id="channel2_rtp_fec_L1_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_RTP1 channel2_RTP1_fec col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel2_rtp_fec_D1" class="form-control small-control"></select>
+                    <label id="channel2_rtp_fec_D1_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_TS1 col-wow"><!-- Channel2 / TS1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_ts_protocol1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_ip1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_port1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_ttl1" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_video_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_TS1 col-wow">           
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_audio_pid1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_RTMP1 col-wow"><!-- Channel2 / RTMP1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtmp_url1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_RTMP1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtmp_key1" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol1 channel2_SRT1 col-wow"><!-- Channel2 / SRT1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_url1" class="form-control small-control" maxlength="64" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (20~8000)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_latency1" class="form-control small-control" min="20" max="8000" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel2_srt_encryption1" class="form-control small-control" />
+                    <input type="text" id="channel2_srt_encryptionkey1" class="form-control small-control" style="margin-top:4px" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_bandwidth_overhead1" class="form-control small-control" min="0" max="100" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU (228~1500)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_mtu1" class="form-control small-control" min="228" max="1500" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_ttl1" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS (0~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_tos1" class="form-control small-control" min="0" max="255" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 col-wow"><!-- Channel2 / Protocol2 -->
+                  <td class="col-lg-4px-mobile">Protocol 2 ---</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_protocol2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 col-wow"><!-- Channel2 / RTP2 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_ip2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_port2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_ttl2" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_video_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_audio_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel2_rtp_fec2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 channel2_RTP2_fec col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel2_rtp_fec_L2" class="form-control small-control"></select>
+                    <label id="channel2_rtp_fec_L2_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_RTP2 channel2_RTP2_fec col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel2_rtp_fec_D2" class="form-control small-control"></select>
+                    <label id="channel2_rtp_fec_D2_err" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 channel2_TS2 col-wow"><!-- Channel2 / TS2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_ts_protocol2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 channel2_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_ip2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 channel2_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_port2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_ttl2" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_video_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_audio_pid2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 channel2_RTMP2 col-wow"><!-- Channel2 / RTMP2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtmp_url2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 channel2_RTMP2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtmp_key2" class="form-control small-control" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol2 channel2_SRT2 col-wow"><!-- Channel2 / SRT2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_url2" class="form-control small-control" maxlength="64" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (20~8000)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_latency2" class="form-control small-control" min="20" max="8000" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel2_srt_encryption2" class="form-control small-control" />
+                    <input type="text" id="channel2_srt_encryptionkey2" class="form-control small-control" style="margin-top:4px" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_bandwidth_overhead2" class="form-control small-control" min="0" max="100" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU (20~1500)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_mtu2" class="form-control small-control" min="228" max="1500" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_ttl2" class="form-control small-control" min="1" max="255" /></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS (0~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_tos2" class="form-control small-control" min="0" max="255" /></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 col-wow"><!-- Channel2 / Protocol3 -->
+                  <td class="col-lg-4px-mobile">Protocol 3 ---</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_protocol3" class="form-control small-control"></select></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 col-wow"><!-- Channel2 / RTP3 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_ip3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_port3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_ttl3" class="form-control small-control" min="1" max="255"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_video_pid3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtp_audio_pid3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="3"><select id="channel2_rtp_fec3" class="form-control small-control"></select></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 channel2_RTP3_fec col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel2_rtp_fec_L3" class="form-control small-control"></select>
+                    <label id="channel2_rtp_fec_L3_err" colspan="2" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_RTP3 channel2_RTP3_fec col-wow">    
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select id="channel2_rtp_fec_D3" class="form-control small-control"></select>
+                    <label id="channel2_rtp_fec_D3_err" colspan="2" style="color:red;display:none">Error: L * D > 100</label>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 channel2_TS3 col-wow"><!-- Channel2 / TS3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="3"><select id="channel2_ts_protocol3" class="form-control small-control"></select></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 channel2_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_ip3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 channel2_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_port3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_ttl3" class="form-control small-control" min="1" max="255"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID (def. 100)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_video_pid3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID (def. 101)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_ts_audio_pid3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 channel2_RTMP3 col-wow"><!-- Channel2 / RTMP3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtmp_url3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 channel2_RTMP3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_rtmp_key3" class="form-control small-control"></input></td>
+                  <td></td>
+                </tr>
+                <tr class="channel2_Protocol3 channel2_SRT3 col-wow"><!-- Channel2 / SRT3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_url3" class="form-control small-control" maxlength="64"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (20~8000)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_latency3" class="form-control small-control" min="20" max="8000"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="3">
+                    <select type="text" id="channel2_srt_encryption3" class="form-control small-control" />
+                    <input type="text" id="channel2_srt_encryptionkey3" class="form-control small-control" style="margin-top:4px" />
+                  </td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_bandwidth_overhead3" class="form-control small-control" min="0" max="100"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU (228~1500)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_mtu3" class="form-control small-control" min="228" max="1500"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL (1~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_ttl3" class="form-control small-control" min="1" max="255"></input></td>
+                  <td></td>
+                </tr>
+								<tr class="channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS (0~255)</td>
+									<td class="col-lg-4px" colspan="3"><input type="text" id="channel2_srt_tos3" class="form-control small-control" min="0" max="255"></input></td>
+                  <td></td>
+                </tr>
+                <tr class="tr-btn">
+									<td colspan="5"><button type="submit" id="channel2_submit" class="btn btn-primary">Submit</button></td>
+                </tr>									
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    a.disabled {pointer-events: none; color: #555 !important;}
+    a.disabled_ul {pointer-events: none; color: #555 !important;}
+    li.disabled {opacity:0.6;}
+  </style>
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="./js/advcls.js"></script>
+  <script type="text/javascript">
+    $.getJSON("test-2001.json"+"?_="+$.now(), function(data) {
+      $.each(data["streamForm"], function(key, val) {
+        $.each(val, function(func, opts) {
+          for (var opt in opts) {
+						if (typeof opts[opt] === "object") {
+							for(idx in opts[opt]) {
+							$("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: idx, text: opts[opt][idx]})); break;
+							}							
+						} else
+              $("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));    
+          }
+        });
+      });
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('select').on('focusin', function(evt) {
+    //console.log('select.on(focusin)-- ' + $(this)[0].id + " -> " + $(this)[0].value);
+      var id = $(this)[0].id; // channelX_protocolY
+      if (id.substr(0,7) != 'channel') return;
+      if (id.substr(9,8) != 'protocol') return;
+      if ($(this)[0].value == 'off') return;
+      console.log('select.on(focusin)-- ' + $(this)[0].id + " trigger change!");
+      $(this).trigger('change');
+    });
+
+    $('select').on('change', function(evt) {
+    //console.log('select.on(change)-- ' + $(this)[0].id);
+      var id = $(this)[0].id; // channelX_protocolY
+      if (id.substr(0,7) != 'channel') return;
+      if (id.substr(9,8) != 'protocol') return;
+      if ($(this)[0].value == 'off') return;
+      var ch = id.substr(7,1);
+      var pr = id.substr(17,1);
+    //console.log('select.on(change)-- channel: ' + ch + ', protocol: ' + pr + ', value: ' + $(this)[0].value);
+      //
+      for (var pp=1; pp<=3; pp++) {    
+        if (pp == pr) continue;
+        $(".channel"+ch+"_RTP"+pp).css("display", "none");
+        $(".channel"+ch+"_RTMP"+pp).css("display", "none");
+        $(".channel"+ch+"_SRT"+pp).css("display", "none");
+        $(".channel"+ch+"_TS"+pp).css("display", "none");
+        if (ch != 1) continue;
+        $(".channel"+ch+"_HLS").css("display", "none");
+        if (pp != 1) continue;
+        $(".channel"+ch+"_ZIXI"+pp).css("display", "none");
+      }
+    });
+    
+    $('input[type=text').on('focusin change', function(evt) {
+      console.log(evt.type + ', value: ' + $(this)[0].value);
+      var min = $(this)[0].min;
+      var max = $(this)[0].max;
+      if (min=='undefined' || min=='') return;
+      if (max=='undefined' || max=='') return;
+      //
+      if (evt.type == 'focusin') {
+        $(this).data('value', $(this)[0].value);
+      } else {
+        var pval = parseInt($(this).data('value'));
+        var cval = parseInt($(this)[0].value);
+        console.log('pval: ' + pval + ', cval: ' + cval + ', ' + min + ' / ' + max);
+        if (cval<parseInt(min) || cval>parseInt(max)) $(this)[0].value = pval;
+      }
+    });
+
+    $("#multicast_rtsp").on("change", function() {
+      if (this.checked) {
+        $(".channel1_multicast_rtsp_en").css("display", "");
+        $(".channel2_multicast_rtsp_en").css("display", $("#channel2_preset").val()=="off"?"none":"");
+      } else {
+        $(".channel1_multicast_rtsp_en").css("display", "none");
+        $(".channel2_multicast_rtsp_en").css("display", "none");
+      }
+    });
+
+		// RTP FEC ---------------------------------------------
+		function rtp_fec_onoff(chan, prot, onoff) {
+		//console.log("rtp_fec_onoff: " + chan + ", " + prot + ", " + onoff);
+			$(".channel"+chan+"_RTP"+prot+"_fec").css("display", onoff=="on"?"":"none");			
+		}
+		function rtp_fec_LD(chan, prot, mx) {
+			var LD = $("#channel"+chan+"_rtp_fec_L"+prot).val() * $("#channel"+chan+"_rtp_fec_D"+prot).val();
+			if (LD <= 100) {
+				$("#channel"+chan+"_submit").prop("disabled", false);
+				$("#channel"+chan+"_rtp_fec_L"+prot+"_err").hide();
+				$("#channel"+chan+"_rtp_fec_D"+prot+"_err").hide();
+			} else {		
+				$("#channel"+chan+"_submit").prop("disabled", true);
+				$("#channel"+chan+"_rtp_fec_"+mx+prot+"_err").show();
+			}
+		}
+		// RTP FEC / channel1
+    $("#channel1_rtp_fec1").on("change", function(){rtp_fec_onoff(1,1,this.value)});
+		$("#channel1_rtp_fec_L1").on("change", function(){rtp_fec_LD(1,1,"L")});
+		$("#channel1_rtp_fec_D1").on("change", function(){rtp_fec_LD(1,1,"D")});
+
+    $("#channel1_rtp_fec2").on("change", function(){rtp_fec_onoff(1,2,this.value)});
+		$("#channel1_rtp_fec_L2").on("change", function(){rtp_fec_LD(1,2,"L")});
+		$("#channel1_rtp_fec_D2").on("change", function(){rtp_fec_LD(1,2,"D")});
+
+    $("#channel1_rtp_fec3").on("change", function(){rtp_fec_onoff(1,3,this.value)});
+		$("#channel1_rtp_fec_L3").on("change", function(){rtp_fec_LD(1,3,"L")});
+		$("#channel1_rtp_fec_D3").on("change", function(){rtp_fec_LD(1,3,"D")});
+
+    $("#channel2_rtp_fec1").on("change", function(){rtp_fec_onoff(2,1,this.value)});
+		$("#channel2_rtp_fec_L1").on("change", function(){rtp_fec_LD(2,1,"L")});
+		$("#channel2_rtp_fec_D1").on("change", function(){rtp_fec_LD(2,1,"D")});
+
+    $("#channel2_rtp_fec2").on("change", function(){rtp_fec_onoff(2,2,this.value)});
+		$("#channel2_rtp_fec_L2").on("change", function(){rtp_fec_LD(2,2,"L")});
+		$("#channel2_rtp_fec_D2").on("change", function(){rtp_fec_LD(2,2,"D")});
+
+    $("#channel2_rtp_fec3").on("change", function(){rtp_fec_onoff(2,3,this.value)});
+		$("#channel2_rtp_fec_L3").on("change", function(){rtp_fec_LD(2,3,"L")});
+		$("#channel2_rtp_fec_D3").on("change", function(){rtp_fec_LD(2,3,"D")});
+
+		// Zixi -------------------------------------------
+    $("#channel1_zixi_rtmp_fb1").on("change", function() {
+		//console.log("ftmp_fb1: " + this.value);
+			$(".channel1_ZIXI1_FB").css("display", this.value=="enable"?"":"none");
+		});
+	
+		function minmax(value, min, max) { /* 1 ~ 65534 */
+			if (parseInt(value) < min || isNaN(parseInt(value))) return 1; 
+			if (parseInt(value) > max) return 65534; 
+			return value;
+		}
+
+		function zixi_host(obj) {
+			var table = $(obj).closest('table')[0];
+			var th_id = $(obj).closest('tr')[0].id.split('-')[0];
+			var cur_idx = $(obj).closest('tr').index();
+			var end_idx = $("#"+th_id+"_end").closest('tr').index();
+			var hdr_idx = $("#"+th_id).closest('tr').index();
+			return {table: table, id: th_id, idx_hdr: hdr_idx, idx_end: end_idx, idx_cur: cur_idx};
+		}
+		
+		var MAX_ZIXI_HOST_NUM = 32;
+		
+		function zixi_delete(obj) {
+			var host = zixi_host(obj);
+			console.log("zixi_delete, host: ", host);
+			// Must >= 1 host row 	
+			var host_tr_num = parseInt(host.idx_end) - parseInt(host.idx_hdr) - 1;
+			if (host_tr_num <= 0) { //1) {
+				console.log(".zixi_delete, tr_num: " + host_tr_num + " <= 1, skip!!");
+				return;
+			}
+			// delete current row
+			host.table.deleteRow(host.idx_cur);
+		}
+				
+		function zixi_add(obj, data) {
+			if (obj  == null) obj = $("#channel1_zixi_host1_add");
+			if (data == "") data = ",any,2088,,0";
+			//
+			var host = zixi_host(obj);
+		//console.log("zixi_add, host: ", host);
+			// check number of virtual host
+			var num = host.idx_end - host.idx_hdr;
+			if (num > MAX_ZIXI_HOST_NUM) {
+				console.log("zixi_add, too many virtual host!!");
+				return;
+			}
+			var row_data = '<tr id="channel1_zixi_host1-###" class="channel1_ZIXI1 col-wow">'
+									 + '	<td class="col-lg-4px">'
+                   + '    &nbsp;&nbsp;&nbsp;<i class="fa fa-fw fa-remove" onclick="zixi_delete(this)" style="border:1px solid #eee"></i>'
+                   + '    <input type="text" id="channel1_zixi_name1-###" class="form-control small-control" style="float:right;width:72%"></input>'
+                   + '  </td>'
+									 + '	<td class="col-lg-4px">'
+									 + '		<select type="text" id="channel1_zixi_ip1-###" class="form-control small-control">'
+									 + '			<option value="any" selected>Any</option>'
+									 + '		</select>'
+									 + '	</td>'
+									 + '	<td class="col-lg-4px"><input type="text" id="channel1_zixi_port1-###" class="form-control small-control" value="2088" onkeyup="this.value=minmax(this.value,1,65534)" style="width:56px"></input></td>'
+									 + '	<td class="col-lg-4px"><select type="text" id="channel1_zixi_limit1-###" class="form-control small-control"></select></td>'
+									 + '	<td class="col-lg-4px"><input id="channel1_zixi_backup1-###" type="checkbox" style="margin-left:10px"></input></td>'
+									 + '</tr>';
+			var items = data.split(",");
+			var value = parseInt(host.table.rows[host.idx_end-1].getAttribute("value")) + 1;
+			var row = host.table.insertRow(host.idx_end);
+			row.setAttribute("id", host.id+"-"+value);
+			row.setAttribute("class", "channel1_ZIXI1 col-wow");
+			row.setAttribute("value", value);
+			row.innerHTML = row_data.replace(/###/g, host.idx_end);
+			// set value of each field
+			row.cells[0].firstChild.value = items[0] || "";
+			row.cells[1].firstChild.value = items[1] || "any";
+			row.cells[2].firstChild.value = items[2] || "2088";
+			row.cells[3].firstChild.value = items[3] || "";
+			row.cells[4].firstChild.checked = (items[4]||"0")=="1"? true: false;
+		}
+		$(".zixi_add").on("click", function(){zixi_add(this, "");});
+
+		function zixi_host_setting(chan, protocol) {
+			var host = zixi_host($("#channel"+chan+"_zixi_host"+protocol+"_add"));
+			console.log("zixi_host_setting()-- host: ", host);
+			var url = "", num = 0;
+			for (var j=1,i=host.idx_hdr+1; i<host.idx_end; i++,j++) {
+				var row = host.table.rows[i];
+			// Channel1ZixiHost1_1=<name>,<ip>,<port>,<bandwidth_limit_kbps>,<backup_0_1>
+				url += '&Channel'+chan+'ZixiHost'+protocol+'_'+j+'=';
+				url += row.cells[0].firstChild.value + ','; 
+				url += row.cells[1].firstChild.value + ','; 
+				url += row.cells[2].firstChild.value + ','; 
+				url += row.cells[3].firstChild.value + ','; 
+				url += row.cells[4].firstChild.checked? '1': '0'; 
+        num += 1;
+			}
+			url += '&Channel'+chan+'ZixiHost'+protocol+'_num=' + num;
+			console.log("zixi_host_setting()-- url: " + url);
+			return url;
+		}
+
+		function zixi_host_reset(chan, protocol) {
+			var host = zixi_host($("#channel"+chan+"_zixi_host"+protocol+"_add"));
+		//console.log("zixi_host_reset, host: ", host);
+			for (var i=host.idx_end-1; i>host.idx_hdr; i--) {
+				host.table.deleteRow(i);
+			}
+		}
+
+    $("#channel1_zixi_encryption1").on("change", function() {
+    //console.log("channel1_zixi_encryption1()-- value: " + this.value);
+      if (this.value == "none") {
+        $("#channel1_zixi_encryptionkey1").hide();
+      } else
+      if (this.value == "aes128") {
+        $("#channel1_zixi_encryptionkey1").show();
+        $("#channel1_zixi_encryptionkey1").prop("maxlength", "32");
+      } else
+      if (this.value == "aes192") {
+        $("#channel1_zixi_encryptionkey1").show();
+        $("#channel1_zixi_encryptionkey1").prop("maxlength", "48");
+      } else
+      if (this.value == "aes256") {
+        $("#channel1_zixi_encryptionkey1").show();
+        $("#channel1_zixi_encryptionkey1").prop("maxlength", "64");
+      }
+    });
+    
+    function channel_srt_encryption(chan, protocol, obj) {
+    //console.log("channel_srt_encryption()-- " + chan + ", " + protocol);
+      var elmId = "#channel"+chan+"_srt_encryptionkey"+protocol;
+      if (obj.value == "none") {
+        $(elmId).hide();
+      } else
+      if (obj.value == "aes128") {
+        $(elmId).show(); $(elmId).prop("maxlength", "32");
+      } else
+      if (obj.value == "aes192") {
+        $(elmId).show(); $(elmId).prop("maxlength", "48");
+      } else
+      if (obj.value == "aes256") {
+        $(elmId).show(); $(elmId).prop("maxlength", "64");
+      }
+    }
+    $("#channel1_srt_encryption1").on("change", function() {channel_srt_encryption(1, 1, this);});
+    $("#channel1_srt_encryption2").on("change", function() {channel_srt_encryption(1, 2, this);});
+    $("#channel1_srt_encryption3").on("change", function() {channel_srt_encryption(1, 3, this);});
+    $("#channel2_srt_encryption1").on("change", function() {channel_srt_encryption(2, 1, this);});
+    $("#channel2_srt_encryption2").on("change", function() {channel_srt_encryption(2, 2, this);});
+    $("#channel2_srt_encryption3").on("change", function() {channel_srt_encryption(2, 3, this);});
+
+		function preset_to_size(val, chan) {
+		//console.log("preset_to_size: " + val + ", " + chan);			
+			if (val == "off") return -1;
+      if (val == "h265 ,4KP ,30FPS ,16M"   || val == "h265, 4KP, 30FPS, 16M"  ) return 2160; 
+			if (val == "h264 ,4KP ,60FPS ,20M"   || val == "h264, 4KP, 60FPS, 20M"  ) return 2160;
+      if (val == "h265 ,1080P ,60FPS ,4M"  || val == "h265, 1080P, 60FPS, 4M" ) return 1080;
+			if (val == "h264 ,1080P ,60FPS ,6M"  || val == "h264, 1080P, 60FPS, 6M" ) return 1080;
+      if (val == "h265 ,720P ,60FPS ,2M"   || val == "h265, 720P, 60FPS, 2M"  ) return 720;
+			if (val == "h264 ,720P ,60FPS ,3M"   || val == "h264, 720P, 60FPS, 3M"  ) return 720;
+      if (val == "h265 ,480P ,30FPS ,1M"	 || val == "h265, 480P, 30FPS, 1M"  ) return 480;
+			if (val == "h264 ,480P ,30FPS ,1.5M" || val == "h264, 480P, 30FPS, 1.5M") return 480;
+			if (val == "Customize") {
+				eval("var size = g_ImageSize"+chan+";");
+				return size;
+			}
+		}
+	
+    var g_ImageSize1, g_ImageSize2, g_ImageSize3, g_VideoInput=false;
+    
+    function videoSize_min(size1, size2) {
+    //console.log('videoSize_min()-- ' + size1 + ', ' + size2);                        
+      var sizes1 = size1.split('x');
+      var sizes2 = size2.split('x');
+      return parseInt(sizes1[0])<=parseInt(sizes2[0])? size1: size2;
+    }
+    
+		// Channel #1 preset -------------------------------
+    $("#channel1_preset").on("change", function() {
+			var size = preset_to_size(this.value, 1);
+			if (size > 0 && size < g_ImageSize2 /*|| size < g_ImageSiz3*/) {
+				$("#channel1_submit").prop("disabled", true);
+				alert("Warning!\n\n" +
+							"Do not allow the resolution of channel-2 greater than channel-1.\n" +
+							"Please change the resolution of channel-2 first.\n\n");
+			} else
+				$("#channel1_submit").prop("disabled", false);
+      //
+      if (this.value == "off" || g_VideoInput === false) {
+        $("#channel1_imgsize").css("display", "none");
+      } else {
+        $("#channel1_imgsize").css("display", "");
+        $("#channel1_imgsize").css("color", "#C08080");
+        $("#channel1_imgsize").text("** Current video encoding is " + 
+                                    videoSize_min(g_ImageSize1, g_VideoInput));
+      }
+		});
+
+		// Channel #2 preset -------------------------------
+    $("#channel2_preset").on("change", function() {
+    //console.log("channel2_preset: " + this.value + ", videoInput: " + g_VideoInput);
+      if (this.value == "off" || g_VideoInput === false) {
+        $("#channel2_imgsize").css("display", "none");
+      } else {
+        $("#channel2_imgsize").css("display", "");
+        $("#channel2_imgsize").css("color", "#C08080");
+        $("#channel2_imgsize").text("** Current video encoding is " + 
+                                    videoSize_min(g_ImageSize2, g_VideoInput));
+      }
+      if (this.value == "off") {
+        $(".channel2_Protocol1").css("display", "none");
+        $(".channel2_Protocol2").css("display", "none");
+        $(".channel2_Protocol3").css("display", "none");	
+				$(".channel2_multicast_rtsp_en").css("display", "none");    
+      } else {
+        $(".channel2_Protocol1").css("display", "");
+        $(".channel2_Protocol2").css("display", "");
+        $(".channel2_Protocol3").css("display", "");	
+				$(".channel2_multicast_rtsp_en").css("display", $("#multicast_rtsp").prop("checked")==false?"none":"");  
+				//
+				var val = $("#channel2_protocol1").val();
+				$(".channel2_HLS"  ).css("display", (val==="HLS"?        "": "none"));
+				$(".channel2_RTP1" ).css("display", (val==="RTP"?        "": "none"));
+				$(".channel2_RTMP1").css("display", (val==="RTMP"?       "": "none"));
+				$(".channel2_TS1"  ).css("display", (val==="TS over IP"? "": "none"));
+				if (val === "RTP") $("#channel2_rtp_fec1").trigger("change");
+				//
+				val = $("#channel2_protocol2").val();
+				$(".channel2_RTP2" ).css("display", (val==="RTP"?        "": "none"));
+				$(".channel2_RTMP2").css("display", (val==="RTMP"?       "": "none"));
+				$(".channel2_TS2"  ).css("display", (val==="TS over IP"? "": "none"));
+				if (val === "RTP") $("#channel2_rtp_fec2").trigger("change");
+				//
+				val = $("#channel2_protocol3").val();
+				$(".channel2_RTP3" ).css("display", (val==="RTP"?        "": "none"));
+				$(".channel2_RTMP3").css("display", (val==="RTMP"?       "": "none"));
+				$(".channel2_TS3"  ).css("display", (val==="TS over IP"? "": "none"));
+				if (val === "RTP") $("#channel2_rtp_fec3").trigger("change");
+      }
+			//
+			var size = preset_to_size(this.value, 2);
+			if (size > 0 && size > g_ImageSize1) {
+				$("#channel2_submit").prop("disabled", true);
+				alert("Warning!\n\n" +
+							"Do not allow the resolution of channel-2 greater than channel-1.\n\n");
+			} else
+				$("#channel2_submit").prop("disabled", false);
+    });
+
+		// Channel #1 --------------------------------------
+    $("#channel1_protocol1").on("change", function() {
+			var val = $("#channel1_protocol1").val();
+		//console.log("channel1_protocol1-- val: " + val);
+			$(".channel1_HLS"  ).css("display", (val==="HLS"?        "": "none"));
+			$(".channel1_RTP1" ).css("display", (val==="RTP"?        "": "none"));
+			$(".channel1_RTMP1").css("display", (val==="RTMP"?       "": "none"));
+			$(".channel1_SRT1" ).css("display", (val==="SRT"?        "": "none"));
+			$(".channel1_TS1"  ).css("display", (val==="TS over IP"? "": "none"));
+			if (val === "RTP") $("#channel1_rtp_fec1").trigger("change");
+			if (val === "ZIXI") {
+				$(".channel1_ZIXI1").css("display", "");
+				$("#channel1_zixi_rtmp_fb1").trigger("change");
+				// unsupport now. 2018/03/08
+				$(".channel1_ZIXI1_none").css("display", "none");
+			} else
+				$(".channel1_ZIXI1").css("display", "none");
+    });
+    //
+    $("#channel1_protocol2").on("change", function() {
+			var val = $("#channel1_protocol2").val();
+			$(".channel1_RTP2" ).css("display", (val==="RTP"?        "": "none"));
+			$(".channel1_RTMP2").css("display", (val==="RTMP"?       "": "none"));
+			$(".channel1_SRT2" ).css("display", (val==="SRT"?        "": "none"));
+			$(".channel1_TS2"  ).css("display", (val==="TS over IP"? "": "none"));
+			if (val === "RTP") $("#channel1_rtp_fec2").trigger("change");
+    });
+    //
+    $("#channel1_protocol3").on("change", function() {
+			var val = $("#channel1_protocol3").val();
+			$(".channel1_RTP3" ).css("display", (val==="RTP"?        "": "none"));
+			$(".channel1_RTMP3").css("display", (val==="RTMP"?       "": "none"));
+			$(".channel1_SRT3" ).css("display", (val==="SRT"?        "": "none"));
+			$(".channel1_TS3"  ).css("display", (val==="TS over IP"? "": "none"));
+			if (val === "RTP") $("#channel1_rtp_fec3").trigger("change");
+    });
+		// Channel #2 --------------------------------------
+    $("#channel2_protocol1").on("change", function() {
+			var val = $("#channel2_protocol1").val();
+			$(".channel2_HLS"  ).css("display", (val==="HLS"?        "": "none"));
+			$(".channel2_RTP1" ).css("display", (val==="RTP"?        "": "none"));
+			$(".channel2_RTMP1").css("display", (val==="RTMP"?       "": "none"));
+			$(".channel2_SRT1" ).css("display", (val==="SRT"?        "": "none"));
+			$(".channel2_TS1"  ).css("display", (val==="TS over IP"? "": "none"));
+			if (val === "RTP") $("#channel2_rtp_fec1").trigger("change");
+    });
+    //
+    $("#channel2_protocol2").on("change", function() {
+			var val = $("#channel2_protocol2").val();
+			$(".channel2_RTP2" ).css("display", (val==="RTP"?        "": "none"));
+			$(".channel2_RTMP2").css("display", (val==="RTMP"?       "": "none"));
+			$(".channel2_SRT2" ).css("display", (val==="SRT"?        "": "none"));
+			$(".channel2_TS2"  ).css("display", (val==="TS over IP"? "": "none"));
+			if (val === "RTP") $("#channel2_rtp_fec2").trigger("change");
+    });
+    //
+    $("#channel2_protocol3").on("change", function() {
+			var val = $("#channel2_protocol3").val();
+			$(".channel2_RTP3" ).css("display", (val==="RTP"?        "": "none"));
+			$(".channel2_RTMP3").css("display", (val==="RTMP"?       "": "none"));
+			$(".channel2_SRT3" ).css("display", (val==="SRT"?        "": "none"));
+			$(".channel2_TS3"  ).css("display", (val==="TS over IP"? "": "none"));
+			if (val === "RTP") $("#channel2_rtp_fec3").trigger("change");
+    });	
+
+		// channel<n>_submit ----------------------------
+		function enable_submit_all() {
+			$("#channel1_submit").prop("disabled", false);
+			$("#channel2_submit").prop("disabled", false);   
+      g_curtain.display(false);
+		}
+
+		function disable_submit_all() {
+			$("#channel1_submit").prop("disabled", true);
+			$("#channel2_submit").prop("disabled", true);   
+      g_curtain.display(true);
+		}
+
+		function send_submit_protocol(url) {
+			console.log("send_submit_protocol()-- enter, url:\n" + url);
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.onreadystatechange = function() {
+			//console.log("send_submit_protocol()-- readyState: " + this.readyState + ", " + this.status);
+				if (this.readyState == XMLHttpRequest.DONE) {
+					console.log("send_submit_protocol()-- DONE, call loadcgi()!!");
+					setTimeout(loadcgi(g_cur_tab_page), 200);
+				}
+			}			
+			xmlHttp.open("GET", url, true);
+			xmlHttp.setRequestHeader('pragma', 'no-cache'); // for IE enable 'no-cache'
+			xmlHttp.send();
+		}
+		
+		function send_submit_preset(url, url2) {
+			console.log("send_submit_preset()-- enter, url:\n" + url);
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.onreadystatechange = function() {
+			//console.log("send_submit_preset()-- readyState: " + this.readyState + ", " + this.status);
+				if (this.readyState == XMLHttpRequest.DONE) {
+					console.log("send_submit_preset()-- DONE, call send_submit_protocol()!!");
+					setTimeout(send_submit_protocol(url2), 100);
+				}
+			}			
+			xmlHttp.open("GET", url, true);
+			xmlHttp.setRequestHeader('pragma', 'no-cache'); // for IE enable 'no-cache'
+			xmlHttp.send();
+		}
+
+		var g_ImageSize1=1080, g_ImageSize2=720; //, gImageSize3=720;
+		
+    function check_zixi_encry_key(chan, protocol) {
+      var protVal = $("#channel"+chan+"_protocol"+protocol).val();
+      if (protVal != "ZIXI") return ["null", 0, 0]; // Not Zixi
+      // is Zixi
+      var encryp = $("#channel"+chan+"_zixi_encryption"+protocol).val();
+      var keylen = $("#channel"+chan+"_zixi_encryptionkey"+protocol).val().length;
+      switch (encryp) {
+        case "aes128": if (keylen != 32) return ["AES 128", -1, 32]; break;
+        case "aes192": if (keylen != 48) return ["AES 192", -1, 48]; break;
+        case "aes256": if (keylen != 64) return ["AES 256", -1, 64]; break;
+      }
+      return [encryp, 0, 0];
+    }
+    
+		// channel1_submit -----------------------------
+    $("#channel1_submit").on("click", function() {
+			console.log("channel1_submit.click-- enter");
+      var ret = check_zixi_encry_key(1, 1);
+      if (ret[1] < 0) {
+        alert("Error: Zixi encryption key.\n\n" +
+              "Zixi encryption of  '" + ret[0] + "' needs " + ret[2] + " characters.\n");
+        return;
+      }
+			disable_submit_all();
+
+			// A. Get preset setting
+			var url_1 = "", presetVal = $("#channel1_preset").val();
+      if (presetVal == "h265 ,4KP ,30FPS ,16M" ||
+          presetVal == "h265, 4KP, 30FPS, 16M") {
+				url_1 =  "ImageCodec1=h265"
+							+ "&ImageSize1=3840,2160"
+							+ "&FrameRate1=" + (modelName=="VEGA-2001"?"-1":"0") // "&FrameRate1=30"
+							+ "&IFrameInterval1=1,30,4"
+							+ "&CBR1=on"
+							+ "&BitRate1=16000"
+							+ "&Preset1=1"
+							+ "&Customize1=off";
+      } else 
+      if (presetVal == "h265 ,1080P ,60FPS ,4M" ||
+          presetVal == "h265, 1080P, 60FPS, 4M") {
+        url_1 =  "ImageCodec1=h265"
+              + "&ImageSize1=1920,1080"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,60,4"
+              + "&CBR1=on"
+              + "&BitRate1=4000"
+              + "&Preset1=2"
+              + "&Customize1=off";
+      } else 
+      if (presetVal == "h265 ,720P ,60FPS ,2M" ||
+          presetVal == "h265, 720P, 60FPS, 2M") {
+        url_1 =  "ImageCodec1=h265"
+              + "&ImageSize1=1280,720"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,60,4"
+              + "&CBR1=on"
+              + "&BitRate1=2000"
+              + "&Preset1=3"
+              + "&Customize1=off";
+      } else 
+      if (presetVal == "h265 ,480P ,30FPS ,1M" ||
+          presetVal == "h265, 480P, 30FPS, 1M") {
+        url_1 =  "ImageCodec1=h265"
+              + "&ImageSize1=720,480"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,30,4"
+              + "&CBR1=on"
+              + "&BitRate1=1000"
+              + "&Preset1=4"
+              + "&Customize1=off";
+      } else 
+      if (presetVal == "h264 ,4KP ,60FPS ,20M" ||
+          presetVal == "h264, 4KP, 60FPS, 20M") {
+        url_1 =  "ImageCodec1=h264"
+              + "&ImageSize1=3840,2160"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,60,4"
+              + "&CBR1=on"
+              + "&BitRate1=20000"
+              + "&Preset1=5"
+              + "&Customize1=off";
+      } else 
+      if (presetVal == "h264 ,1080P ,60FPS ,6M" ||
+          presetVal == "h264, 1080P, 60FPS, 6M") {
+        url_1 =  "ImageCodec1=h264"
+              + "&ImageSize1=1920,1080"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,60,4"
+              + "&CBR1=on"
+              + "&BitRate1=6000"
+              + "&Preset1=6"
+              + "&Customize1=off";
+      } else 
+      if (presetVal == "h264 ,720P ,60FPS ,3M" ||
+          presetVal == "h264, 720P, 60FPS, 3M") {
+        url_1 =  "ImageCodec1=h264"
+              + "&ImageSize1=1280,720"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,60,4"
+              + "&CBR1=on"
+              + "&BitRate1=3000"
+              + "&Preset1=7"
+              + "&Customize1=off";
+      } else 
+      if (presetVal == "h264 ,480P ,30FPS ,1.5M" ||
+          presetVal == "h264, 480P, 30FPS, 1.5M") {
+        url_1 =  "ImageCodec1=h264"
+              + "&ImageSize1=720,480"
+              + "&FrameRate1=0" // "&FrameRate1=60"
+              + "&IFrameInterval1=1,30,4"
+              + "&CBR1=on"
+              + "&BitRate1=1500"
+              + "&Preset1=8"
+              + "&Customize1=off";
+      }	
+			// B. Get protocol setting
+			var url1="", url2="", url3="", url4="", protVal; 
+			protVal = $("#channel1_protocol1").val();
+      if (protVal == "TS over IP") {	
+        if ($("#channel1_ts_ip1").val() != "" || $("#channel1_ts_port1").val() != "")
+        url1 = "Channel1Protocol1="+"TSoverIP"
+            + "&Channel1TSprotocol1="+$("#channel1_ts_protocol1").val()
+            + "&Channel1TSclientIP1="+$("#channel1_ts_ip1").val()
+            + "&Channel1TSclientPort1="+$("#channel1_ts_port1").val()
+						+	"&Channel1TSTTL1="+$("#channel1_ts_ttl1").val()
+						+ "&Channel1TSVideoPid1="+$("#channel1_ts_video_pid1").val()
+						+ "&Channel1TSAudioPid1="+$("#channel1_ts_audio_pid1").val();     
+			} else 
+			if (protVal == "RTP") { 
+				if ($("#channel1_rtp_ip1").val() != "" || $("#channel1_rtp_port1").val() != "")
+				url1 = "Channel1Protocol1="+protVal
+						+ "&Channel1RTPclientIP1="+$("#channel1_rtp_ip1").val() 
+						+ "&Channel1RTPclientPort1="+$("#channel1_rtp_port1").val()
+						+	"&Channel1RTPTTL1="+$("#channel1_rtp_ttl1").val()
+						+ "&Channel1RTPVideoPid1="+$("#channel1_rtp_video_pid1").val() 
+						+ "&Channel1RTPAudioPid1="+$("#channel1_rtp_audio_pid1").val();
+				if ($("#channel1_rtp_fec1").val() == "on")
+					url1 += "&Channel1RTPFecEnable1=on"
+							 +  "&Channel1RTPFecMatrixL1="+$("#channel1_rtp_fec_L1").val()
+							 +  "&Channel1RTPFecMatrixD1="+$("#channel1_rtp_fec_D1").val();
+				else
+					url1 += "&Channel1RTPFecEnable1=off";
+      }	else 
+      if (protVal == "RTMP") {	
+        if ($("#channel1_rtmp_url1").val() != "" || $("#channel1_rtmp_key1").val() != "")
+        url1 = "Channel1Protocol1="+protVal
+						+ "&Channel1RTMPurl1="+$("#channel1_rtmp_url1").val()	
+						+ "&Channel1RTMPkey1="+$("#channel1_rtmp_key1").val().replace(/&/g, "~");
+      } else
+      if (protVal == "SRT") {
+				url1 = "Channel1Protocol1="+protVal
+						+	"&Channel1SRTUrl1="+$("#channel1_srt_url1").val()     
+						+	"&Channel1SRTLatency1="+$("#channel1_srt_latency1").val()
+						+	"&Channel1SRTEncryption1="+$("#channel1_srt_encryption1").val()
+						+	"&Channel1SRTBandwidthOverhead1="+$("#channel1_srt_bandwidth_overhead1").val()
+						+	"&Channel1SRTMTU1="+$("#channel1_srt_mtu1").val()
+						+	"&Channel1SRTTTL1="+$("#channel1_srt_ttl1").val()
+						+	"&Channel1SRTToS1="+$("#channel1_srt_tos1").val();      
+        if ($("#channel1_srt_encryption1").val() != "none")
+        url1 += "&Channel1SRTEncryptionKey1="+$("#channel1_srt_encryptionkey1").val();
+      } else 
+      if (protVal == "HLS") {	
+        url1 = "Channel1Protocol1="+protVal
+            + "&Channel1HLSduration="+$("#channel1_hls_duration").val()
+						+	"&Channel1HLSsegment="+$("#channel1_hls_segment").val()
+						+	"&Channel1HLSsrvurl="+$("#channel1_hls_srvurl").val()
+						+	"&Channel1HLSuser="+$("#channel1_hls_user").val()      
+						+	"&Channel1HLSpassword="+$("#channel1_hls_password").val();      
+			} else  
+			if (protVal == "ZIXI") {  
+				url1 = "Channel1Protocol1="+protVal
+						+	"&Channel1ZixiGroup1="+$("#channel1_zixi_group1").val()     
+						+	"&Channel1ZixiStreamId1="+$("#channel1_zixi_streamid1").val()
+						+	"&Channel1ZixiPassword1="+$("#channel1_zixi_password1").val()
+						+	"&Channel1ZixiMaxbps1="+$("#channel1_zixi_maxbps1").val()      
+						+	"&Channel1ZixiMaxlatency1="+$("#channel1_zixi_maxlatency1").val()
+						+	"&Channel1ZixiTLSCert1="+$("#channel1_zixi_tls_cert1").val()
+						+	"&Channel1ZixiPCRDelay1="+$("#channel1_zixi_pcr_delay1").val()
+						+	"&Channel1ZixiEncryption1="+$("#channel1_zixi_encryption1").val()
+						+	"&Channel1ZixiDSCP1="+$("#channel1_zixi_dscp1").val()
+						+	"&Channel1ZixiECN1="+$("#channel1_zixi_ecn1").val()
+						+	"&Channel1ZixiRTMP_FB1="+$("#channel1_zixi_rtmp_fb1").val()
+						+	"&Channel1ZixiMinbps1="+$("#channel1_zixi_minbps1").val();      
+        if ($("#channel1_zixi_encryption1").val() != "none")
+        url1 += "&Channel1ZixiEncryptionKey1="+$("#channel1_zixi_encryptionkey1").val();
+				url1 += zixi_host_setting(1, 1);
+      }	else {	
+        url1 = "Channel1Protocol1="+protVal;	
+      }
+      //
+			protVal = $("#channel1_protocol2").val();
+      if (protVal == "TS over IP") {	
+        if ($("#channel1_ts_ip2").val() != "" || $("#channel1_ts_port2").val() != "")
+        url2 = "Channel1Protocol2="+"TSoverIP"
+            + "&Channel1TSprotocol2="+$("#channel1_ts_protocol2").val()
+						+ "&Channel1TSclientIP2="+$("#channel1_ts_ip2").val()
+						+ "&Channel1TSclientPort2="+$("#channel1_ts_port2").val()
+						+	"&Channel1TSTTL2="+$("#channel1_ts_ttl2").val()
+						+ "&Channel1TSVideoPid2="+$("#channel1_ts_video_pid2").val()
+						+ "&Channel1TSAudioPid2="+$("#channel1_ts_audio_pid2").val(); 
+			} else 
+			if (protVal == "RTP") { 
+				if ($("#channel1_rtp_ip2").val() != "" || $("#channel1_rtp_port2").val() != "")
+				url2 = "Channel1Protocol2="+protVal
+						+ "&Channel1RTPclientIP2="+$("#channel1_rtp_ip2").val() 
+						+ "&Channel1RTPclientPort2="+$("#channel1_rtp_port2").val()
+						+	"&Channel1RTPTTL2="+$("#channel1_rtp_ttl2").val()
+						+ "&Channel1RTPVideoPid2="+$("#channel1_rtp_video_pid2").val() 
+						+ "&Channel1RTPAudioPid2="+$("#channel1_rtp_audio_pid2").val();
+				if ($("#channel1_rtp_fec2").val() == "on")
+					url2 += "&Channel1RTPFecEnable2=on"
+							 +  "&Channel1RTPFecMatrixL2="+$("#channel1_rtp_fec_L2").val()
+							 +  "&Channel1RTPFecMatrixD2="+$("#channel1_rtp_fec_D2").val();
+				else
+					url2 += "&Channel1RTPFecEnable2=off";
+      } else 
+      if (protVal == "RTMP") {	
+        if ($("#channel1_rtmp_url2").val() != "" || $("#channel1_rtmp_key2").val() != "")
+        url2 = "Channel1Protocol2="+protVal
+						+ "&Channel1RTMPurl2="+$("#channel1_rtmp_url2").val()	
+						+ "&Channel1RTMPkey2="+$("#channel1_rtmp_key2").val().replace(/&/g, "~");  
+      } else
+      if (protVal == "SRT") {
+				url2 = "Channel1Protocol2="+protVal
+						+	"&Channel1SRTUrl2="+$("#channel1_srt_url2").val()     
+						+	"&Channel1SRTLatency2="+$("#channel1_srt_latency2").val()
+						+	"&Channel1SRTEncryption2="+$("#channel1_srt_encryption2").val()
+						+	"&Channel1SRTBandwidthOverhead2="+$("#channel1_srt_bandwidth_overhead2").val()
+						+	"&Channel1SRTMTU2="+$("#channel1_srt_mtu2").val()
+						+	"&Channel1SRTTTL2="+$("#channel1_srt_ttl2").val()
+						+	"&Channel1SRTToS2="+$("#channel1_srt_tos2").val();      
+        if ($("#channel1_srt_encryption2").val() != "none")
+        url2 += "&Channel1SRTEncryptionKey2="+$("#channel1_srt_encryptionkey2").val();
+      } else {	
+        url2 = "Channel1Protocol2="+protVal;	
+      }
+      //
+			protVal = $("#channel1_protocol3").val();
+      if (protVal == "TS over IP") {	
+        if ($("#channel1_ts_ip3").val() != "" || $("#channel1_ts_port3").val() != "")
+        url3 = "Channel1Protocol3="+"TSoverIP"
+						+ "&Channel1TSprotocol3="+$("#channel1_ts_protocol3").val()
+						+ "&Channel1TSclientIP3="+$("#channel1_ts_ip3").val()
+						+ "&Channel1TSclientPort3="+$("#channel1_ts_port3").val()
+						+	"&Channel1TSTTL3="+$("#channel1_ts_ttl3").val()
+						+ "&Channel1TSVideoPid3="+$("#channel1_ts_video_pid3").val()
+						+ "&Channel1TSAudioPid3="+$("#channel1_ts_audio_pid3").val(); 
+			} else 
+			if (protVal == "RTP") { 
+				if ($("#channel1_rtp_ip3").val() != "" || $("#channel1_rtp_port3").val() != "")
+				url3 = "Channel1Protocol3="+protVal
+						+ "&Channel1RTPclientIP3="+$("#channel1_rtp_ip3").val() 
+						+ "&Channel1RTPclientPort3="+$("#channel1_rtp_port3").val()
+						+	"&Channel1RTPTTL3="+$("#channel1_rtp_ttl3").val()
+						+ "&Channel1RTPVideoPid3="+$("#channel1_rtp_video_pid3").val() 
+						+ "&Channel1RTPAudioPid3="+$("#channel1_rtp_audio_pid3").val();
+				if ($("#channel1_rtp_fec3").val() == "on")
+					url3 += "&Channel1RTPFecEnable3=on"
+							 +  "&Channel1RTPFecMatrixL3="+$("#channel1_rtp_fec_L3").val()
+							 +  "&Channel1RTPFecMatrixD3="+$("#channel1_rtp_fec_D3").val();
+				else
+					url3 += "&Channel1RTPFecEnable3=off";
+      } else 
+      if (protVal == "RTMP") {	
+        if ($("#channel1_rtmp_url3").val() != "" || $("#channel1_rtmp_key3").val() != "")
+        url3 = "Channel1Protocol3="+protVal
+						+ "&Channel1RTMPurl3="+$("#channel1_rtmp_url3").val()	
+						+ "&Channel1RTMPkey3="+$("#channel1_rtmp_key3").val().replace(/&/g, "~"); 
+      } else
+      if (protVal == "SRT") {
+				url3 = "Channel1Protocol3="+protVal
+						+	"&Channel1SRTUrl3="+$("#channel1_srt_url3").val()     
+						+	"&Channel1SRTLatency3="+$("#channel1_srt_latency3").val()
+						+	"&Channel1SRTEncryption3="+$("#channel1_srt_encryption3").val()
+						+	"&Channel1SRTBandwidthOverhead3="+$("#channel1_srt_bandwidth_overhead3").val()
+						+	"&Channel1SRTMTU3="+$("#channel1_srt_mtu3").val()
+						+	"&Channel1SRTTTL3="+$("#channel1_srt_ttl3").val()
+						+	"&Channel1SRTToS3="+$("#channel1_srt_tos3").val();      
+        if ($("#channel1_srt_encryption3").val() != "none")
+        url3 += "&Channel1SRTEncryptionKey3="+$("#channel1_srt_encryptionkey3").val();
+      } else {	
+        url3 = "Channel1Protocol3="+protVal;	
+      }
+		/*if ($("#multicast_rtsp").prop("checked")) { 
+				if ($("#channel1_multicast_ip").val() != "" && $("#channel1_multicast_port").val() != "")
+					url4 = "MulticastEn=on"
+							+ "&Channel1MulticastIP="+$("#channel1_multicast_ip").val() 
+							+ "&MulticastPort1="+$("#channel1_multicast_port").val();
+				else
+					url4 = "MulticastEn="MulticastEn=on"
+							+ "&Channel1MulticastIP=" 
+							+ "&MulticastPort1=";
+			} else */
+				url4 = "MulticastEn=off";
+			// 		
+      g_cur_tab_page = "#info1";
+			var url_2 = url1 + "&" + url2 + "&" + url3 + "&" + url4;
+			if (url_1 == "")
+				send_submit_protocol(src_url+"/command/stream.cgi?"+url_2);
+			else
+				send_submit_preset(src_url+"/command/video.cgi?"+url_1, src_url+"/command/stream.cgi?"+url_2);
+    });
+
+		// channel2_submit -----------------------------
+    $("#channel2_submit").on("click", function() {
+			console.log("channel2_submit.click-- enter");
+			disable_submit_all();
+
+			// A. Get preset setting
+			var url_1 = "", presetVal = $("#channel2_preset").val();
+      if (presetVal == "h265 ,1080P ,60FPS ,4M" ||
+          presetVal == "h265, 1080P, 60FPS, 4M") {
+        url_1 =  "ImageCodec2=h265"
+              + "&ImageSize2=1920,1080"
+              + "&FrameRate2=0" // "&FrameRate2=60"
+              + "&IFrameInterval2=1,60,4"
+              + "&CBR2=on"
+              + "&BitRate2=4000"
+              + "&Preset2=1"
+              + "&Customize2=off";
+      } else 
+      if (presetVal == "h265 ,720P ,60FPS ,2M" ||
+          presetVal == "h265, 720P, 60FPS, 2M") {
+        url_1 =  "ImageCodec2=h265"
+              + "&ImageSize2=1280,720"
+              + "&FrameRate2=0" // "&FrameRate2=60"
+              + "&IFrameInterval2=1,60,4"
+              + "&CBR2=on"
+              + "&BitRate2=2000"
+              + "&Preset2=2"
+              + "&Customize2=off";
+      } else 
+      if (presetVal == "h265 ,480P ,30FPS ,1M" ||
+          presetVal == "h265, 480P, 30FPS, 1M") {
+        url_1 =  "ImageCodec2=h265"
+              + "&ImageSize2=720,480"
+              + "&FrameRate2=0" // "&FrameRate2=60"
+              + "&IFrameInterval2=1,30,4"
+              + "&CBR2=on"
+              + "&BitRate2=1000"
+              + "&Preset2=3"
+              + "&Customize2=off";
+      } else 
+      if (presetVal == "h264 ,1080P ,60FPS ,6M" ||
+          presetVal == "h264, 1080P, 60FPS, 6M") {
+        url_1 =  "ImageCodec2=h264"
+              + "&ImageSize2=1920,1080"
+              + "&FrameRate2=0" // "&FrameRate2=60"
+              + "&IFrameInterval2=1,60,4"
+              + "&CBR2=on"
+              + "&BitRate2=6000"
+              + "&Preset2=4"
+              + "&Customize2=off";
+      } else 
+      if (presetVal == "h264 ,720P ,60FPS ,3M" ||
+          presetVal == "h264, 720P, 60FPS, 3M") {
+        url_1 =  "ImageCodec2=h264"
+              + "&ImageSize2=1280,720"
+              + "&FrameRate2=0" // "&FrameRate2=60"
+              + "&IFrameInterval2=1,60,4"
+              + "&CBR2=on"
+              + "&BitRate2=3000"
+              + "&Preset2=5"
+              + "&Customize2=off";
+      } else 
+      if (presetVal == "h264 ,480P ,30FPS ,1.5M" ||
+          presetVal == "h264, 480P, 30FPS, 1.5M") {
+        url_1 =  "ImageCodec2=h264"
+              + "&ImageSize2=720,480"
+              + "&FrameRate2=0" // "&FrameRate2=60"
+              + "&IFrameInterval2=1,30,4"
+              + "&CBR2=on"
+              + "&BitRate2=1500"
+              + "&Preset2=6"
+              + "&Customize2=off";
+      } else 
+      if (presetVal == "off") {
+        url_1 =  "ImageCodec2=off"
+              + "&Preset2=off"
+              + "&Customize2=off";
+      }	
+			// B. Get protocol setting
+			var url1="", url2="", url3="", url4="", protVal; 
+			protVal = $("#channel2_protocol1").val();
+      if (protVal == "TS over IP") {	
+        if ($("#channel2_ts_ip1").val() != "" || $("#channel2_ts_port1").val() != "")
+        url1 = "Channel2Protocol1="+"TSoverIP"
+            + "&Channel2TSprotocol1="+$("#channel2_ts_protocol1").val()
+            + "&Channel2TSclientIP1="+$("#channel2_ts_ip1").val()
+            + "&Channel2TSclientPort1="+$("#channel2_ts_port1").val()
+						+	"&Channel2TSTTL1="+$("#channel2_ts_ttl1").val()
+						+ "&Channel2TSVideoPid1="+$("#channel2_ts_video_pid1").val()
+						+ "&Channel2TSAudioPid1="+$("#channel2_ts_audio_pid1").val();     
+			} else 
+			if (protVal == "RTP") { 
+				if ($("#channel2_rtp_ip1").val() != "" || $("#channel2_rtp_port1").val() != "")
+				url1 = "Channel2Protocol1="+protVal
+						+ "&Channel2RTPclientIP1="+$("#channel2_rtp_ip1").val() 
+						+ "&Channel2RTPclientPort1="+$("#channel2_rtp_port1").val()
+						+	"&Channel2RTPTTL1="+$("#channel2_rtp_ttl1").val()
+						+ "&Channel2RTPVideoPid1="+$("#channel2_rtp_video_pid1").val() 
+						+ "&Channel2RTPAudioPid1="+$("#channel2_rtp_audio_pid1").val();
+				if ($("#channel2_rtp_fec1").val() == "on")
+					url1 += "&Channel2RTPFecEnable1=on"
+							 +  "&Channel2RTPFecMatrixL1="+$("#channel2_rtp_fec_L1").val()
+							 +  "&Channel2RTPFecMatrixD1="+$("#channel2_rtp_fec_D1").val();
+				else
+					url1 += "&Channel2RTPFecEnable1=off";
+      } else 
+      if (protVal == "RTMP") {	
+        if ($("#channel2_rtmp_url1").val() != "" || $("#channel2_rtmp_key1").val() != "")
+        url1 = "Channel2Protocol1="+protVal
+						+ "&Channel2RTMPurl1="+$("#channel2_rtmp_url1").val()	
+						+ "&Channel2RTMPkey1="+$("#channel2_rtmp_key1").val().replace(/&/g, "~");  
+      } else
+      if (protVal == "SRT") {
+				url1 = "Channel2Protocol1="+protVal
+						+	"&Channel2SRTUrl1="+$("#channel2_srt_url1").val()     
+						+	"&Channel2SRTLatency1="+$("#channel2_srt_latency1").val()
+						+	"&Channel2SRTEncryption1="+$("#channel2_srt_encryption1").val()
+						+	"&Channel2SRTBandwidthOverhead1="+$("#channel2_srt_bandwidth_overhead1").val()
+						+	"&Channel2SRTMTU1="+$("#channel2_srt_mtu1").val()
+						+	"&Channel2SRTTTL1="+$("#channel2_srt_ttl1").val()
+						+	"&Channel2SRTToS1="+$("#channel2_srt_tos1").val();      
+        if ($("#channel2_srt_encryption1").val() != "none")
+        url1 += "&Channel2SRTEncryptionKey1="+$("#channel2_srt_encryptionkey1").val();
+      } else 
+      if (protVal == "HLS") {	
+        url1 = "Channel2Protocol1="+protVal
+            + "&Channel2HLSduration="+$("#channel2_hls_duration").val()
+						+	"&Channel2HLSsegment="+$("#channel2_hls_segment").val()
+						+	"&Channel2HLSsrvurl="+$("#channel2_hls_srvurl").val()
+						+	"&Channel2HLSuser="+$("#channel2_hls_user").val()      
+						+	"&Channel2HLSpassword="+$("#channel2_hls_password").val();      
+      }	else {	
+        url1 = "Channel2Protocol1="+protVal;	
+      }
+      //
+			protVal = $("#channel2_protocol2").val();
+      if (protVal == "TS over IP") {	
+        if ($("#channel2_ts_ip2").val() != "" || $("#channel2_ts_port2").val() != "")
+        url2 = "Channel2Protocol2="+"TSoverIP"
+            + "&Channel2TSprotocol2="+$("#channel2_ts_protocol2").val()
+            + "&Channel2TSclientIP2="+$("#channel2_ts_ip2").val()
+            + "&Channel2TSclientPort2="+$("#channel2_ts_port2").val()
+						+	"&Channel2TSTTL2="+$("#channel2_ts_ttl2").val()
+						+ "&Channel2TSVideoPid2="+$("#channel2_ts_video_pid2").val()
+						+ "&Channel2TSAudioPid2="+$("#channel2_ts_audio_pid2").val(); 
+			} else 
+			if (protVal == "RTP") { 
+				if ($("#channel2_rtp_ip2").val() != "" || $("#channel2_rtp_port2").val() != "")
+				url2 = "Channel2Protocol2="+protVal
+						+ "&Channel2RTPclientIP2="+$("#channel2_rtp_ip2").val() 
+						+ "&Channel2RTPclientPort2="+$("#channel2_rtp_port2").val()
+						+	"&Channel2RTPTTL2="+$("#channel2_rtp_ttl2").val()
+						+ "&Channel2RTPVideoPid2="+$("#channel2_rtp_video_pid2").val() 
+						+ "&Channel2RTPAudioPid2="+$("#channel2_rtp_audio_pid2").val();
+				if ($("#channel2_rtp_fec2").val() == "on")
+					url2 += "&Channel2RTPFecEnable2=on"
+							 +  "&Channel2RTPFecMatrixL2="+$("#channel2_rtp_fec_L2").val()
+							 +  "&Channel2RTPFecMatrixD2="+$("#channel2_rtp_fec_D2").val();
+				else
+					url2 += "&Channel2RTPFecEnable2=off";
+      } else 
+      if (protVal == "RTMP") {	
+        if ($("#channel2_rtmp_url2").val() != "" || $("#channel2_rtmp_key2").val() != "")
+        url2 = "Channel2Protocol2="+protVal
+						+ "&Channel2RTMPurl2="+$("#channel2_rtmp_url2").val()	
+						+ "&Channel2RTMPkey2="+$("#channel2_rtmp_key2").val().replace(/&/g, "~");  
+      } else
+      if (protVal == "SRT") {
+				url2 = "Channel2Protocol2="+protVal
+						+	"&Channel2SRTUrl2="+$("#channel2_srt_url2").val()     
+						+	"&Channel2SRTLatency2="+$("#channel2_srt_latency2").val()
+						+	"&Channel2SRTEncryption2="+$("#channel2_srt_encryption2").val()
+						+	"&Channel2SRTBandwidthOverhead2="+$("#channel2_srt_bandwidth_overhead2").val()
+						+	"&Channel2SRTMTU2="+$("#channel2_srt_mtu2").val()
+						+	"&Channel2SRTTTL2="+$("#channel2_srt_ttl2").val()
+						+	"&Channel2SRTToS2="+$("#channel2_srt_tos2").val();      
+        if ($("#channel2_srt_encryption2").val() != "none")
+        url2 += "&Channel2SRTEncryptionKey2="+$("#channel2_srt_encryptionkey2").val();
+      } else {	
+        url2 = "Channel2Protocol2="+protVal;	
+      }
+      //
+			protVal = $("#channel2_protocol3").val();
+      if (protVal == "TS over IP") {	
+        if ($("#channel2_ts_ip3").val() != "" || $("#channel2_ts_port3").val() != "")
+        url3 = "Channel2Protocol3="+"TSoverIP"
+						+ "&Channel2TSprotocol3="+$("#channel2_ts_protocol3").val()
+						+ "&Channel2TSclientIP3="+$("#channel2_ts_ip3").val()
+						+ "&Channel2TSclientPort3="+$("#channel2_ts_port3").val()
+						+	"&Channel2TSTTL3="+$("#channel2_ts_ttl3").val()
+						+ "&Channel2TSVideoPid3="+$("#channel2_ts_video_pid3").val()
+						+ "&Channel2TSAudioPid3="+$("#channel2_ts_audio_pid3").val(); 
+			} else 
+			if (protVal == "RTP") { 
+				if ($("#channel2_rtp_ip3").val() != "" || $("#channel2_rtp_port3").val() != "")
+				url3 = "Channel2Protocol3="+protVal
+						+ "&Channel2RTPclientIP3="+$("#channel2_rtp_ip3").val() 
+						+ "&Channel2RTPclientPort3="+$("#channel2_rtp_port3").val()
+						+	"&Channel2RTPTTL3="+$("#channel2_rtp_ttl3").val()
+						+ "&Channel2RTPVideoPid3="+$("#channel2_rtp_video_pid3").val() 
+						+ "&Channel2RTPAudioPid3="+$("#channel2_rtp_audio_pid3").val();
+				if ($("#channel2_rtp_fec3").val() == "on")
+					url3 += "&Channel2RTPFecEnable3=on"
+							 +  "&Channel2RTPFecMatrixL3="+$("#channel2_rtp_fec_L3").val()
+							 +  "&Channel2RTPFecMatrixD3="+$("#channel2_rtp_fec_D3").val();
+				else
+					url3 += "&Channel2RTPFecEnable3=off";
+      } else 
+      if (protVal == "RTMP") {	
+        if ($("#channel2_rtmp_url3").val() != "" || $("#channel2_rtmp_key3").val() != "")
+        url3 = "Channel2Protocol3="+protVal
+						+ "&Channel2RTMPurl3="+$("#channel2_rtmp_url3").val()	
+						+ "&Channel2RTMPkey3="+$("#channel2_rtmp_key3").val().replace(/&/g, "~");  
+      } else
+      if (protVal == "SRT") {
+				url3 = "Channel2Protocol3="+protVal
+						+	"&Channel2SRTUrl3="+$("#channel2_srt_url3").val()     
+						+	"&Channel2SRTLatency3="+$("#channel2_srt_latency3").val()
+						+	"&Channel2SRTEncryption3="+$("#channel2_srt_encryption3").val()
+						+	"&Channel2SRTBandwidthOverhead3="+$("#channel2_srt_bandwidth_overhead3").val()
+						+	"&Channel2SRTMTU3="+$("#channel2_srt_mtu3").val()
+						+	"&Channel2SRTTTL3="+$("#channel2_srt_ttl3").val()
+						+	"&Channel2SRTToS3="+$("#channel2_srt_tos3").val();      
+        if ($("#channel2_srt_encryption3").val() != "none")
+        url3 += "&Channel2SRTEncryptionKey3="+$("#channel2_srt_encryptionkey3").val();
+      } else {	
+        url3 = "Channel2Protocol3="+protVal;	
+      }
+		/*if ($("#multicast_rtsp").prop("checked")) { 
+				if ($("#channel2_multicast_port").val() != "")
+					url4 = "MulticastPort2="+$("#channel2_multicast_port").val();
+				else
+					url4 = "MulticastPort2=";
+		  } 
+			else */
+				url4 = "MulticastEn=off"; 
+			// 		
+      g_cur_tab_page = "#info2";
+			var url_2 = url1 + "&" + url2 + "&" + url3 + "&" + url4;
+			if (url_1 == "")
+				send_submit_protocol(src_url+"/command/stream.cgi?"+url_2);
+			else
+				send_submit_preset(src_url+"/command/video.cgi?"+url_1, src_url+"/command/stream.cgi?"+url_2);
+    });
+
+		function set_stream_status(chan_port, value, encode, fps, kbs, drop, preset) {
+		//console.log("chan_port: " + chan_port + ", value: " + value + ", encode: " + encode + ", preset: " + preset);
+		//console.log("fps: " + fps + ", kbs: " + kbs + ", drop: " + drop);
+			if (typeof value == "undefined") return;
+			chan_port = chan_port.toLowerCase();
+			if (value == "Off" || value == "off") {
+				$('#db_'+chan_port+'_protocol')[0].innerHTML = '--';
+				$('#db_'+chan_port+'_fps')[0].innerHTML = '--';
+				$('#db_'+chan_port+'_kbs')[0].innerHTML = '--';
+				$('#db_'+chan_port+'_drop')[0].innerHTML = '--';
+				return;
+			} 
+			if (preset == "off") {
+				$('#db_'+chan_port+'_protocol')[0].innerHTML = value+", " + encode.replace(/h.264,/g,"H264, ").replace(/hevc,/g,"HEVC, ");;
+				$('#db_'+chan_port+'_fps')[0].innerHTML = '--';
+				$('#db_'+chan_port+'_kbs')[0].innerHTML = '--';
+				$('#db_'+chan_port+'_drop')[0].innerHTML = '--';
+				return;
+			} 
+			$('#db_'+chan_port+'_protocol')[0].innerHTML = value+", " + encode.replace(/h.264, /g,"H264, ").replace(/hevc,/g,"HEVC, ");
+			$('#db_'+chan_port+'_fps')[0].innerHTML = parseFloat(fps).toFixed(2);
+			$('#db_'+chan_port+'_kbs')[0].innerHTML = parseFloat(kbs).toFixed(2).toString();
+			$('#db_'+chan_port+'_drop')[0].innerHTML = drop;
+		}
+		
+    function fresh_stream_info(data, query_page)
+    {
+    //_console_log("fresh_stream_info()-- enter, " + query_page);
+			//	
+			try {
+				eval(data);
+			} catch(e) {
+				console.log("fresh_stream_info()-- wrong data, eval() fail!!");
+				setTimeout(loadcgi(query_page), 4000);
+				return;
+			}
+			// Channel #1
+			if (typeof Channel1RTPFecEnable1  == 'undefined') var Channel1RTPFecEnable1  = "off";
+			if (typeof Channel1RTPFecMatrixL1 == 'undefined') var Channel1RTPFecMatrixL1 = "8";
+			if (typeof Channel1RTPFecMatrixD1 == 'undefined') var Channel1RTPFecMatrixD1 = "4";
+			if (typeof Channel1RTPFecEnable2  == 'undefined') var Channel1RTPFecEnable2  = "off";
+			if (typeof Channel1RTPFecMatrixL2 == 'undefined') var Channel1RTPFecMatrixL2 = "8";
+			if (typeof Channel1RTPFecMatrixD2 == 'undefined') var Channel1RTPFecMatrixD2 = "4";
+			if (typeof Channel1RTPFecEnable3  == 'undefined') var Channel1RTPFecEnable3  = "off";
+			if (typeof Channel1RTPFecMatrixL3 == 'undefined') var Channel1RTPFecMatrixL3 = "8";
+			if (typeof Channel1RTPFecMatrixD3 == 'undefined') var Channel1RTPFecMatrixD3 = "4";
+			if (typeof Channel1RTPTTL1 == 'undefined') var Channel1RTPTTL1 = "64";
+			if (typeof Channel1RTPTTL2 == 'undefined') var Channel1RTPTTL2 = "64";
+			if (typeof Channel1RTPTTL3 == 'undefined') var Channel1RTPTTL3 = "64";
+			if (typeof Channel1TSTTL1 == 'undefined') var Channel1TSTTL1 = "64";
+			if (typeof Channel1TSTTL2 == 'undefined') var Channel1TSTTL2 = "64";
+			if (typeof Channel1TSTTL3 == 'undefined') var Channel1TSTTL3 = "64";
+			//
+			$("#channel1_rtp_fec_L1").val(Channel1RTPFecMatrixL1);
+			$("#channel1_rtp_fec_D1").val(Channel1RTPFecMatrixD1);
+			$("#channel1_rtp_fec_L2").val(Channel1RTPFecMatrixL2);
+			$("#channel1_rtp_fec_D2").val(Channel1RTPFecMatrixD2);
+			$("#channel1_rtp_fec_L3").val(Channel1RTPFecMatrixL3);
+			$("#channel1_rtp_fec_D3").val(Channel1RTPFecMatrixD3);
+			$("#channel1_rtp_fec1").val(Channel1RTPFecEnable1).trigger("change");
+			$("#channel1_rtp_fec2").val(Channel1RTPFecEnable2).trigger("change");
+			$("#channel1_rtp_fec3").val(Channel1RTPFecEnable3).trigger("change");
+			$("#channel1_rtp_ttl1").val(Channel1RTPTTL1);
+			$("#channel1_rtp_ttl2").val(Channel1RTPTTL2);
+			$("#channel1_rtp_ttl3").val(Channel1RTPTTL3);
+			// Channel #2
+			if (typeof Channel2RTPFecEnable1  == 'undefined') var Channel2RTPFecEnable1  = "off";
+			if (typeof Channel2RTPFecMatrixL1 == 'undefined') var Channel2RTPFecMatrixL1 = "8";
+			if (typeof Channel2RTPFecMatrixD1 == 'undefined') var Channel2RTPFecMatrixD1 = "4";
+			if (typeof Channel2RTPFecEnable2  == 'undefined') var Channel2RTPFecEnable2  = "off";
+			if (typeof Channel2RTPFecMatrixL2 == 'undefined') var Channel2RTPFecMatrixL2 = "8";
+			if (typeof Channel2RTPFecMatrixD2 == 'undefined') var Channel2RTPFecMatrixD2 = "4";
+			if (typeof Channel2RTPFecEnable3  == 'undefined') var Channel2RTPFecEnable3  = "off";
+			if (typeof Channel2RTPFecMatrixL3 == 'undefined') var Channel2RTPFecMatrixL3 = "8";
+			if (typeof Channel2RTPFecMatrixD3 == 'undefined') var Channel2RTPFecMatrixD3 = "4";
+			if (typeof Channel2RTPTTL1 == 'undefined') var Channel2RTPTTL1 = "64";
+			if (typeof Channel2RTPTTL2 == 'undefined') var Channel2RTPTTL2 = "64";
+			if (typeof Channel2RTPTTL3 == 'undefined') var Channel2RTPTTL3 = "64";
+			if (typeof Channel2TSTTL1 == 'undefined') var Channel2TSTTL1 = "64";
+			if (typeof Channel2TSTTL2 == 'undefined') var Channel2TSTTL2 = "64";
+			if (typeof Channel2TSTTL3 == 'undefined') var Channel2TSTTL3 = "64";
+			//
+			$("#channel2_rtp_fec_L1").val(Channel2RTPFecMatrixL1);
+			$("#channel2_rtp_fec_D1").val(Channel2RTPFecMatrixD1);
+			$("#channel2_rtp_fec_L2").val(Channel2RTPFecMatrixL2);
+			$("#channel2_rtp_fec_D2").val(Channel2RTPFecMatrixD2);
+			$("#channel2_rtp_fec_L3").val(Channel2RTPFecMatrixL3);
+			$("#channel2_rtp_fec_D3").val(Channel2RTPFecMatrixD3);
+			$("#channel2_rtp_fec1").val(Channel2RTPFecEnable1).trigger("change");
+			$("#channel2_rtp_fec2").val(Channel2RTPFecEnable2).trigger("change");
+			$("#channel2_rtp_fec3").val(Channel2RTPFecEnable3).trigger("change");
+			$("#channel2_rtp_ttl1").val(Channel2RTPTTL1);
+			$("#channel2_rtp_ttl2").val(Channel2RTPTTL2);
+			$("#channel2_rtp_ttl3").val(Channel2RTPTTL3);
+			// Add Zixi protocol
+			/* . Reset all
+			 *   http://<ip_addr>/command/zixi_ifconf.cgi?reset=all]
+			 *
+			 * . Reset interface
+			 *   http://<ip_addr>/command/zixi_ifconf.cgi?reset=<interface>
+			 *   http://<ip_addr>/command/zixi_ifconf.cgi?reset=eth0:1
+			 *
+			 * . Add interface
+			 *   http://<ip_addr>/command/zixi_ifconf.cgi?interface=<interface>&address=<ip_addr>&netmask=<xxx:xxx:xxx:xxx>&dstaddr=<ip_addr>
+			 *   http://<ip_addr>/command/zixi_ifconf.cgi?interface=&address=&netmask=&dstaddr=<ip_addr>
+			 *
+			 *   create /etc/init.d/S90zixi-ifconfig
+			 */
+			// Channel #1 / Protocol #1
+			if (typeof Channel1ZixiHost1_num   == "undefined") var Channel1ZixiHost1_num = "0";
+			if (typeof Channel1ZixiGroup1      == "undefined") var Channel1ZixiGroup1 = "nogroup";
+			if (typeof Channel1ZixiStreamId1   == "undefined") var Channel1ZixiStreamId1 = "demo";
+			if (typeof Channel1ZixiPassword1   == "undefined") var Channel1ZixiPassword1 = ""; 
+			if (typeof Channel1ZixiMaxbps1     == "undefined") var Channel1ZixiMaxbps1 = "8000"; 
+			if (typeof Channel1ZixiMaxlatency1 == "undefined") var Channel1ZixiMaxlatency1 = "1000";
+			if (typeof Channel1ZixiTLSCert1    == "undefined") var Channel1ZixiTLSCert1 = "enable";
+			if (typeof Channel1ZixiPCRDelay1   == "undefined") var Channel1ZixiPCRDelay1 = "0";
+			if (typeof Channel1ZixiEncryption1 == "undefined") var Channel1ZixiEncryption1 = "none";
+			if (typeof Channel1ZixiDSCP1       == "undefined") var Channel1ZixiDSCP1 = "0";
+			if (typeof Channel1ZixiECN1        == "undefined") var Channel1ZixiECN1 = "non-ect";
+			if (typeof Channel1ZixiRTMP_FB1    == "undefined") var Channel1ZixiRTMP_FB1 = "disable";
+			if (typeof Channel1ZixiMinbps1     == "undefined") var Channel1ZixiMinbps1 = "128";
+		//console.log('fresh_stream_info()-- Channel1ZixiHost1_num: ' + Channel1ZixiHost1_num);
+			// Check and add virtual host
+			// Channel1ZixiHost1_1=<name>,<ip>,<port>,<bandwidth_limit_kbps>,<backup_0_1>
+			zixi_host_reset(1, 1); // channel1 & protocol1
+      //
+			var i = 1; 
+			while(i < MAX_ZIXI_HOST_NUM) { // max. is MAX_ZIXI_HOST_NUM=32 virtual host
+				if (i > parseInt(Channel1ZixiHost1_num)) break;
+				var host = "";
+				eval("if (typeof Channel1ZixiHost1_"+i+" != 'undefined')"
+					 + "	host = Channel1ZixiHost1_"+i+";");
+				if (host == "" && i > 1) break;
+				zixi_add(null, host); i += 1;
+			}
+      // Add SRT default
+      for (var chan=1; chan<=2; chan++) { // for (var chan=1; chan<=3; chan++)
+        for (var prot=1; prot<=3; prot++) {
+          var str = 'if (typeof Channel'+chan+'SRTUrl'+prot+'               == "undefined") var Channel'+chan+'SRTUrl'+prot+' = "";\n'
+                  + 'if (typeof Channel'+chan+'SRTLatency'+prot+'           == "undefined") var Channel'+chan+'SRTLatency'+prot+' = "120";\n'
+                  + 'if (typeof Channel'+chan+'SRTEncryption'+prot+'        == "undefined") var Channel'+chan+'SRTEncryption'+prot+' = "none";\n'
+                  + 'if (typeof Channel'+chan+'SRTEncryptionKey'+prot+'     == "undefined") var Channel'+chan+'SRTEncryptionKey'+prot+' = "";\n'
+                  + 'if (typeof Channel'+chan+'SRTBandwidthOverhead'+prot+' == "undefined") var Channel'+chan+'SRTBandwidthOverhead'+prot+' = "25";\n'
+                  + 'if (typeof Channel'+chan+'SRTMTU'+prot+'               == "undefined") var Channel'+chan+'SRTMTU'+prot+' = "1456";\n'
+                  + 'if (typeof Channel'+chan+'SRTTTL'+prot+'               == "undefined") var Channel'+chan+'SRTTTL'+prot+' = "64";\n'
+                  + 'if (typeof Channel'+chan+'SRTToS'+prot+'               == "undefined") var Channel'+chan+'SRTToS'+prot+' = "0";\n';
+          eval(str);
+        }
+      }
+      //
+      $("#channel1_ts_protocol1").val(Channel1TSprotocol1);
+      $("#channel1_ts_protocol2").val(Channel1TSprotocol2);
+      $("#channel1_ts_protocol3").val(Channel1TSprotocol3);     
+      $("#channel2_ts_protocol1").val(Channel2TSprotocol1);
+      $("#channel2_ts_protocol2").val(Channel2TSprotocol2);
+      $("#channel2_ts_protocol3").val(Channel2TSprotocol3); 
+      // Channel #1
+			if (typeof Channel1HLSduration !== "undefined") $("#channel1_hls_duration").val(Channel1HLSduration);
+			if (typeof Channel1HLSsegment !== "undefined") $("#channel1_hls_segment").val(Channel1HLSsegment);
+			if (typeof Channel1HLSsrvurl !== "undefined") $("#channel1_hls_srvurl").val(Channel1HLSsrvurl);
+			if (typeof Channel1HLSuser !== "undefined") $("#channel1_hls_user").val(Channel1HLSuser);
+			if (typeof Channel1HLSpassword !== "undefined") $("#channel1_hls_password").val(Channel1HLSpassword);
+      if (typeof Channel1TSclientIP1 !== "undefined") $("#channel1_ts_ip1").val(Channel1TSclientIP1);
+      if (typeof Channel1TSclientPort1 !== "undefined") $("#channel1_ts_port1").val(Channel1TSclientPort1);
+			if (typeof Channel1TSTTL1 !== "undefined")	$("#channel1_ts_ttl1").val(Channel1TSTTL1); 
+      if (typeof Channel1TSVideoPid1 !== "undefined") $("#channel1_ts_video_pid1").val(Channel1TSVideoPid1);
+      if (typeof Channel1TSAudioPid1 !== "undefined") $("#channel1_ts_audio_pid1").val(Channel1TSAudioPid1);
+      if (typeof Channel1RTMPurl1 !== "undefined") $("#channel1_rtmp_url1").val(Channel1RTMPurl1);
+      if (typeof Channel1RTMPkey1 !== "undefined") $("#channel1_rtmp_key1").val(Channel1RTMPkey1.replace(/~/g, "&"));
+			if (typeof Channel1RTPclientIP1 !== "undefined") $("#channel1_rtp_ip1").val(Channel1RTPclientIP1);
+			if (typeof Channel1RTPclientPort1 !== "undefined") $("#channel1_rtp_port1").val(Channel1RTPclientPort1);
+			if (typeof Channel1RTPVideoPid1 !== "undefined") $("#channel1_rtp_video_pid1").val(Channel1RTPVideoPid1);
+			if (typeof Channel1RTPAudioPid1 !== "undefined") $("#channel1_rtp_audio_pid1").val(Channel1RTPAudioPid1);
+			if (typeof Channel1ZixiGroup1 !== "undefined")	$("#channel1_zixi_group1").val(Channel1ZixiGroup1);
+			if (typeof Channel1ZixiStreamId1 !== "undefined") $("#channel1_zixi_streamid1").val(Channel1ZixiStreamId1);
+			if (typeof Channel1ZixiPassword1 !== "undefined")	$("#channel1_zixi_password1").val(Channel1ZixiPassword1); 
+			if (typeof Channel1ZixiMaxbps1 !== "undefined")	$("#channel1_zixi_maxbps1").val(Channel1ZixiMaxbps1);
+			if (typeof Channel1ZixiMaxlatency1 !== "undefined") $("#channel1_zixi_maxlatency1").val(Channel1ZixiMaxlatency1);
+			if (typeof Channel1ZixiTLSCert1 !== "undefined") $("#channel1_zixi_tls_cert1").val(Channel1ZixiTLSCert1);
+			if (typeof Channel1ZixiPCRDelay1 !== "undefined") $("#channel1_zixi_pcr_delay1").val(Channel1ZixiPCRDelay1);
+			if (typeof Channel1ZixiEncryption1 !== "undefined") $("#channel1_zixi_encryption1").val(Channel1ZixiEncryption1).trigger("change");
+			if (typeof Channel1ZixiEncryptionKey1 !== "undefined") $("#channel1_zixi_encryptionkey1").val(Channel1ZixiEncryptionKey1);
+			if (typeof Channel1ZixiDSCP1 !== "undefined") $("#channel1_zixi_dscp1").val(Channel1ZixiDSCP1);
+			if (typeof Channel1ZixiECN1 !== "undefined") $("#channel1_zixi_ecn1").val(Channel1ZixiECN1);
+			if (typeof Channel1ZixiMinbps1 !== "undefined") $("#channel1_zixi_minbps1").val(Channel1ZixiMinbps1);
+			if (typeof Channel1ZixiRTMP_FB1 !== "undefined") $("#channel1_zixi_rtmp_fb1").val(Channel1ZixiRTMP_FB1).trigger("change");
+			if (typeof Channel1SRTUrl1 !== "undefined")	$("#channel1_srt_url1").val(Channel1SRTUrl1);
+			if (typeof Channel1SRTLatency1 !== "undefined") $("#channel1_srt_latency1").val(Channel1SRTLatency1);
+			if (typeof Channel1SRTEncryption1 !== "undefined") $("#channel1_srt_encryption1").val(Channel1SRTEncryption1).trigger("change");
+			if (typeof Channel1SRTEncryptionKey1 !== "undefined") $("#channel1_srt_encryptionkey1").val(Channel1SRTEncryptionKey1);
+			if (typeof Channel1SRTBandwidthOverhead1 !== "undefined") $("#channel1_srt_bandwidth_overhead1").val(Channel1SRTBandwidthOverhead1);
+			if (typeof Channel1SRTMTU1 !== "undefined") $("#channel1_srt_mtu1").val(Channel1SRTMTU1);
+			if (typeof Channel1SRTTTL1 !== "undefined")	$("#channel1_srt_ttl1").val(Channel1SRTTTL1); 
+			if (typeof Channel1SRTToS1 !== "undefined")	$("#channel1_srt_tos1").val(Channel1SRTToS1);
+      //
+      if (typeof Channel1TSclientIP2 !== "undefined") $("#channel1_ts_ip2").val(Channel1TSclientIP2);
+      if (typeof Channel1TSclientPort2 !== "undefined") $("#channel1_ts_port2").val(Channel1TSclientPort2);
+			if (typeof Channel1TSTTL2 !== "undefined")	$("#channel1_ts_ttl2").val(Channel1TSTTL2); 
+      if (typeof Channel1TSVideoPid2 !== "undefined") $("#channel1_ts_video_pid2").val(Channel1TSVideoPid2);
+      if (typeof Channel1TSAudioPid2 !== "undefined") $("#channel1_ts_audio_pid2").val(Channel1TSAudioPid2);
+      if (typeof Channel1RTMPurl2 !== "undefined") $("#channel1_rtmp_url2").val(Channel1RTMPurl2);
+      if (typeof Channel1RTMPkey2 !== "undefined") $("#channel1_rtmp_key2").val(Channel1RTMPkey2.replace(/~/g, "&"));
+			if (typeof Channel1RTPclientIP2 !== "undefined") $("#channel1_rtp_ip2").val(Channel1RTPclientIP2);
+			if (typeof Channel1RTPclientPort2 !== "undefined") $("#channel1_rtp_port2").val(Channel1RTPclientPort2);
+			if (typeof Channel1RTPVideoPid2 !== "undefined") $("#channel1_rtp_video_pid2").val(Channel1RTPVideoPid2);
+			if (typeof Channel1RTPAudioPid2 !== "undefined") $("#channel1_rtp_audio_pid2").val(Channel1RTPAudioPid2);
+			if (typeof Channel1SRTUrl2 !== "undefined")	$("#channel1_srt_url2").val(Channel1SRTUrl2);
+			if (typeof Channel1SRTLatency2 !== "undefined") $("#channel1_srt_latency2").val(Channel1SRTLatency2);
+			if (typeof Channel1SRTEncryption2 !== "undefined") $("#channel1_srt_encryption2").val(Channel1SRTEncryption2).trigger("change");
+			if (typeof Channel1SRTEncryptionKey2 !== "undefined") $("#channel1_srt_encryptionkey2").val(Channel1SRTEncryptionKey2);
+			if (typeof Channel1SRTBandwidthOverhead2 !== "undefined") $("#channel1_srt_bandwidth_overhead2").val(Channel1SRTBandwidthOverhead2);
+			if (typeof Channel1SRTMTU2 !== "undefined") $("#channel1_srt_mtu2").val(Channel1SRTMTU2);
+			if (typeof Channel1SRTTTL2 !== "undefined")	$("#channel1_srt_ttl2").val(Channel1SRTTTL2); 
+			if (typeof Channel1SRTToS2 !== "undefined")	$("#channel1_srt_tos2").val(Channel1SRTToS2);
+      //    
+      if (typeof Channel1TSclientIP3 !== "undefined") $("#channel1_ts_ip3").val(Channel1TSclientIP3);
+      if (typeof Channel1TSclientPort3 !== "undefined") $("#channel1_ts_port3").val(Channel1TSclientPort3);
+ 			if (typeof Channel1TSTTL3 !== "undefined")	$("#channel1_ts_ttl3").val(Channel1TSTTL3); 
+      if (typeof Channel1TSVideoPid3 !== "undefined") $("#channel1_ts_video_pid3").val(Channel1TSVideoPid3);
+      if (typeof Channel1TSAudioPid3 !== "undefined") $("#channel1_ts_audio_pid3").val(Channel1TSAudioPid3);
+      if (typeof Channel1RTMPurl3 !== "undefined") $("#channel1_rtmp_url3").val(Channel1RTMPurl3);
+      if (typeof Channel1RTMPkey3 !== "undefined") $("#channel1_rtmp_key3").val(Channel1RTMPkey3.replace(/~/g, "&"));
+			if (typeof Channel1RTPclientIP3 !== "undefined") $("#channel1_rtp_ip3").val(Channel1RTPclientIP3);
+			if (typeof Channel1RTPclientPort3 !== "undefined") $("#channel1_rtp_port3").val(Channel1RTPclientPort3);
+			if (typeof Channel1RTPVideoPid3 !== "undefined") $("#channel1_rtp_video_pid3").val(Channel1RTPVideoPid3);
+			if (typeof Channel1RTPAudioPid3 !== "undefined") $("#channel1_rtp_audio_pid3").val(Channel1RTPAudioPid3);
+			if (typeof Channel1SRTUrl3 !== "undefined")	$("#channel1_srt_url3").val(Channel1SRTUrl3);
+			if (typeof Channel1SRTLatency3 !== "undefined") $("#channel1_srt_latency3").val(Channel1SRTLatency3);
+			if (typeof Channel1SRTEncryption3 !== "undefined") $("#channel1_srt_encryption3").val(Channel1SRTEncryption3).trigger("change");
+			if (typeof Channel1SRTEncryptionKey3 !== "undefined") $("#channel1_srt_encryptionkey3").val(Channel1SRTEncryptionKey3);
+			if (typeof Channel1SRTBandwidthOverhead3 !== "undefined") $("#channel1_srt_bandwidth_overhead3").val(Channel1SRTBandwidthOverhead3);
+			if (typeof Channel1SRTMTU3 !== "undefined") $("#channel1_srt_mtu3").val(Channel1SRTMTU3);
+			if (typeof Channel1SRTTTL3 !== "undefined")	$("#channel1_srt_ttl3").val(Channel1SRTTTL3); 
+			if (typeof Channel1SRTToS3 !== "undefined")	$("#channel1_srt_tos3").val(Channel1SRTToS3);
+			// Channel #2
+			if (typeof Channel2HLSduration !== "undefined") $("#channel2_hls_duration").val(Channel2HLSduration);
+			if (typeof Channel2HLSsegment !== "undefined") $("#channel2_hls_segment").val(Channel2HLSsegment);
+			if (typeof Channel2HLSsrvurl !== "undefined") $("#channel2_hls_srvurl").val(Channel2HLSsrvurl);
+			if (typeof Channel2HLSuser !== "undefined") $("#channel2_hls_user").val(Channel2HLSuser);
+			if (typeof Channel2HLSpassword !== "undefined") $("#channel2_hls_password").val(Channel2HLSpassword);
+      if (typeof Channel2TSclientIP1 !== "undefined") $("#channel2_ts_ip1").val(Channel2TSclientIP1);
+      if (typeof Channel2TSclientPort1 !== "undefined") $("#channel2_ts_port1").val(Channel2TSclientPort1);
+			if (typeof Channel2TSTTL1 !== "undefined")	$("#channel2_ts_ttl1").val(Channel2TSTTL1); 
+      if (typeof Channel2TSVideoPid1 !== "undefined") $("#channel2_ts_video_pid1").val(Channel2TSVideoPid1);
+      if (typeof Channel2TSAudioPid1 !== "undefined") $("#channel2_ts_audio_pid1").val(Channel2TSAudioPid1);
+      if (typeof Channel2RTMPurl1 !== "undefined") $("#channel2_rtmp_url1").val(Channel2RTMPurl1);
+      if (typeof Channel2RTMPkey1 !== "undefined") $("#channel2_rtmp_key1").val(Channel2RTMPkey1.replace(/~/g, "&"));
+			if (typeof Channel2RTPclientIP1 !== "undefined") $("#channel2_rtp_ip1").val(Channel2RTPclientIP1);
+			if (typeof Channel2RTPclientPort1 !== "undefined") $("#channel2_rtp_port1").val(Channel2RTPclientPort1);
+			if (typeof Channel2RTPVideoPid1 !== "undefined") $("#channel2_rtp_video_pid1").val(Channel2RTPVideoPid1);
+			if (typeof Channel2RTPAudioPid1 !== "undefined") $("#channel2_rtp_audio_pid1").val(Channel2RTPAudioPid1);
+			if (typeof Channel2SRTUrl1 !== "undefined")	$("#channel2_srt_url1").val(Channel2SRTUrl1);
+			if (typeof Channel2SRTLatency1 !== "undefined") $("#channel2_srt_latency1").val(Channel2SRTLatency1);
+			if (typeof Channel2SRTEncryption1 !== "undefined") $("#channel2_srt_encryption1").val(Channel2SRTEncryption1).trigger("change");
+			if (typeof Channel2SRTEncryptionKey1 !== "undefined") $("#channel2_srt_encryptionkey1").val(Channel2SRTEncryptionKey1);
+			if (typeof Channel2SRTBandwidthOverhead1 !== "undefined") $("#channel2_srt_bandwidth_overhead1").val(Channel2SRTBandwidthOverhead1);
+			if (typeof Channel2SRTMTU1 !== "undefined") $("#channel2_srt_mtu1").val(Channel2SRTMTU1);
+			if (typeof Channel2SRTTTL1 !== "undefined")	$("#channel2_srt_ttl1").val(Channel2SRTTTL1); 
+			if (typeof Channel2SRTToS1 !== "undefined")	$("#channel2_srt_tos1").val(Channel2SRTToS1);
+      //
+      if (typeof Channel2TSclientIP2 !== "undefined") $("#channel2_ts_ip2").val(Channel2TSclientIP2);
+      if (typeof Channel2TSclientPort2 !== "undefined") $("#channel2_ts_port2").val(Channel2TSclientPort2);
+			if (typeof Channel2TSTTL2 !== "undefined")	$("#channel2_ts_ttl2").val(Channel2TSTTL2); 
+      if (typeof Channel2TSVideoPid2 !== "undefined") $("#channel2_ts_video_pid2").val(Channel2TSVideoPid2);
+      if (typeof Channel2TSAudioPid2 !== "undefined") $("#channel2_ts_audio_pid2").val(Channel2TSAudioPid2);
+      if (typeof Channel2RTMPurl2 !== "undefined") $("#channel2_rtmp_url2").val(Channel2RTMPurl2);
+      if (typeof Channel2RTMPkey2 !== "undefined") $("#channel2_rtmp_key2").val(Channel2RTMPkey2.replace(/~/g, "&"));
+			if (typeof Channel2RTPclientIP2 !== "undefined") $("#channel2_rtp_ip2").val(Channel2RTPclientIP2);
+			if (typeof Channel2RTPclientPort2 !== "undefined") $("#channel2_rtp_port2").val(Channel2RTPclientPort2);
+			if (typeof Channel2RTPVideoPid2 !== "undefined") $("#channel2_rtp_video_pid2").val(Channel2RTPVideoPid2);
+			if (typeof Channel2RTPAudioPid2 !== "undefined") $("#channel2_rtp_audio_pid2").val(Channel2RTPAudioPid2);
+			if (typeof Channel2SRTUrl2 !== "undefined")	$("#channel2_srt_url2").val(Channel2SRTUrl2);
+			if (typeof Channel2SRTLatency2 !== "undefined") $("#channel2_srt_latency2").val(Channel2SRTLatency2);
+			if (typeof Channel2SRTEncryption2 !== "undefined") $("#channel2_srt_encryption2").val(Channel2SRTEncryption2).trigger("change");
+			if (typeof Channel2SRTEncryptionKey2 !== "undefined") $("#channel2_srt_encryptionkey2").val(Channel2SRTEncryptionKey2);
+			if (typeof Channel2SRTBandwidthOverhead2 !== "undefined") $("#channel2_srt_bandwidth_overhead2").val(Channel2SRTBandwidthOverhead2);
+			if (typeof Channel2SRTMTU2 !== "undefined") $("#channel2_srt_mtu2").val(Channel2SRTMTU2);
+			if (typeof Channel2SRTTTL2 !== "undefined")	$("#channel2_srt_ttl2").val(Channel2SRTTTL2); 
+			if (typeof Channel2SRTToS2 !== "undefined")	$("#channel2_srt_tos2").val(Channel2SRTToS2);
+      //
+      if (typeof Channel2TSclientIP3 !== "undefined") $("#channel2_ts_ip3").val(Channel2TSclientIP3);
+      if (typeof Channel2TSclientPort3 !== "undefined") $("#channel2_ts_port3").val(Channel2TSclientPort3);
+			if (typeof Channel2TSTTL3 !== "undefined")	$("#channel2_ts_ttl3").val(Channel2TSTTL3); 
+      if (typeof Channel2TSVideoPid3 !== "undefined") $("#channel2_ts_video_pid3").val(Channel2TSVideoPid3);
+      if (typeof Channel2TSAudioPid3 !== "undefined") $("#channel2_ts_audio_pid3").val(Channel2TSAudioPid3);
+      if (typeof Channel2RTMPurl3 !== "undefined") $("#channel2_rtmp_url3").val(Channel2RTMPurl3);
+      if (typeof Channel2RTMPkey3 !== "undefined") $("#channel2_rtmp_key3").val(Channel2RTMPkey3.replace(/~/g, "&"));
+			if (typeof Channel2RTPclientIP3 !== "undefined") $("#channel2_rtp_ip3").val(Channel2RTPclientIP3);
+			if (typeof Channel2RTPclientPort3 !== "undefined") $("#channel2_rtp_port3").val(Channel2RTPclientPort3);
+			if (typeof Channel2RTPVideoPid3 !== "undefined") $("#channel2_rtp_video_pid3").val(Channel2RTPVideoPid3);
+			if (typeof Channel2RTPAudioPid3 !== "undefined") $("#channel2_rtp_audio_pid3").val(Channel2RTPAudioPid3);
+			if (typeof Channel2SRTUrl3 !== "undefined")	$("#channel2_srt_url3").val(Channel2SRTUrl3);
+			if (typeof Channel2SRTLatency3 !== "undefined") $("#channel2_srt_latency3").val(Channel2SRTLatency3);
+			if (typeof Channel2SRTEncryption3 !== "undefined") $("#channel2_srt_encryption3").val(Channel2SRTEncryption3).trigger("change");
+			if (typeof Channel2SRTEncryptionKey3 !== "undefined") $("#channel2_srt_encryptionkey3").val(Channel2SRTEncryptionKey3);
+			if (typeof Channel2SRTBandwidthOverhead3 !== "undefined") $("#channel2_srt_bandwidth_overhead3").val(Channel2SRTBandwidthOverhead3);
+			if (typeof Channel2SRTMTU3 !== "undefined") $("#channel2_srt_mtu3").val(Channel2SRTMTU3);
+			if (typeof Channel2SRTTTL3 !== "undefined")	$("#channel2_srt_ttl3").val(Channel2SRTTTL3); 
+			if (typeof Channel2SRTToS3 !== "undefined")	$("#channel2_srt_tos3").val(Channel2SRTToS3);
+			//------------
+			$("#multicast_rtsp").prop("checked",(MulticastEn=="on"?true:false)).trigger("change");
+			if (typeof Channel1MulticastIP !== "undefined") $("#channel1_multicast_ip").val(Channel1MulticastIP);
+			//
+			if (typeof MulticastPort1 !== "undefined") $("#channel1_multicast_port").val(MulticastPort1);
+			if (typeof MulticastPort2 !== "undefined") $("#channel2_multicast_port").val(MulticastPort2);
+			// Channel #1 --
+			if (Channel1Protocol3 == "TSoverIP") {
+				$("#channel1_ts_protocol3").val(Channel1TSprotocol3);
+				$("#channel1_protocol3").val("TS over IP").trigger("change");
+			} else
+				$("#channel1_protocol3").val(Channel1Protocol3).trigger("change");
+			//	
+			if (Channel1Protocol2 == "TSoverIP") {
+				$("#channel1_ts_protocol2").val(Channel1TSprotocol2);
+				$("#channel1_protocol2").val("TS over IP").trigger("change");
+			} else 
+				$("#channel1_protocol2").val(Channel1Protocol2).trigger("change");
+			//
+			if (Channel1Protocol1 == "TSoverIP") {
+				$("#channel1_ts_protocol1").val(Channel1TSprotocol1);
+				$("#channel1_protocol1").val("TS over IP").trigger("change");
+			} else 
+				$("#channel1_protocol1").val(Channel1Protocol1).trigger("change");
+			// Channel #2 --
+      if ($("#channel2_preset").val() == "off") {
+        $("#channel2_preset").val("off"); 
+        $(".channel2_Protocol1").css("display", "none");
+        $(".channel2_Protocol2").css("display", "none");
+        $(".channel2_Protocol3").css("display", "none");
+      
+				if (Channel2Protocol3 ==="TSoverIP") {
+					$("#channel2_ts_protocol3").val(Channel2TSprotocol3);
+					$("#channel2_protocol3").val("TS over IP").trigger("change");
+				} else 
+					$("#channel2_protocol3").val(Channel2Protocol3).trigger("change");
+				//
+				if (Channel2Protocol2 === "TSoverIP") {
+					$("#channel2_ts_protocol2").val(Channel2TSprotocol2);
+					$("#channel2_protocol2").val("TS over IP").trigger("change");
+				} else 
+					$("#channel2_protocol2").val(Channel2Protocol2).trigger("change");
+				//
+        if (Channel2Protocol1 === "TSoverIP") {
+          $("#channel2_ts_protocol1").val(Channel2TSprotocol1);
+          $("#channel2_protocol1").val("TS over IP").trigger("change");
+				} else
+					$("#channel2_protocol1").val(Channel2Protocol1).trigger("change");
+      } else {
+        $(".channel2_Protocol1").css("display", "");
+        $(".channel2_Protocol2").css("display", "");
+        $(".channel2_Protocol3").css("display", "");
+        
+				if (Channel2Protocol3 ==="TSoverIP") {
+					$("#channel2_ts_protocol3").val(Channel2TSprotocol3);
+					$("#channel2_protocol3").val("TS over IP").trigger("change");
+				} else 
+					$("#channel2_protocol3").val(Channel2Protocol3).trigger("change");
+				//
+				if (Channel2Protocol2 === "TSoverIP") {
+					$("#channel2_ts_protocol2").val(Channel2TSprotocol2);
+					$("#channel2_protocol2").val("TS over IP").trigger("change");
+				} else 
+					$("#channel2_protocol2").val(Channel2Protocol2).trigger("change");
+				//
+				if (Channel2Protocol1 === "TSoverIP") {
+					$("#channel2_ts_protocol1").val(Channel2TSprotocol1);
+					$("#channel2_protocol1").val("TS over IP").trigger("change");
+				} else 
+					$("#channel2_protocol1").val(Channel2Protocol1).trigger("change");
+      }
+
+      if (query_page == "#info1") {
+				$("#channel1_submit").prop("disabled", false);
+				$("#channel1_preset").trigger("change");
+			} else
+      if (query_page == "#info2") {
+				$("#channel2_submit").prop("disabled", false);
+				$("#channel2_preset").trigger("change");
+			}
+			//
+			_check_to_page(query_page);
+    }
+
+    var g_cur_tab_page, g_curtain;
+
+    function check_page() {
+      if (typeof g_cur_tab_page == "undefined") {
+				var query_str = window.location.toString();
+				var query_idx = query_str.indexOf('#');
+				return (query_idx>=0? query_str.substr(query_idx): '#info1');
+			}
+			return g_cur_tab_page;
+		}
+			
+    function loadcgi(query_page) 
+    {
+		//_console_log("loadcgi()----- enter, " + query_page);
+      $.get(src_url+"/command/inquiry.cgi?inqjs=stream&inqjs=video", 
+            {inqjs: "video_input_status", cgi_time: $.now()}).done(function (data) 
+      {
+        if (data == 0) {
+					console.log("loadcgi()-- data == 0 !!");
+          setTimeout(loadcgi(query_page), 2000);
+          return;
+        }
+        // data != 0 -------------
+        data = data.replace('\n"', '"');
+      //console.log("loadcgi()-- data:\n"+data);
+        try {
+					eval(data);
+				} catch(e) {
+					console.log("loadcgi()-- wrong data, eval() fail!!");
+          setTimeout(function(){loadcgi(query_page);}, 3000);
+          return;
+				}
+				// Get ImageSize1, ImageSize2, ImageSize3
+				if (typeof ImageSize1 == 'undefined') ImageSize1 = "1920,1080";
+				if (typeof ImageSize2 == 'undefined') ImageSize2 = "1280,720";
+				g_ImageSize1 = parseInt(ImageSize1.split(",")[1]);
+				g_ImageSize2 = ImageCodec2=="off"? -1: parseInt(ImageSize2.split(",")[1]);
+				// Check if channel 1 is 4K, then disable channel 2 & 3
+				if ((typeof FrameHeight != 'undefined' && parseInt(FrameHeight) >= 2160) /* vin is 4K */
+         || g_ImageSize1 >= 2160 || Preset1 == "1" || Preset1 == "5") {
+					query_page = "#info1";
+					$("#channel2_ul").addClass("disabled"); 
+          $("#channel2_ul_li").addClass("disabled");
+				} else {
+					$("#channel2_ul").removeClass("disabled"); 
+          $("#channel2_ul_li").removeClass("disabled");
+				}
+				//
+				// Check Channel<n>Customize=<profile_name>, default is Cutomize-<1.1|2.1|3.1>
+				if (typeof Channel1Customize == 'undefined') var Channel1Customize = "Customize-1.1";
+				Channel2Customize = decodeURIComponent(Channel2Customize);
+				$("#channel1_preset option[value='Customize']").remove();
+				if (typeof Channel2Customize == 'undefined') var Channel2Customize = "Customize-2.1";
+				Channel1Customize = decodeURIComponent(Channel1Customize);
+				$("#channel2_preset option[value='Customize']").remove();
+        //
+				if (Customize1 == "off")
+					$("#channel1_preset").append($('<option>', {value: "Customize", text: "Customize", disabled: "disabled", style: "color:#999"}));
+				else if (Customize1 == "on")
+					$("#channel1_preset").append($('<option>', {value: "Customize", text: "[ "+Channel1Customize+" ]", style: "color:#60a0d0"}));
+				//	
+				if (Customize2 == "off")
+					$("#channel2_preset").append($('<option>', {value: "Customize", text: "Customize", disabled: "disabled", style: "color:#999"}));
+				else if (Customize2 == "on")
+					$("#channel2_preset").append($('<option>', {value: "Customize", text: "[ "+Channel2Customize+" ]", style: "color:#60a0d0"}));
+
+        // Preset #1 --
+				/* */if (Preset1 == "1")
+					$("#channel1_preset").val("h265, 4KP, 30FPS, 16M");
+				else if (Preset1 == "2")
+					$("#channel1_preset").val("h265, 1080P, 60FPS, 4M");
+				else if (Preset1 == "3") 
+					$("#channel1_preset").val("h265, 720P, 60FPS, 2M");
+				else if (Preset1 == "4") 
+					$("#channel1_preset").val("h265, 480P, 30FPS, 1M");
+				else if (Preset1 == "5")
+					$("#channel1_preset").val("h264, 4KP, 60FPS, 20M");
+				else if (Preset1 == "6")
+					$("#channel1_preset").val("h264, 1080P, 60FPS, 6M");
+				else if (Preset1 == "7") 
+					$("#channel1_preset").val("h264, 720P, 60FPS, 3M");
+				else if (Preset1 == "8")
+					$("#channel1_preset").val("h264, 480P, 30FPS, 1.5M");
+				else if (Preset1 == "0")
+					$("#channel1_preset").val("Customize");	
+        // Preset #2 --
+				/* */if (Preset2 == "1")
+					$("#channel2_preset").val("h265, 1080P, 60FPS, 4M");
+				else if (Preset2 == "2")
+					$("#channel2_preset").val("h265, 720P, 60FPS, 2M");
+				else if (Preset2 == "3") 
+					$("#channel2_preset").val("h265, 480P, 30FPS, 1M");
+				else if (Preset2 == "4") 
+					$("#channel2_preset").val("h264, 1080P, 60FPS, 6M");
+				else if (Preset2 == "5") 
+					$("#channel2_preset").val("h264, 720P, 60FPS, 3M");
+				else if (Preset2 == "6") 
+					$("#channel2_preset").val("h264, 480P, 30FPS, 1.5M");
+				else if (Preset2 == "0") 
+					$("#channel2_preset").val("Customize");	
+				else if (Preset2 == "off") 
+					$("#channel2_preset").val("off");		
+        //
+        g_ImageSize1 = ImageSize1.replace(",", "x");
+        g_ImageSize2 = ImageSize2.replace(",", "x");
+        if (typeof VideoInputStatus == 'undefined') var VideoInputStatus = "NoSignal";
+        g_VideoInput = VideoInputStatus=="NoSignal"||VideoInputStatus==""? false: 
+                       FrameWidth+'x'+FrameHeight;
+        //
+        fresh_stream_info(data, query_page);   
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var Preset1="0"\n' +
+                'var Customize1="off"\n' +
+                'var Channel1Customize="Customize-1.2"\n' +                
+                'var Preset2="2"\n' +
+                'var Customize2="off"\n' +
+                'var Channel2Customize="Customize-2.1"\n' +
+                //
+                'var Channel1Protocol1="ZIXI"\n' +
+                'var Channel1Protocol2="RTP"\n' +
+                'var Channel1Protocol3="RTMP"\n' +
+                'var Channel2Protocol1="HLS"\n' +
+                'var Channel2Protocol2="TSoverIP"\n' +
+                'var Channel2Protocol3="SRT"\n' +
+                // Channel1 / Protocol ---------------
+                // Channel1 / Protocol / HLS
+                'var Channel1HLSduration="10"\n' +
+                'var Channel1HLSsegment="mpegts"\n' +
+                'var Channel1HLSsrvurl="192.168.1.1000"\n' +
+                // Channel1 / ZIXI
+                'var Channel1ZixiStreamId1="demo"\n' +
+                'var Channel1ZixiMaxbps1="8000"\n' +
+                'var Channel1ZixiMaxlatency1="1000"\n' +
+                'var Channel1ZixiTLSCert1="disable"\n' +
+                'var Channel1ZixiEncryption1="aes128"\n' +
+                'var Channel1ZixiHost1_num="1"\n' +
+                'var Channel1ZixiHost1_1="192.168.10.10,any,8000,,0"\n' +
+                // Channel1 / Protocol / RTP
+                'var Channel1RTPclientIP1="192.168.1.100"\n' +
+                'var Channel1RTPclientPort1="1000"\n' +
+                'var Channel1RTPVideoPid1="100"\n' +
+                'var Channel1RTPAudioPid1="101"\n' +
+                'var Channel1RTPFecEnable1="off"\n' +
+                'var Channel1RTPFecMatrixL1="8"\n' +
+                'var Channel1RTPFecMatrixD1="4"\n' +
+                //
+                'var Channel1RTPclientIP2="192.168.1.200"\n' +
+                'var Channel1RTPclientPort2="2000"\n' +
+                'var Channel1RTPVideoPid2="200"\n' +
+                'var Channel1RTPAudioPid2="201"\n' +
+                'var Channel1RTPFecEnable2="on"\n' +
+                'var Channel1RTPFecMatrixL2="8"\n' +
+                'var Channel1RTPFecMatrixD2="4"\n' +
+                //
+                'var Channel1RTPclientIP3="192.168.1.300"\n' +
+                'var Channel1RTPclientPort3="3000"\n' +
+                'var Channel1RTPVideoPid3="300"\n' +
+                'var Channel1RTPAudioPid3="301"\n' +
+                'var Channel1RTPFecEnable3="off"\n' +
+                'var Channel1RTPFecMatrixL3="8"\n' +
+                'var Channel1RTPFecMatrixD3="4"\n' +
+                // Channel1 / Protocol / RTMP
+                'var Channel1RTMPurl1="192.168.1.100"\n' +
+                'var Channel1RTMPkey1="channel1-key1"\n' +
+                //    
+                'var Channel1RTMPurl2="192.168.1.200"\n' +
+                'var Channel1RTMPkey2="channel1-key2"\n' +
+                //    
+                'var Channel1RTMPurl3="192.168.1.300"\n' +
+                'var Channel1RTMPkey3="channel1-key3"\n' +
+                // Channel1 / Protocol / TS over IP
+                'var Channel1TSprotocol1="tcp"\n' +
+                'var Channel1TSclientIP1="192.168.1.100"\n' +
+                'var Channel1TSclientPort1="1000"\n' +
+                'var Channel1TSVideoPid1=""\n' +
+                'var Channel1TSAudioPid1=""\n' +
+                //    
+                'var Channel1TSprotocol2="udp"\n' +
+                'var Channel1TSclientIP2="192.168.1.200"\n' +
+                'var Channel1TSclientPort2="2000"\n' +
+                'var Channel1TSVideoPid2=""\n' +
+                'var Channel1TSAudioPid2=""\n' +
+                //    
+                'var Channel1TSprotocol3="udp"\n' +
+                'var Channel1TSclientIP3="192.168.1.300"\n' +
+                'var Channel1TSclientPort3="3000"\n' +
+                'var Channel1TSVideoPid3=""\n' +
+                'var Channel1TSAudioPid3=""\n' +
+                // Channel1 / Protocol / SRT
+                'var Channel1SRTUrl1="192.168.1.100"\n' +
+                'var Channel1SRTLatency1="120"\n' +
+                'var Channel1SRTEncryption1="aes128"\n' +
+                'var Channel1SRTBandwidthOverhead1="25"\n' +
+                'var Channel1SRTMTU1="1456"\n' +
+                'var Channel1SRTTTL1="64"\n' +
+                'var Channel1SRTToS1="0"\n' +
+                //
+                'var Channel1SRTUrl2="192.168.1.200"\n' +
+                'var Channel1SRTLatency2="120"\n' +
+                'var Channel1SRTEncryption2="none"\n' +
+                'var Channel1SRTBandwidthOverhead2="25"\n' +
+                'var Channel1SRTMTU2="1456"\n' +
+                'var Channel1SRTTTL2="64"\n' +
+                'var Channel1SRTToS2="0"\n' +
+                //
+                'var Channel1SRTUrl3="192.168.1.300"\n' +
+                'var Channel1SRTLatency3="120"\n' +
+                'var Channel1SRTEncryption3="aes256"\n' +
+                'var Channel1SRTBandwidthOverhead3="25"\n' +
+                'var Channel1SRTMTU3="1456"\n' +
+                'var Channel1SRTTTL3="64"\n' +
+                'var Channel1SRTToS3="0"\n' +
+                // Channel2 / Protocol ---------------
+                // Channel2 / Protocol / HLS
+                'var Channel2HLSduration="10"\n' +
+                'var Channel2HLSsegment="fmp4"\n' +
+                'var Channel2HLSsrvurl="192.168.2.2000"\n' +
+                // Channel2 / Protocol / RTP
+                'var Channel2RTPclientIP1="192.168.2.100"\n' +
+                'var Channel2RTPclientPort1="1000"\n' +
+                'var Channel2RTPVideoPid1="100"\n' +
+                'var Channel2RTPAudioPid1="101"\n' +
+                'var Channel2RTPFecEnable1="on"\n' +
+                'var Channel2RTPFecMatrixL1="8"\n' +
+                'var Channel2RTPFecMatrixD1="4"\n' +
+                //
+                'var Channel2RTPclientIP2="192.168.2.200"\n' +
+                'var Channel2RTPclientPort2="2000"\n' +
+                'var Channel2RTPVideoPid2="200"\n' +
+                'var Channel2RTPAudioPid2="201"\n' +
+                'var Channel2RTPFecEnable2="off"\n' +
+                'var Channel2RTPFecMatrixL2="8"\n' +
+                'var Channel2RTPFecMatrixD2="4"\n' +
+                //
+                'var Channel2RTPclientIP3="192.168.2.300"\n' +
+                'var Channel2RTPclientPort3="3000"\n' +
+                'var Channel2RTPVideoPid3="300"\n' +
+                'var Channel2RTPAudioPid3="301"\n' +
+                'var Channel2RTPFecEnable3="on"\n' +
+                'var Channel2RTPFecMatrixL3="8"\n' +
+                'var Channel2RTPFecMatrixD3="4"\n' +
+                // Channel2 / Protocol / RTMP
+                'var Channel2RTMPurl1="192.168.2.100"\n' +
+                'var Channel2RTMPkey1="channel2-key1"\n' +
+                //    
+                'var Channel2RTMPurl2="192.168.2.200"\n' +
+                'var Channel2RTMPkey2="channel2-key2"\n' +
+                //    
+                'var Channel2RTMPurl3="192.168.2.300"\n' +
+                'var Channel2RTMPkey3="channel2-key3"\n' +
+                // Channel2 / Protocol / TS over IP
+                'var Channel2TSprotocol1="udp"\n' +
+                'var Channel2TSclientIP1="192.168.2.100"\n' +
+                'var Channel2TSclientPort1="1000"\n' +
+                'var Channel2TSVideoPid1=""\n' +
+                'var Channel2TSAudioPid1=""\n' +
+                //    
+                'var Channel2TSprotocol2="tcp"\n' +
+                'var Channel2TSclientIP2="192.168.2.200"\n' +
+                'var Channel2TSclientPort2="2000"\n' +
+                'var Channel2TSVideoPid2=""\n' +
+                'var Channel2TSAudioPid2=""\n' +
+                //    
+                'var Channel2TSprotocol3="udp"\n' +
+                'var Channel2TSclientIP3="192.168.2.300"\n' +
+                'var Channel2TSclientPort3="3000"\n' +
+                'var Channel2TSVideoPid3=""\n' +
+                'var Channel2TSAudioPid3=""\n' +
+                // Channel2 / Protocol / SRT
+                'var Channel2SRTUrl1="192.168.2.100"\n' +
+                'var Channel2SRTLatency1="120"\n' +
+                'var Channel2SRTEncryption1="aes128"\n' +
+                'var Channel2SRTBandwidthOverhead1="25"\n' +
+                'var Channel2SRTMTU1="1456"\n' +
+                'var Channel2SRTTTL1="64"\n' +
+                'var Channel2SRTToS1="0"\n' +
+                //
+                'var Channel2SRTUrl2="192.168.2.200"\n' +
+                'var Channel2SRTLatency2="120"\n' +
+                'var Channel2SRTEncryption2="aes192"\n' +
+                'var Channel2SRTBandwidthOverhead2="25"\n' +
+                'var Channel2SRTMTU2="1456"\n' +
+                'var Channel2SRTTTL2="64"\n' +
+                'var Channel2SRTToS2="0"\n' +
+                //
+                'var Channel2SRTUrl3="192.168.2.300"\n' +
+                'var Channel2SRTLatency3="120"\n' +
+                'var Channel2SRTEncryption3="aes256"\n' +
+                'var Channel2SRTBandwidthOverhead3="25"\n' +
+                'var Channel2SRTMTU3="1456"\n' +
+                'var Channel2SRTTTL3="64"\n' +
+                'var Channel2SRTToS3="0"\n' +
+                //
+                'var MulticastEn="off"\n' +
+                '';
+        //
+        fresh_stream_info(data, query_page);   
+      });
+		}
+    // hide 'channel1_multicast_rtsp'
+    $(".channel1_multicast_rtsp").css("display", "none");
+    //
+    adv_init();
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+		setTimeout(function(){loadcgi("info1")}, 100);
+  </script>
+</body>
+</html>

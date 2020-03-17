@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *">
+  <!-- 
+  * Good default declaration:
+  *   gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  *   https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  *   Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  *     Enable inline JS: add 'unsafe-inline' to default-src
+  *     Enable eval(): add 'unsafe-eval' to default-src
+  *   Create your own at http://cspisawesome.com
+  -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-admin.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <title>VEGA Mobile</title>
+</head>
+<body>
+  <div id="titlebar" class="titlebar-div">
+    <img id="sidemenu" class="toggle-menu" src="./img/icon-mobile.png" onclick="app.toggleSidebar()" style="display:none" />
+    <img id="logo" class="top-logo" src="./img/logo-company.png" />
+    <label id="model" class="top-model"></label>
+    <p id="src_url" style="display:none"></p>
+    <p id="ip_addr" style="display:none"></p>
+    <p id="wifi_ip_addr" style="display:none"></p>
+    <p id="carrier_ip_addr" style="display:none"></p>
+    <p id="dev_cordova" style="display:none"></p>
+    <p id="dev_platform" style="display:none"></p>
+    <p id="dev_version" style="display:none"></p>
+    <p id="dev_manufacturer" style="display:none"></p>
+    <p id="dev_model" style="display:none"></p>
+    <p id="dev_serial" style="display:none"></p>
+    <p id="dev_uuid" style="display:none"></p>
+    <p id="dev_emulator" style="display:none"></p>
+    <p id="app_name" style="display:none"></p>
+    <p id="app_version" style="display:none"></p>
+    <p id="inter_message" style="display:none"></p>
+  </div>
+  <div id="sidebar" class="side-bar">
+    <ul id="sidebar_ul" class="nav navbar-nav side-nav">
+      <li name="monitor">
+        <a onclick="app.click_href('dashboard.html',this)" target="content"><i class="fa fa-fw fa-newspaper-o"></i> Dashboard</a>
+      </li>
+      <li name="information" onclick="app.click_menu('Information');">
+        <a href="javascript:;" data-toggle="collapse" data-target="#Information">
+          <i class="fa fa-fw fa-info-circle"></i> Information <i class="fa fa-fw fa-caret-down"></i>
+        </a>
+        <ul id="Information" class="collapse">
+          <li><a onclick="app.click_href('info_system.html',this)" target="content">System</a></li>
+          <li><a onclick="app.click_href('info_network.html',this)" target="content">Network</a></li>
+          <li><a onclick="app.click_href('info_audvid.html',this)" target="content">Video / Audio</a></li>	
+          <li><a onclick="app.click_href('info_stream.html',this)" target="content">Stream</a></li>	
+        </ul>
+      </li>
+      <li name="settings" onclick="app.click_menu('Settings');">
+        <a href="javascript:;" data-toggle="collapse" data-target="#Settings">
+          <i class="fa fa-fw fa-cog"></i> Settings <i class="fa fa-fw fa-caret-down"></i>
+        </a>
+        <ul id="Settings" class="collapse">
+          <li><a onclick="app.click_href('set_system.html',this)" target="content">System</a></li>
+          <li><a onclick="app.click_href('set_network.html',this)" target="content">Network</a></li>
+          <li><a onclick="app.click_href('set_audvid.html',this)" target="content">Video / Audio</a></li>
+          <li><a onclick="app.click_href('set_encode.html',this)" target="content">Encode</a></li>
+          <li><a onclick="app.click_href('set_stream.html',this)" target="content">Stream</a></li>
+        </ul>
+      </li>
+      <li name="Help">
+        <a onclick="app.click_href('about_app.html',this)" target="content"><i class="fa fa-fw far fa-comment"></i> About</a>
+      </li>
+      <li name="Reload">
+        <a onclick="app.onReloadApp(this)" target="content"><i class="fa fa-fw far fa-refresh"></i> Reload</a>
+      </li>
+      <li name="Exit" class="cls_browser">
+        <a onclick="app.onExitApp(this)" target="content"><i class="fa fa-fw far fa-sign-out"></i> Exit</a>
+      </li>
+    </ul>
+  </div>
+  <div class="cls-loading" style="display:none">
+    <label id="app_init">App initializing ... </label>
+  </div>
+  <div class="cls-version" style="display:none">
+    <label id="cur_version">Current version is </label>
+    <label id="chk_version">New update is checking ...</label>
+    <div class="cls-upgrade" style="color:#2EA7E0">
+      <label id="upgrade_later" style="margin-left:148px">No, later</label>
+      <label id="upgrade_yes" style="margin-left:30px">Yes</label>
+    </div>
+  </div>
+  <style>
+    .disabled {pointer-events: none; opacity: 0.5;}
+  </style>
+  <div id="text_content" class="cls-content" style="display:none">
+    <iframe id="content_page" name="content" src="" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+    // for debug message
+    $('#inter_message').on('click', function() {
+      console.log('!!! ' + $('#inter_message')[0].innerHTML.replace(/&amp;/g,"&")); 
+      if (app.isEmulation == true)
+      alert('!!! ' + $('#inter_message')[0].innerHTML.replace(/&amp;/g,"&")); 
+    });
+    //
+    function start_scan_device(delay) {
+      var msec = typeof delay=='undefined'? 2000: delay;
+      setTimeout(function() {
+        // show toggle menu button ---------- 
+        $(".cls-version").css("display", "none");
+      //$('body').css('background', 'none');
+      //$('body').css('background-color', '#232C37');
+        $('body').css('cssText', 'background: none; background-color: #232C37 !important;');
+        $(".top-logo").css("display", "block");
+        $(".top-model").css("display", "block");
+        $(".toggle-menu").css("display", "block");
+        $(".cls-content").css("display", "block");
+        document.getElementById('content_page').src = 'scan_device.html';
+      }, msec);
+    }
+
+    // cordova-plugin-app-update ---------------------------------
+    //////////////////////////////////////////////////////
+    // callback of window.AppUpdate.checkAppUpdate(...)
+    // state: {"code": code_id, "msg": "error_str"}
+    // code_id: VERSION_NEED_UPDATE   = 201, need to update
+    //          VERSION_UP_TO_UPDATE  = 202, version up to date
+    //          VERSION_UPDATING      = 203, version is updating
+    //          VERSION_RESOLVE_FAIL  = 301, version resolve fail in version.xml
+    //          VERSION_COMPARE_FAIL  = 302, version compare fail in version.xml
+    //          REMOTE_FILE_NOT_FOUND = 404, remote file not found
+    //          NETWORK_ERROR         = 405, network error     
+    //          NO_SUCH_METHOD        = 501, no such update method
+    //          PERMISSION_DENIED     = 601, permission denied
+    //          UNKNOWN_ERROR         = 901, unknown error
+    function appUpdateFail(state) {
+      console.log('onAppUpdateFail()-- failed,\n', state);
+      app.confirmBox('App update failed. (error code: ' + state['code'] + ')\n' +
+                     'Current version is ' + AppVersion.version + '\n\n', start_scan_device);
+      start_scan_device();
+    }
+    function appUpdateOk(state) {
+      console.log('onAppUpdateOk()-- Ok,\n', state);
+      start_scan_device();
+    }
+
+    //////////////////////////////////////////////////////
+    // callback of window.AppUpdate.downloadAppUpdate(...)
+    // state: {"code": code_id, "msg": "message_str", "value": value}
+    // code_id: DOWNLOAD_END            = 201, download completed
+    //          DOWNLOAD                =   1, file downloading
+    //          DOWNLOAD_FINISH         =   2, file downloaded
+    //          DOWNLOAD_INSTALL_FINISH =   6, file download & install completed
+    function appDownloadFail(state) {
+      console.log('appDownloadFail()--\n', state);
+      app.confirmBox("Upgrade app failed.\n"
+                   + "error code: " + state['code'] + "\n\n");
+      start_scan_device();
+    }
+    function appDownloadOk(state) {
+      console.log('appDownloadOk()--\n', state);
+      start_scan_device();
+    }
+    function downloadAppUpdate() {
+      window.AppUpdate.downloadAppUpdate(appDownloadOk, appDownloadFail, 
+                                         update_url_root+update_url_file);
+    }
+    
+    // vegamobi APK default directory
+    var update_url_root = "https://raw.githubusercontent.com";
+    var update_url_file = "/vsd-advantech/VEGA-Mobile-Store/master/version.xml";
+
+    $('#upgrade_yes').on('click', function() {
+      setTimeout(function() {
+        $("#upgrade_later").css('color', "#2EA7E0");
+        $("#upgrade_yes").css('color', "#2EA7E0");
+        $("#chk_version")[0].innerHTML = "Upgrading ...";
+        downloadAppUpdate();
+      }, 1000);
+    });
+    $('#upgrade_later').on('click', function() {
+      start_scan_device(1000);
+    });
+    
+    //////////////////////////////////////////////////////
+    // callback of window.AppUpdate.getAppUpdateInfo(...)
+    // state: {"code": code_id, "msg": "error_str", 
+    //         "localCode": localCode, "remoteCode": remoteCode, 
+    //         "localName": "localName", "remoteName": "remoteName"}
+    // code_id: VERSION_THREAD_END = 201, return local/remote version code & name
+    function appInfoFail(state) {
+      console.log('appInfoFail()--\n', state);
+      $("#chk_version")[0].innerHTML = 'New update is checking ... failed';
+      app.confirmBox("Check app update info. failed.\n"
+                   + "error code: " + state['code'] + "\n\n");
+      start_scan_device();
+    }
+    function appInfoOk(state) {
+      console.log('appInfoOk()--\n', state);
+      var localVersion = parseInt(state.localVersionCode);
+      var remoteVersion = parseInt(state.remoteVersionCode);
+      var remoteName = state.remoteVersionName;
+      if (localVersion >= remoteVersion) {
+        $("#chk_version")[0].innerHTML = 'The latest version has been installed';
+        start_scan_device(3000);
+        return;
+      }
+      //
+      $("#chk_version")[0].innerHTML = "(" + remoteName + ")" + ' is available, upgrade now?';
+      $("#chk_version").css('font-size', "20px");
+      $("#chk_version").css('color', "#ff7070");
+      $("#upgrade_later").css('font-size', "20px");
+      $("#upgrade_later").css('color', "#ff7070");
+      $("#upgrade_yes").css('font-size', "20px");
+      $("#upgrade_yes").css('color', "#ff7070");
+    }
+    function getAppUpdateInfo() {
+      window.AppUpdate.getAppUpdateInfo(appInfoOk, appInfoFail, 
+                                        update_url_root+update_url_file);
+    }
+    
+    // Event of background image Animation
+    var bkg_animate = document.querySelector('body');
+    bkg_animate.addEventListener('animationstart', function() {
+      console.log('Background animation START!!');
+      // do nothing
+    });
+    bkg_animate.addEventListener('animationend', function() {
+      console.log('Background animation END!! init. app, check update ...');
+      // init. app
+      $(".cls-loading").css("display", "block");
+      setTimeout(function() {
+        app.initialize();
+        // check app update
+        if (typeof window.AppUpdate == 'undefined') {
+          $(".cls-loading").css("display", "none");
+          start_scan_device();
+          return;
+        }
+        // Time to check update
+        setTimeout(function() {
+          $(".cls-loading").css("display", "none");
+          $("#cur_version")[0].innerHTML = 'Current version is ' 
+                            + AppVersion.version + ' (' + AppVersion.build + ')';
+          $(".cls-version").css("display", "block");
+          setTimeout(function() {getAppUpdateInfo();}, 3000);
+        }, 1000);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

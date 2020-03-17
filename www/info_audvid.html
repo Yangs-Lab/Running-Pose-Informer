@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Video / Audio</h1></div>
+        </div>
+		
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#video">Video</a></li>
+					<li><a data-toggle="tab" href="#audio">Audio</a></li>
+				</ul>	
+
+				<div class="tab-content" id="tab-contents" style="display:none">	
+					<div id="video" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+							  <tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Input select</td>
+									<td class="col-lg-4px" colspan="2"><label id="videoinput" /></td>
+								</tr>
+							  <tr class="col-wow">
+									<td class="col-lg-4px-mobile">Input Active</td>
+									<td class="col-lg-4px" colspan="2"><label id="videoactive" /></td>
+								</tr>
+							  <tr class="col-wow">
+									<td class="col-lg-4px-mobile">Resolution</td>
+									<td class="col-lg-4px" colspan="2"><label id="videoresolution" /></td>
+								</tr>
+							  <tr class="col-wow">
+									<td class="col-lg-4px-mobile">Frame rate</td>
+									<td class="col-lg-4px" colspan="2"><label id="videoframerate" /></td>
+								</tr>
+							  <tr class="col-wow">
+									<td class="col-lg-4px-mobile">Interlace</td>
+									<td class="col-lg-4px" colspan="2"><label id="videointerlace" /></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+      
+					<div id="audio" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow col-tr-0 tr-top">
+									<td class="col-lg-4px-mobile">Input select</td>
+									<td class="col-lg-4px" colspan="2"><label id="audeoinput" /></td>
+								</tr>
+								<tr class="col-wow external">
+									<td class="col-lg-4px-mobile">Input level</td>
+									<td class="col-lg-4px" colspan="2"><label id="level" /></td>
+								</tr>
+								<tr class="col-wow external">
+									<td class="col-lg-4px-mobile">Sample rate (KHz)</td>
+									<td class="col-lg-4px" colspan="2"><label id="sample_rate" /></td>
+								</tr>
+								<tr class="col-wow" name="Channel 1">
+									<td class="col-lg-4px-mobile">Encode 1 ---</td>
+									<td class="col-lg-4px" colspan="2"></td>
+								</tr>
+								<tr class="col-wow internal">
+									<td class="col-lg-4px-mobile">&emsp;Stereo source</td>
+									<td class="col-lg-4px" colspan="2"><label id="stereo_1" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Audio codec</td>
+									<td class="col-lg-4px" colspan="2"><label id="codec_2001_1" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Bitrate (bps)</td>
+									<td class="col-lg-4px" colspan="2"><label id="bitrate_1" /></td>
+								</tr>		
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Attached video</td>
+									<td class="col-lg-4px" colspan="2"><label id="attach_video_1" /></td>
+								</tr>
+								<tr class="col-wow" name="Channel 2">
+									<td class="col-lg-4px-mobile">Encode 2 ---</td>
+									<td class="col-lg-4px" colspan="2"></td>
+								</tr>
+								<tr class="col-wow internal">
+									<td class="col-lg-4px-mobile">&emsp;Stereo source</td>
+									<td class="col-lg-4px" colspan="2"><label id="stereo_2" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Audio codec</td>
+									<td class="col-lg-4px" colspan="2"><label id="codec_2001_2" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Bitrate (bps)</td>
+									<td class="col-lg-4px" colspan="2"><label id="bitrate_2" /></td>
+								</tr>		
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Attached video</td>
+									<td class="col-lg-4px" colspan="2"><label id="attach_video_2" /></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      setTimeout(function(){loadcgi()}, 300);
+     });
+
+    function fresh_page(data) {
+    //_console_log("fresh_page()-----");
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+      //setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      // Video --
+      if (typeof VideoInput == "undefined") var VideoInput = "hdmi";
+      $("#videoinput").text(VideoInput.toUpperCase());
+
+      if (typeof VideoInputActive == "undefined") var VideoInputActive = "NoSignal";
+      if (typeof FrameWidth == "undefined") var FrameWidth = "0"; 
+      if (typeof FrameHeight == "undefined") var FrameHeight = "0"; 
+      if (typeof FrameInterval == "undefined") var FrameInterval = "0"; 
+      if (typeof Interlaced == "undefined") var Interlaced = "0"; 
+      //
+      if (VideoInputActive != "NoSignal") {
+        var Framerate = typeof FrameInterval=='undefined'? (1000000/33333).toString(): 
+                        FrameInterval>0? (1000000/FrameInterval).toString(): "0";
+        var nn = Framerate.indexOf(".");
+        if (nn >= 0) Framerate = Framerate.substr(0,nn+3).replace(/.00/g, "");
+        //
+        $("#videoactive").text(VideoInputActive);
+        $("#videoresolution").text(FrameWidth+"x"+FrameHeight);
+        $("#videoframerate").text(Framerate);
+        $("#videointerlace").text(Interlaced=="1"?"Yes":"No");
+      } else {
+        $("#videoactive").text("None");
+      }
+      
+      // Audio --
+      if (typeof AudioIn == "undefined") var AudioIn = ""; 
+			$("#audeoinput").text(AudioIn=="internal"? "SDI / HDMI":
+                            AudioIn=="external"? "Audio Jack": "N/A");
+
+      $(".external").css("display", AudioIn=="external"? "": "none");
+
+      if (typeof MicLineSelect == "undefined") var MicLineSelect = ""; 
+      $("#level").text(MicLineSelect=="mic" ? "Microphone":
+                       MicLineSelect=="line"? "Line": "N/A"); 
+
+			if (typeof AudSampleRate1=="undefined") AudSampleRate1 = "N/A";
+			if (typeof AudSampleRate=="undefined") AudSampleRate = AudSampleRate1? AudSampleRate1: AudSampleRate;
+      $("#sample_rate").text(AudSampleRate!="" ? AudSampleRate: "N/A"); 
+
+      // Channel
+      for (var ch=1; ch<=2; ch++) {
+        eval('if (typeof AudSrcStereo'+ch+'=="undefined") var AudSrcStereo'+ch+' = "";'
+           + '$("#stereo_'+ch+'").text(AudSrcStereo'+ch+'=="2"? "3 & 4":' 
+           + '                         AudSrcStereo'+ch+'=="1"? "1 & 2":'
+           + '                         AudSrcStereo'+ch+'=="0"? "1 & 2": "N/A");'
+           + 'if (typeof AudCodec'+ch+'=="undefined") AudCodec'+ch+' = "N/A";'
+           + 'AudCodec'+ch+' = AudCodec'+ch+'.replace("aac_lc","AAC-LC").replace("aac_he","HE-AAC").replace("aac_hev2","HE-AAC v2");'
+           + '$("#codec_2001_'+ch+'").text(AudCodec'+ch+');' 
+           + 'if (typeof AudBitRate'+ch+'=="undefined") AudBitRate'+ch+' = "N/A";'
+           + '$("#bitrate_'+ch+'").text(AudBitRate'+ch+');' 
+           + 'if (typeof AudAttVideo'+ch+'=="undefined") var AudAttVideo'+ch+' = "";'
+           + '$("#attach_video_'+ch+'").text(AudAttVideo'+ch+'=="2"? "Channel 2":' 
+           + '                               AudAttVideo'+ch+'=="1"? "Channel 1": "N/A");');
+      }
+    }
+
+		function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url + " - " + g_cur_tab_page);
+		  $.get(src_url+"/command/inquiry.cgi?inqjs=video_input_status", 
+            {inqjs: "av_input", cgi_time: $.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+        try {
+          fresh_page(data);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+          _console_log("loadcgi()-- wrong data!!");
+        //setTimeout(function(){loadcgi();}, 2000);
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var VideoInputStatus="SDI"\n' +
+                'var VideoInputActive="SDI"\n' +
+                'var FrameWidth="1920"\n' +
+                'var FrameHeight="1080"\n' +
+                'var FrameInterval="16683"\n' +
+                'var Interlaced="0"\n' +
+                //------------------------
+                'var VideoInput="hdmi"\n' +
+                'var VideoSource="sdi,hdmi"\n' +
+                'var AudInCodec="64000"\n' +
+                'var AudioIn="external"\n' +
+                'var MicLineSelect="mic"\n' +
+                'var VideoInput="sdi"\n' +
+                'var AudCodec1="aac_lc"\n' +
+                'var AudBitRate1="128000"\n' +
+                'var AudSampleRate1="48000"\n' +
+                'var AudSrcStereo1="1"\n' +
+                'var AudAttVideo1="1"\n' +
+                'var AudCodec2="aac_lc"\n' +
+                'var AudBitRate2="128000"\n' +
+                'var AudSampleRate2="48000"\n' +
+                'var AudSrcStereo2="2"\n' +
+                'var AudAttVideo2="2"\n';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+      });
+		}
+    //
+    adv_init();
+    var g_cur_tab_page = "video";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+	  setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

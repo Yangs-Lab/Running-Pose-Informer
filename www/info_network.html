@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Network</h1></div>
+        </div>
+				
+        <ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#ipv4">IPv4</a></li>
+				</ul>	
+				
+				<div class="tab-content" id="tab-contents" style="display:none">	
+					<div id="ipv4" class="tab-pane fade">				
+            <div class="table-responsive table-responsive-0">
+              <table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">MAC address</td>
+									<td class="col-lg-4px" colspan="2"><label id="mac" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Ethernet status</td>
+									<td class="col-lg-4px" colspan="2"><label id="eth" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Auto MDI/MDIX</td>
+									<td class="col-lg-4px" colspan="2"><label id="mdi" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">DHCP service</td>
+									<td class="col-lg-4px" colspan="2"><label id="dhcpserv" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">IP address</td>
+									<td class="col-lg-4px" colspan="2"><label id="ip" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Subnet mask</td>
+									<td class="col-lg-4px" colspan="2"><label id="mask" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Default gateway</td>
+									<td class="col-lg-4px" colspan="2"><label id="gateway" /></td>
+								</tr>
+						<!--<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Link-local IP address</td>
+									<td class="col-lg-4px" colspan="2"><label id="localip" /></td>
+								</tr>-->
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">DNS service</td>
+									<td class="col-lg-4px" colspan="2"><label id="dnsserv" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Primary DNS</td>
+									<td class="col-lg-4px" colspan="2"><label id="dns1" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Secondary DNS</td>
+									<td class="col-lg-4px" colspan="2"><label id="dns2" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Host name</td>
+									<td class="col-lg-4px" colspan="2"><label id="hostname" /></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">HTTP port</td>
+									<td class="col-lg-4px" colspan="2"><label id="httpport" /></td>
+								</tr>
+              </tbody></table>
+            </div>
+					</div>	
+				</div>	
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      setTimeout(function(){loadcgi()}, 300);
+     });
+
+    function fresh_page(data) {
+    //_console_log("fresh_page()-----");
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+			//setTimeout(function(){loadcgi();}, 2000);
+				return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      //
+			if (typeof MacAddress=="undefined") var MacAddress = "";
+			$("#mac").text(MacAddress!=""? MacAddress: "N/A");
+      
+			if (typeof PhyStat=="undefined") var PhyStat = "";
+			PhyStat = PhyStat.replace(/1000full/g,"1G full-duplex").replace(/1000half/g,"1G half-duplex");
+			PhyStat = PhyStat.replace(/100full/g,"100M full-duplex").replace(/100half/g,"100M half-duplex");
+			PhyStat = PhyStat.replace(/10full/g,"10M full-duplex").replace(/10half/g,"10M half-duplex");
+			$("#eth").text(PhyStat!=""? PhyStat: "N/A");
+
+			if (typeof PhyMdi=="undefined") var PhyMdi = "";
+			PhyMdi = PhyMdi.replace(/AutoMDI/g,"Auto-MDI");
+			$("#mdi").text(PhyMdi!=""? PhyMdi: "N/A");
+
+			if (typeof CurrentIp=="undefined") var CurrentIp = "";
+			$("#ip").text(CurrentIp!=""? CurrentIp: "N/A");
+
+			if (typeof CurrentSubnetmask=="undefined") var CurrentSubnetmask = "";
+			$("#mask").text(CurrentSubnetmask!=""? CurrentSubnetmask: "N/A");
+
+			if (typeof CurrentGateway=="undefined") var CurrentGateway = "";
+			$("#gateway").text(CurrentGateway!=""? CurrentGateway: "N/A");
+
+    //if (typeof LinkLocalIp=="undefined") var LinkLocalIp = "";
+    //$("#localip").text(LinkLocalIp!=""? LinkLocalIp: "N/A");
+
+      if (typeof CurrentPrimaryDns=="undefined") var CurrentPrimaryDns = "";
+      $("#dns1").text(CurrentPrimaryDns!=""? CurrentPrimaryDns: "N/A");
+
+      if (typeof CurrentSecondaryDns=="undefined") var CurrentSecondaryDns = "";
+      $("#dns2").text(CurrentSecondaryDns!=""? CurrentSecondaryDns: "N/A");
+
+			if (typeof Dhcp=="undefined") var Dhcp = "";
+			$("#dhcpserv").text(Dhcp=="on"? "Auto":
+                          Dhcp=="off"? "Manual": "N/A");
+
+			if (typeof DnsAuto=="undefined") var DnsAuto = "";
+			$("#dnsserv").text(DnsAuto=="on"? "Auto":
+                         DnsAuto=="off"? "Manual": "N/A");
+
+			if (typeof HttpPort=="undefined") var HttpPort = "";
+			$("#httpport").text(HttpPort!=""? HttpPort: "N/A");
+
+			if (typeof HostName=="undefined") var HostName = "";
+			$("#hostname").text(HostName);
+    } 
+
+    function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url + " - " + g_cur_tab_page);
+      $.get(src_url+"/command/inquiry.cgi", {inqjs: "network", cgi_time: $.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+				try {
+				  fresh_page(data);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+					_console_log("loadcgi()-- wrong data!!");
+        //setTimeout(function(){loadcgi();}, 2000);
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var MacAddress="00:0c:29:77:00:02"\n' +
+                'var PhyStat="1000full"\n' +
+                'var PhyMdi="AutoMDI"\n' +
+                'var CurrentIp="172.17.4.101"\n' +
+                'var CurrentSubnetmask="255.255.254.0"\n' +
+                'var CurrentGateway="172.17.5.254"\n' +
+                'var LinkLocalIp=""\n' +
+                'var CurrentPrimaryDns="172.17.1.1"\n' +
+                'var CurrentSecondaryDns="172.20.1.100"\n' +
+                'var HostName="VEGA-2002"\n' +
+                'var Dhcp="on"\n' +
+                'var DnsAuto="on"\n' +
+                'var HttpPort="80"\n' +
+                '';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+	    });
+    }
+    //
+    adv_init();
+    var g_cur_tab_page = "ipv4";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+	  setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Dashboard</h1></div>
+        </div>
+		
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#info">Dashboard</a></li>
+					<li><a data-toggle="tab" href="#live">Live</a></li>
+				</ul>	
+
+				<div class="tab-content" id="tab-contents" style="display:none">	
+					<div id="info" class="tab-pane fade active in">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover" style="margin-bottom:0px"><tbody>
+								<tr class="col-wow col-tr-0 tr-top">
+									<td class="col-lg-4px col-lg-mobile">Video input</td>
+                  <td colspan="2">
+                    <input type="radio" name="vin" id="in_HDMI"><label id="in_HDMI_label" style="padding-left:6px"> HDMI</label></input>
+                    <input type="radio" name="vin" id="in_SDI" style="margin-left:50px"><label id="in_SDI_label" style="padding-left:6px"> SDI</label></input>
+                  </td>
+								</tr>
+								<tr class="col-wow col-tr-0">
+									<td class="col-lg-4px col-lg-mobile">Video specification&emsp;</td>
+									<td><label id="video_resolution" colspan="2" /></td>
+								</tr>
+								<tr class="col-wow col-tr-0">
+									<td class="col-lg-4px col-lg-mobile">Record status</td>
+									<td><label id="record_status" colspan="2" /></td>
+								</tr>
+								<tr class="col-wow col-tr-0">
+									<td class="col-lg-4px col-lg-mobile">Record path</td>
+									<td><label id="record_path" colspan="2" /></td>
+								</tr>
+								<tr class="col-wow col-tr-0" style="height:2px">
+									<td style="background-color:#13181e;padding:0px !important" colspan="3"></td>
+								</tr>
+							</tbody></table>
+
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile">&emsp;&emsp;#</td>
+									<td class="col-lg-4px-center">Encode</td>
+									<td class="col-lg-4px-center">fps / kbps</td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" style="font-weight:bolder" colspan="3">Channel 1 ---</td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" id="db_channel1protocol1_protocol">&emsp;Protocol 1</td>
+									<td class="col-lg-4px-center" id="db_channel1protocol1_encode"></td>
+									<td class="col-lg-4px-center" id="db_channel1protocol1_fpskbps"></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" id="db_channel1protocol2_protocol">&emsp;Protocol 2</td>
+									<td class="col-lg-4px-center" id="db_channel1protocol2_encode"></td>
+									<td class="col-lg-4px-center" id="db_channel1protocol2_fpskbps"></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" id="db_channel1protocol3_protocol">&emsp;Protocol 3</td>
+									<td class="col-lg-4px-center" id="db_channel1protocol3_encode"></td>
+									<td class="col-lg-4px-center" id="db_channel1protocol3_fpskbps"></td>
+								</tr>
+
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" style="font-weight:bolder" colspan="3">Channel 2 ---</td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" id="db_channel2protocol1_protocol">&emsp;Protocol 1</td>
+									<td class="col-lg-4px-center" id="db_channel2protocol1_encode"></td>
+									<td class="col-lg-4px-center" id="db_channel2protocol1_fpskbps"></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" id="db_channel2protocol2_protocol">&emsp;Protocol 2</td>
+									<td class="col-lg-4px-center" id="db_channel2protocol2_encode"></td>
+									<td class="col-lg-4px-center" id="db_channel2protocol2_fpskbps"></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px col-lg-mobile" id="db_channel2protocol3_protocol">&emsp;Protocol 3</td>
+									<td class="col-lg-4px-center" id="db_channel2protocol3_encode"></td>
+									<td class="col-lg-4px-center" id="db_channel2protocol3_fpskbps"></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+
+					<div id="live"  class="tab-pane fade">
+						<div class="table-responsive table-responsive-0 table-live-app">
+              <label id="capture_in" class="live-capture">&nbsp;</label>
+              <img id="image" src="./img/nullvideo_320x180.png" width=100% height=auto />
+            </div>
+          </div>
+				</div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      if (cur_page == 'live') {setTimeout(function(){start_live(true);}, 300);}
+    });
+    
+    var prev_ts = $.now();
+    $('#image').on('click', function() {
+      $(this).context.timestamp = $.now();
+      var curr_ts = $.now();
+      if (curr_ts-prev_ts < 280) {
+        _console_log('image.on(click)-- DBLCLK!!');
+      } else {
+        // CLICK event
+      }
+      prev_ts = curr_ts;  
+    });
+    
+		var g_video_width, g_video_height;
+    var g_interlace=-1, g_signal=false, g_ws = null;
+
+		function detect_vin_data(data) {
+    //console.log("detect_vin_data()-- data:\n" + data);
+      // data ----------------------------
+      if (data == null || data.length <= 16) {
+        _console_log('detect_vin_data()-- data is NULL');
+        return;
+      }
+      eval(data);
+      //
+      if (typeof VideoSource == 'undefined') var VideoSource = "sdi,hdmi";
+      var vSource = VideoSource.split(",");
+      //
+      if (typeof Resolution == 'undefined') {
+        if (typeof FrameWidth  == 'undefined') var FrameWidth  = "1024";
+        if (typeof FrameHeight == 'undefined') var FrameHeight = "768";
+        var Resolution = FrameWidth.toString() + "," + FrameHeight.toString();
+      }
+      if (typeof Framerate == 'undefined') {
+        var Framerate = typeof FrameInterval=='undefined'? (1000000/33333).toString(): 
+                        FrameInterval>0? (1000000/FrameInterval).toString(): "0";
+        var nn = Framerate.indexOf(".");
+        if (nn >= 0) Framerate = Framerate.substr(0,nn+3).replace(/.00/g, "");
+      }
+      if (typeof Interlace == 'undefined') {
+        if (typeof Interlaced == 'undefined') var Interlaced = 0;
+        var Interlace = Interlaced.toString();
+      }
+      if (typeof VideoInput == 'undefined') {
+        if (typeof VideoInputStatus == 'undefined') var VideoInputStatus = vSource[0]; 
+        var VideoInput = VideoInputStatus.toString().toLowerCase();
+      }
+    //_console_log(Resolution + ", " + Framerate + ", " + Interlace + ", " + VideoInput);
+      //
+      var str_vin = "";
+      /* */if (VideoInput == "both") {
+        var vin_act = VideoInputActive.toString().toLowerCase();
+        str_vin = vin_act=="sdi"? "SDI": vin_act=="hdmi"? "HDMI": "";
+      } 
+      else if (VideoInput == "sdi" ) str_vin = "SDI";
+      else if (VideoInput == "hdmi") str_vin = "HDMI";
+      else					                 VideoInput = "none";
+      //
+      var str_capture = "(No Signal)";
+      if (VideoInput !== "none") {
+        g_signal = true;
+        str_capture  = Resolution.replace(/,/g,"x");
+        str_capture += "/" + Framerate + (Interlace=="0"? "P": "I");
+      } else {
+        g_signal = false;
+      }
+      $("#capture_in").text(str_vin + " " + str_capture);
+      //
+      g_video_width  = parseInt(Resolution.split(",")[0], 10);
+      g_video_height = parseInt(Resolution.split(",")[1], 10);
+      g_interlace    = Interlace=="1"? true: false;
+		}
+
+    function start_live(is_init) {
+    //_console_log('start_live()----- enter');
+      // clear image
+      image.src = "";
+      if (g_ws != null) g_ws.close();
+      //
+      if ($('#live')[0].className.indexOf('active') < 0) {
+        _console_log("start_live()-- live page hidden!!");
+        return;
+      }
+      if (g_signal == false) {
+        _console_log("start_live()-- Singal lost!!");
+        setTimeout(function(){start_live(false);}, 5000);
+        return;
+      }
+			// Check to show user authorization.
+      var ws_str, str = src_url;
+      if (str.indexOf("http://") == 0) {
+        x = str.indexOf("/", 7);
+        if (x == -1) x = str.length;
+        Server_IP = str.substring(7, x);
+        ws_str = "ws://";
+      } else
+      if (str.indexOf("https://") == 0) {
+        x = str.indexOf("/", 8);
+        if (x == -1) x = str.length;
+        Server_IP = str.substring(8, x);
+        ws_str = "wss://";
+      } else {
+        _console_log("undefined error!!");
+        return;
+      }
+      //
+      var g_ws = new WebSocket(ws_str+Server_IP + "/media/live");
+    //var g_ws = new WebSocket(ws_str+Server_IP + ":9999");
+      _console_log("start_live()-- ws.url: " + g_ws.url);	
+      g_ws.onmessage = function (evt) {
+        if ($('#live')[0].className.indexOf('active') < 0) {
+        //_console_log("close webSocket if live page hidden!!");
+          image.src = ""; g_ws.close();
+          return;
+        }
+        if (g_signal == false) {
+          _console_log("close webSocket if signal lost!!");
+          image.src = ""; g_ws.close();
+          return;
+        }
+        var fr = new FileReader();
+        fr.onload = function (evt) {
+          image.src = fr.result;
+        };
+        fr.onerror = function (evt) {};
+        fr.onloadend = function (evt) {};
+        fr.readAsDataURL(evt.data);
+      };
+      g_ws.onclose = function(evt) {
+        _console_log('ws.onclose()-- evt.code: ' + evt.code);
+        setTimeout(function(){start_live(false);}, 3000);
+      };
+      g_ws.onerror = function(evt) {};
+      g_ws.onopen = function(evt) {};
+    }
+
+		function set_stream_status(chan_port, protocol, encode, fps, kbs, drop, preset) {
+    //_console_log("chan_port: " + chan_port + ", protocol: " + protocol + ", encode: " + encode + ", preset: " + preset);
+    //_console_log("fps: " + fps + ", kbs: " + kbs + ", drop: " + drop);
+			if (typeof protocol == "undefined") return;
+      encode = encode.replace("h.", "H").replace("hevc", "HEVC");
+      encode = encode.replace("3840x2160","4K").replace("1920x1080","1080P");
+      encode = encode.replace("1280x720","720P").replace("720x480","480P");
+			chan_port = chan_port.toLowerCase();
+			if (protocol == "Off" || protocol == "off" || protocol == "N/A") {
+				$('#db_'+chan_port+'_encode')[0].innerHTML = '--, --, --';
+				$('#db_'+chan_port+'_fpskbps')[0].innerHTML = '-- / --';
+				return;
+			} 
+			if (preset == "off") {
+				$('#db_'+chan_port+'_encode')[0].innerHTML = protocol+", " + encode.replace(/,/g,",");
+				$('#db_'+chan_port+'_fpskbps')[0].innerHTML = '-- / --';
+				return;
+			} 
+      //
+			$('#db_'+chan_port+'_encode')[0].innerHTML = protocol + ", " + encode.replace(/,/g,",");
+      if (fps == "N/A" || kbs == "N/A")
+				$('#db_'+chan_port+'_fpskbps')[0].innerHTML = '-- / --';
+      else {
+        var ff = fps.indexOf("."); if (ff >= 0) fps = fps.substr(0,ff); // fps.substr(0,ff+3);
+        var bb = kbs.indexOf("."); if (bb >= 0) kbs = kbs.substr(0,bb); // kbs.substr(0,bb+3);
+        $('#db_'+chan_port+'_fpskbps')[0].innerHTML = fps + " / " + kbs;
+      }
+		}
+
+    function fresh_page(data, dataJ) {
+    //_console_log("fresh_page()-----");
+      // data ----------------------------
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+			//setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      //
+      if (typeof VideoSource == 'undefined') var VideoSource = "sdi,hdmi";
+      var vSource = VideoSource.split(",");
+      //
+      if (typeof Resolution == 'undefined') {
+        if (typeof FrameWidth  == 'undefined') var FrameWidth  = "1024";
+        if (typeof FrameHeight == 'undefined') var FrameHeight = "768";
+        var Resolution = FrameWidth.toString() + "," + FrameHeight.toString();
+      }
+      if (typeof Framerate == 'undefined') {
+        var Framerate = "0";
+        if (typeof FrameInterval == 'undefined') { 
+          Framerate = (1000000/33333).toString();
+        } else 
+        if (FrameInterval > 0)
+          Framerate = (1000000/parseInt(FrameInterval)).toString();
+        var nn = Framerate.indexOf(".");
+        if (nn >= 0) Framerate = Framerate.substr(0,nn+3).replace(/.00/g, "");
+      }
+      if (typeof Interlace == 'undefined') {
+        if (typeof Interlaced == 'undefined') var Interlaced = 0;
+        var Interlace  = Interlaced.toString();
+      }
+      if (typeof VideoInput == 'undefined') {
+        if (typeof VideoInputStatus == 'undefined') var VideoInputStatus = vSource[0]; 
+        var VideoInput = VideoInputStatus.toString().toLowerCase();
+      }
+    //_console_log(Resolution + " - " + Framerate + " - " + Interlace + " - " + VideoInput);
+      //
+      if (VideoInput == "sdi") {
+        $("#in_HDMI").prop("disabled", "disabled");
+        $("#in_HDMI_label")[0].style.color = "#666";
+        $("#in_SDI").prop("checked", "true");
+        $("#in_SDI").prop("disabled", "");
+        $("#in_SDI_label")[0].style.color = "#bbb";
+      } else 
+      if (VideoInput == "hdmi") {
+        $("#in_SDI").prop("disabled", "disabled");
+        $("#in_SDI_label")[0].style.color = "#666";
+        $("#in_HDMI").prop("checked", "true");
+        $("#in_HDMI").prop("disabled", "");
+        $("#in_HDMI_label")[0].style.color = "#bbb";
+      } else 
+      if (VideoInput == "both") {
+        if (VideoInputActive.toString().toLowerCase() == "sdi")
+          $("#in_SDI").prop("checked", "true");
+        $("#in_SDI").prop("disabled", "");
+        $("#in_SDI_label")[0].style.color = "#bbb";
+        if (VideoInputActive.toString().toLowerCase() == "hdmi")
+          $("#in_HDMI").prop("checked", "true");
+        $("#in_HDMI").prop("disabled", "");
+        $("#in_HDMI_label")[0].style.color = "#bbb";
+      } else { // none
+        $("#in_SDI").prop("checked", "false");
+        $("#in_SDI").prop("disabled", "disabled");
+        $("#in_SDI_label")[0].style.color = "#666";
+        $("#in_HDMI").prop("checked", "false");
+        $("#in_HDMI").prop("disabled", "disabled");
+        $("#in_HDMI_label")[0].style.color = "#666";
+        VideoInput = "none";
+      }
+      //
+      var str_capture = "(No Signal)";
+      if (VideoInput !== "none") {
+        str_capture  = Resolution.replace(/,/g," x ");
+        str_capture += " , " + Framerate + (Interlace=="0"? "P": "I");
+      }
+      $("#video_resolution").text(str_capture);
+      //
+      for (var ch=1; ch<=2; ch++) {
+        for (var pr=1; pr<=3; pr++) {
+          eval('if (typeof ImageCodec'+ch+' =="undefined") var ImageCodec'+ch+' = "off";'
+             + 'if (typeof Channel'+ch+'Protocol'+pr+' =="undefined") var Channel'+ch+'Protocol'+pr+' = "N/A";'
+             + 'if (typeof Channel'+ch+'Protocol'+pr+'Encode == "undefined") var Channel'+ch+'Protocol'+pr+'Encode = "N/A";'
+             + 'if (typeof Channel'+ch+'Protocol'+pr+'Framerate == "undefined") var Channel'+ch+'Protocol'+pr+'Framerate = "N/A";'
+             + 'if (typeof Channel'+ch+'Protocol'+pr+'Bitrate == "undefined") var Channel'+ch+'Protocol'+pr+'Bitrate = "N/A";'
+             + 'if (typeof Channel'+ch+'Protocol'+pr+'Drops == "undefined") var Channel'+ch+'Protocol'+pr+'Drops = "N/A";'
+            // avoid drops > frame rate
+             + 'if (parseInt(Channel'+ch+'Protocol'+pr+'Drops) > '
+             + '    parseInt(Channel'+ch+'Protocol'+pr+'Framerate))'
+             + '      Channel'+ch+'Protocol'+pr+'Drops = "0";'
+            // set stream status
+             + 'set_stream_status("Channel'+ch+'Protocol'+pr+'", ' 
+                                + 'Channel'+ch+'Protocol'+pr+'.replace("TSOverIP", "TSoIP"), '
+                                + 'Channel'+ch+'Protocol'+pr+'Encode, '
+                                + 'Channel'+ch+'Protocol'+pr+'Framerate, '
+                                + 'Channel'+ch+'Protocol'+pr+'Bitrate, '
+                                + 'Channel'+ch+'Protocol'+pr+'Drops, ' + 'ImageCodec'+ch+');');
+        }
+      }
+      if (typeof Recording == 'undefined') var Recording = '0';
+      if (typeof RecordingPath == 'undefined') var RecordingPath = '';
+      // dataJ ---------------------------
+      if (dataJ == 0) {
+        data = '[\n]\n';
+      }
+      // [{Filesystem": "/dev/mmcblock1p1", "Size": "69.5M", "Used": "3.0M",   "Available": "66.6M", "Use%": "4%", "MountedOn": "/media/sdcard_p1"},
+      //  {Filesystem": "/dev/mmcblock1p2", "Size": "14.4G", "Used": "686.7M", "Available": "13.0G", "Use%": "5%", "MountedOn": "/media/sdcard_p2"}]
+      var json = JSON.parse(dataJ)
+      if (json.length <= 0) {
+      //_console_log("json.length: " + json.length);
+        json[0] = {};
+        json[0]["Size"] = "";
+        json[0]["Used"] = "";
+        json[0]["Use%"] = "";
+        json[0]["Filesystem"] = "";
+        json[0]["Available"] = "";
+        json[0]["MountedOn"] = "";
+      }
+      //
+      var mount_on = json[0]["MountedOn"] || "";
+      var recordNum = parseInt(Recording);
+      var str_record = recordNum<=0? "STOP":
+                       recordNum==1? "RECORD , Channel 1": 
+                       recordNum==2? "RECORD , Channel 2": "RECORD , Channel 1 & 2"; 
+      $("#record_status").text(str_record);
+      str_record = mount_on==""? "No space": mount_on; 
+      $("#record_path").text(str_record);
+    }
+
+		function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url);
+		  $.get(src_url+"/command/inquiry.cgi?inqjs=stream_status&inqjs=record&", 
+            {inqjs: "video_input_status", cgi_time: $.now()}).done(function (data) {
+        // Add to fix wrong data from CGI
+        data = correct_cgi(data);
+        if (g_signal == false) detect_vin_data(data);
+        //
+        if ($('#info')[0].className.indexOf('active') >= 0) {
+        //_console_log('loadcgi()-- info page show');
+          $.get(src_url+"/command/record.cgi", {storage_status: "", cgi_time: $.now()}).done(function (dataJ) {
+            // Add to fix wrong data from CGI
+          //dataJ = correct_cgi(dataJ);
+              fresh_page(data, dataJ);
+            try {
+              fresh_page(data, dataJ);
+              _check_to_page("info", false);
+              setTimeout(function(){loadcgi();}, 8000);
+            } catch(err) {
+              _console_log("loadcgi()-- wrong data!!");
+            //setTimeout(function(){loadcgi();}, 2000);
+            }
+          });
+        } else
+        if ($('#live')[0].className.indexOf('active') >= 0) {
+        //_console_log('loadcgi()-- live page show');
+          try {
+            detect_vin_data(data);
+            _check_to_page("live", false);
+            setTimeout(function(){loadcgi();}, 8000);
+          } catch(err) {
+            _console_log("loadcgi()-- wrong data!!");
+          //setTimeout(function(){loadcgi();}, 2000);
+          }
+        } else {
+          _console_log('loadcgi()-- unknow page selected');
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var dataJ = '' +
+                '[\n' +
+                '{"Filesystem": "/dev/sda1", \n' +
+                '"Size": "1.9G", \n' +
+                '"Used": "346.8M", \n' +
+                '"Available": "1.5G", \n' +
+                '"Use%": "18%", \n' +
+                '"MountedOn": "/media/sda1"}\n' +
+                ']\n' +
+                '';
+        var data = 'var cgi_time=000000\n';
+        data += '' +
+              //'var Channel1Protocol1="off"\n' +
+                'var Channel1Protocol1="SRT"\n' +
+                'var Channel1Protocol1Encode="h.264,1920x1080"\n' +
+                'var Channel1Protocol1Framerate="60.307335"\n' +
+                'var Channel1Protocol1Bitrate="6207.466797"\n' +
+                'var Channel1Protocol1Drops="0"\n' +
+                'var Channel1Protocol2="Off"\n' +
+              //'var Channel1Protocol2="TSoverIP"\n' +
+                'var Channel1Protocol2Encode="h.265,720x480"\n' +
+                'var Channel1Protocol2Framerate="30.482719"\n' +
+                'var Channel1Protocol2Bitrate="3007.673522"\n' +
+                'var Channel1Protocol2Drops="1"\n' +
+              //'var Channel1Protocol3="Off"\n' +
+                'var Channel1Protocol3="RTMP"\n' +
+                'var Channel1Protocol3Encode="h.264,1280x720"\n' +
+                'var Channel1Protocol3Framerate="30.482719"\n' +
+                'var Channel1Protocol3Bitrate="3007.673522"\n' +
+                'var Channel1Protocol3Drops="3"\n' +
+                //
+              //'var Channel2Protocol1="Off"\n' +
+                'var Channel2Protocol1="HLS"\n' +
+                'var Channel2Protocol1Encode="h.265,1920x1080"\n' +
+                'var Channel2Protocol1Framerate="30.237544"\n' +
+                'var Channel2Protocol1Bitrate="4107.561943"\n' +
+                'var Channel2Protocol1Drops="2"\n' +
+              //'var Channel2Protocol2="Off"\n' +
+                'var Channel2Protocol2="RTP"\n' +
+                'var Channel2Protocol2Encode="h.264,720x480"\n' +
+                'var Channel2Protocol2Framerate="28.482719"\n' +
+                'var Channel2Protocol2Bitrate="2907.673522"\n' +
+                'var Channel2Protocol2Drops="3"\n' +
+                'var Channel2Protocol3="Off"\n' +
+              //'var Channel2Protocol3="RTMP"\n' +
+                'var Channel2Protocol3Encode="h.264,720x480"\n' +
+                'var Channel2Protocol3Framerate="28.482719"\n' +
+                'var Channel2Protocol3Bitrate="2907.673522"\n' +
+                'var Channel2Protocol3Drops="3"\n' +
+                // Record
+                'var ImageCodec1="h264"\n' +
+                'var ImageCodec2="h265"\n' +
+                'var ImageCodec3="off"\n' +
+                'var Recording="3"\n' +
+                'var RecordingPath=""\n' +
+                // Video input status
+                'var VideoInputStatus="SDI"\n' +
+                'var VideoInputActive="SDI"\n' +
+                'var VideoDetect="1"\n' +
+                'var FrameWidth="1920"\n' +
+                'var FrameHeight="1080"\n' +
+                'var FrameInterval="16666"\n' +
+                'var Interlaced="0"\n' +
+                '';
+        fresh_page(data, dataJ);
+        _check_to_page(g_cur_tab_page, false);
+      });
+		}
+    //
+    adv_init();
+    var g_cur_tab_page = "info";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+	  setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

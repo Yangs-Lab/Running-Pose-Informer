@@ -1,0 +1,71 @@
+git init
+git add .
+git commit -m "....."
+git push --force
+
+
+. Android Studio
+  ** install it
+  ** add version of android 'SDK Manager'
+  ** add ADV(Android Virtual Device), Pixel 3, ....
+  ** Start ADV   
+  
+. Android/Sdk
+  ** after install Android Studio
+  
+. Gradle
+  sudo apt-get install gradle
+
+. Run emulator
+  .../tools/emulator -list-avds
+  .../tools/emulator -avd Pixel_3_API_28
+  
+  
+export ANDROID_HOME="/home/emst/Android/Sdk/"
+export ANDROID_TOOLS="/home/emst/Android/Sdk/tools"
+export ANDROID_SDK_ROOT="/home/emst/Android/Sdk/"
+export ANDROID_PLATFORM_TOOLS="/home/emst/Android/Sdk/platform-tools"
+PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
+
+
+. run & debug APK  
+cd .../<app_folder>  
+cordova build android
+cordova run  android
+
+
+. Build APK
+cd .../<app_folder>  
+cordova build android --release
+  
+
+.Generating a private key
+keytool -genkey -v -keyalg RSA -keysize 2048 -validity [validity_days]
+-keystore [keystore_path_name].keystore -alias [alias_path_name]
+
+ex.:
+mkdir keysto`re
+cd ./keystore
+keytool -genkey -v -keyalg RSA -keysize 2048 -validity 3650 \
+-keystore yangslab.keystore -alias runpaceinformer
+
+password:            runpaceinformer
+first & last name:   Byron Yang
+organizational unit: App Mobile
+organization:        Yang's Lab
+city:                Taipei
+state:               Taiwan
+country code:        TW
+
+
+. Make signed a private key to bind a singed APK
+cd ../keystore jarsigner -verbose \
+-sigalg MD5withRSA -digestalg SHA1 \
+-keystore yangslab.keystore -signedjar vegamobi_signed.apk \
+/home/emst/phonegap/runpaceinform/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk \
+runpaceinformer
+
+** Enter Passphrase for keystore:   runpaceinformer
+
+## even zip, but less reduce file size
+zipalign -v 4 ./vegamobi_signed.apk ./vegamobi_signed_zip.apk

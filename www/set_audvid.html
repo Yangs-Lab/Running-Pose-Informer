@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Video / Audio</h1></div>
+        </div>
+		
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#video">Video</a></li>
+					<li><a data-toggle="tab" href="#audio">Audio</a></li>
+				</ul>	
+
+				<div class="tab-content" id="tab-contents" style="display:none">	
+					<div id="video" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+							  <tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Input select</td>
+									<td class="col-lg-4px"><select id="videoinput" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="tr-btn">
+									<td><button type="submit" id="video_submit" class="btn btn-primary">Submit</button></td>
+									<td></td><td></td>
+								</tr>
+							</tbody></table>
+						</div>
+          </div>
+
+					<div id="audio" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow col-tr-0 tr-top">
+									<td class="col-lg-4px-mobile">Input select</td>
+									<td class="col-lg-4px"><select id="audeoinput" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow external">
+									<td class="col-lg-4px-mobile">Input level</td>
+									<td class="col-lg-4px"><select id="level" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow external">
+									<td class="col-lg-4px-mobile">Sample rate (KHz)</td>
+									<td class="col-lg-4px"><select id="sample_rate" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow" name="Channel 1">
+									<td class="col-lg-4px-mobile">Encode 1 ---</td>
+									<td></td><td></td>
+								</tr>
+								<tr class="col-wow internal">
+									<td class="col-lg-4px-mobile">&emsp;Stereo source</td>
+									<td class="col-lg-4px"><select id="stereo_1" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Audio codec</td>
+									<td class="col-lg-4px" style="max-width:300px"><select id="codec_2001_1" class="form-control small-control" /></td>
+								  <td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Bitrate (bps)</td>
+									<td class="col-lg-4px"><select id="bitrate_1" class="form-control small-control" /></td>
+									<td></td>
+								</tr>		
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Attached video</td>
+									<td class="col-lg-4px" style="max-width:300px"><select id="attach_video_1" class="form-control small-control" /></td>
+								  <td></td>
+								</tr>
+								<tr class="col-wow" name="Channel 2">
+									<td class="col-lg-4px-mobile">Encode 2 ---</td>
+									<td></td><td></td>
+								</tr>
+								<tr class="col-wow internal">
+									<td class="col-lg-4px-mobile">&emsp;Stereo source</td>
+									<td class="col-lg-4px"><select id="stereo_2" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Audio codec</td>
+									<td class="col-lg-4px" style="max-width:300px"><select id="codec_2001_2" class="form-control small-control" /></td>
+								  <td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Bitrate (bps)</td>
+									<td class="col-lg-4px"><select id="bitrate_2" class="form-control small-control" /></td>
+									<td></td>
+								</tr>		
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&emsp;Attached video</td>
+									<td class="col-lg-4px" style="max-width:300px"><select id="attach_video_2" class="form-control small-control" /></td>
+								  <td></td>
+								</tr>
+								<tr class="tr-btn">
+									<td><button type="submit" id="audio_submit" class="btn btn-primary">Submit</button></td>
+									<td></td><td></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+    var json_audio;
+    $.getJSON("test-2001.json?_="+$.now(), function(data) {
+      json_audio = data["audioForm"];
+      $.each(data["audioForm"], function(func, opts) {
+        for (var opt in opts) {
+          if (typeof opts[opt] === "object") {
+            for(idx in opts[opt]) {
+            $("#"+func).append($('<option>', {value: idx, text: opts[opt][idx]})); break;
+            }							
+          } else {
+            $("#"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));    
+          }
+        }
+      });
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      setTimeout(function(){loadcgi()}, 300);
+     });
+
+    var g_audSampleRate;
+    var g_audCodec_1, g_audBitRate_1;
+    var g_audCodec_2, g_audBitRate_2;
+    
+    $("#audeoinput").on("change", function() {
+    //_console_log("audio level change!! " + $("#audeoinput").val());
+      $(".internal").css("display", $("#audeoinput").val()!=="SDI / HDMI"? "none": "");
+      $(".external").css("display", $("#audeoinput").val()==="SDI / HDMI"? "none": "");
+    });
+
+    $("#attach_video_1, #attach_video_2").on("change", function() {
+      var stereo=$(this).val(), id = $(this)[0].id;
+      if (id == "attach_video_1") {
+        $("#attach_video_2").val(stereo=="Channel 1"? "Channel 2": "Channel 1");
+      } else
+      if (id == "attach_video_2") {
+        $("#attach_video_1").val(stereo=="Channel 1"? "Channel 2": "Channel 1");
+      }
+    });
+  
+    $("#bitrate_1, #bitrate_2").on("change", function() {
+      var id = $(this)[0].id;
+      if (id == "bitrate_1") {
+        g_audBitRate_1 = $(this).val();
+      } else
+      if (id == "bitrate_2") {
+        g_audBitRate_2 = $(this).val();
+      }
+    });
+  
+    $("#codec_2001_1, #codec_2001_2").on("change", function() {
+    //_console_log("codec_2001_1,codec_2001_2.on(change)-- val: " + $(this)[0].id);
+      var id = $(this)[0].id;
+      if (id == "codec_2001_1") {
+        g_audCodec_1 = $(this).val();
+      } else
+      if (id == "codec_2001_2") {
+        g_audCodec_2 = $(this).val();
+      }  
+      $("#sample_rate").val(g_audSampleRate).trigger("change");
+    });
+
+    $("#sample_rate").on("change", function() {
+    //_console_log("sample_rate.on(change)-- g_audSampleRate: " + g_audSampleRate);
+    //_console_log("sample_rate.on(change)-- val: " + $(this).val());
+      g_audSampleRate = $("#sample_rate").val();
+ 
+      var bitrate = {};
+
+      // Bitrate #1 list
+      $("#bitrate_1").empty();
+      if (g_audCodec_1 == "aac_lc") {
+        bitrate = g_audSampleRate=="48000"? json_audio["bitrate_lc_32"]:
+                  g_audSampleRate=="44100"? json_audio["bitrate_lc_32"]:
+                  g_audSampleRate=="32000"? json_audio["bitrate_lc_32"]:
+                  g_audSampleRate=="24000"? json_audio["bitrate_lc_16"]:
+                  g_audSampleRate=="22050"? json_audio["bitrate_lc_16"]:
+                  g_audSampleRate=="16000"? json_audio["bitrate_lc_16"]:
+                  g_audSampleRate=="12000"? json_audio["bitrate_lc_12"]:
+                  g_audSampleRate=="11025"? json_audio["bitrate_lc_12"]:
+                  g_audSampleRate== "8000"? json_audio["bitrate_lc_8" ]: {};
+      } else
+      if (g_audCodec_1 == "aac_he") {
+        bitrate = json_audio["bitrate_he"];
+      } else
+      if (g_audCodec_1 == "aac_hev2") {
+        bitrate = json_audio["bitrate_hev2"];
+      }
+      $.each(bitrate, function(idx, val) {
+        $("#bitrate_1").append($('<option>', {value: val, text: val}));    
+      });
+      var idx = bitrate.indexOf(g_audBitRate_1);
+      $("#bitrate_1").val(idx<0? bitrate[0]: g_audBitRate_1);
+
+      // Bitrate #2 list
+      $("#bitrate_2").empty();
+      if (g_audCodec_2 == "aac_lc") {
+        bitrate = g_audSampleRate=="48000"? json_audio["bitrate_lc_32"]:
+                  g_audSampleRate=="44100"? json_audio["bitrate_lc_32"]:
+                  g_audSampleRate=="32000"? json_audio["bitrate_lc_32"]:
+                  g_audSampleRate=="24000"? json_audio["bitrate_lc_16"]:
+                  g_audSampleRate=="22050"? json_audio["bitrate_lc_16"]:
+                  g_audSampleRate=="16000"? json_audio["bitrate_lc_16"]:
+                  g_audSampleRate=="12000"? json_audio["bitrate_lc_12"]:
+                  g_audSampleRate=="11025"? json_audio["bitrate_lc_12"]:
+                  g_audSampleRate=="8000"?  json_audio["bitrate_lc_8" ]: {};
+      } else
+      if (g_audCodec_2 == "aac_he") {
+        bitrate = json_audio["bitrate_he"];
+      } else
+      if (g_audCodec_2 == "aac_hev2") {
+        bitrate = json_audio["bitrate_hev2"];
+      }
+      $.each(bitrate, function(idx, val) {
+        $("#bitrate_2").append($('<option>', {value: val, text: val}));    
+      });
+      var idx = bitrate.indexOf(g_audBitRate_2);
+      $("#bitrate_2").val(idx<0? bitrate[0]: g_audBitRate_2);
+    });
+    
+		// video submit ----
+		$("#video_submit").on("click", function() {
+			console.log("video_submit.on(click)--");
+      var cmnd = {};
+			if ($("#videoinput").val() == "SDI")
+        cmnd.VideoInput = "sdi";
+			else if ($("#videoinput").val() == "HDMI")
+        cmnd.VideoInput = "hdmi";
+      else
+        return;
+			//	
+			$("#video_submit").prop("disabled", true);
+      g_curtain.display(true);
+      g_cur_tab_page = "video";
+      $.get(src_url+"/command/av_input.cgi", cmnd).done(function (data) {	
+        setTimeout(function(){loadcgi();}, 1000);
+      });
+		});
+
+		// audio submit ----
+		$("#audio_submit").on("click", function() {
+		  _console_log("audio_submit.on(click)--");
+      var cmnd = {};
+			if ($("#audeoinput").val() === "External Audio Jack") {
+				var mic_in = $("#level").val()==="Microphone"? "mic": "line";
+        cmnd.AudioIn = "external";
+        cmnd.MicLineSelect = mic_in;
+        cmnd.AudSampleRate1 = $("#sample_rate").val();  // only channel1 available
+			} else 
+      if ($("#audeoinput").val() === "SDI / HDMI") {
+        cmnd.AudioIn = "internal";
+        cmnd.AudSrcStereo1 = $("#stereo_1").val()=="3 & 4"? 2: 1;
+        cmnd.AudSrcStereo2 = $("#stereo_2").val()=="3 & 4"? 2: 1;
+			} else
+        return;
+    //cmnd.AudInCodec = 
+      cmnd.AudCodec1 = $("#codec_2001_1").val();
+      cmnd.AudCodec2 = $("#codec_2001_2").val();
+      cmnd.AudBitRate1 = $("#bitrate_1").val();
+      cmnd.AudBitRate2 = $("#bitrate_2").val();
+      cmnd.AudAttVideo1 = $("#attach_video_1").val()=="Channel 2"? 2: 1;
+      cmnd.AudAttVideo2 = $("#attach_video_2").val()=="Channel 2"? 2: 1;
+			//
+			$("#audio_submit").prop("disabled", true);
+      g_curtain.display(true);
+      g_cur_tab_page = "audio";
+			$.get(src_url+"/command/av_input.cgi", cmnd).done(function(data) {
+        setTimeout(function(){loadcgi();}, 1000);
+      });
+		});
+    
+    function fresh_page(data) {
+		//_console_log("fresh_page()-----");
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+        alert("null data!!");
+      //setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      //
+      // Video --
+      if (typeof VideoInput == "undefined") var VideoInput = "hdmi";
+      $("#videoinput").val(VideoInput.toUpperCase());
+      // Audio --
+      if (typeof AudioIn == "undefined") var AudioIn = ""; 
+      if (typeof MicLineSelect == "undefined") var MicLineSelect = ""; 
+			if (typeof AudSampleRate1=="undefined") var AudSampleRate1 = "32000";
+			if (typeof AudSampleRate=="undefined") var AudSampleRate = AudSampleRate1;
+
+      // Channel
+      for (var ch=1; ch<=2; ch++) {
+        eval('if (typeof AudCodec'+ch+'=="undefined") AudCodec'+ch+' = "aac_lc";'
+           + 'if (typeof AudSrcStereo'+ch+'=="undefined") var AudSrcStereo'+ch+' = "1";'
+           + 'if (typeof AudBitRate'+ch+'=="undefined") AudBitRate'+ch+' = "32000";'
+           + 'if (typeof AudAttVideo'+ch+'=="undefined") var AudAttVideo'+ch+' = "";'
+           + 'g_audCodec_'+ch+' = AudCodec'+ch+';'
+           + 'g_audBitRate_'+ch+' = AudBitRate'+ch+';'
+           + 'g_audSampleRate = AudSampleRate;'
+        // + 'AudCodec'+ch+' = AudCodec'+ch+'.replace("aac_lc","AAC-LC").replace("aac_he","HE-AAC").replace("aac_hev2","HE-AAC v2");'
+           + '$("#codec_2001_'+ch+'").val(AudCodec'+ch+').trigger("change");' 
+           + '$("#bitrate_'+ch+'").val(AudBitRate'+ch+');' 
+           + '$("#stereo_'+ch+'").val(AudSrcStereo'+ch+'=="2"? "3 & 4":' 
+           + '                        AudSrcStereo'+ch+'=="1"? "1 & 2":'
+           + '                        AudSrcStereo'+ch+'=="0"? "1 & 2": "N/A");'
+           + '$("#attach_video_'+ch+'").val(AudAttVideo'+ch+'=="2"? "Channel 2":' 
+           + '                              AudAttVideo'+ch+'=="1"? "Channel 1": "N/A");'
+           + '');
+      }
+      
+			$("#audeoinput").val(AudioIn=="internal"?"SDI / HDMI":"External Audio Jack").trigger("change");
+      $(".external").css("display", AudioIn=="external"? "": "none");
+      $("#level").val(MicLineSelect=="mic"?"Microphone":"Line"); 
+      $("#sample_rate").val(AudSampleRate!="" ? AudSampleRate: "N/A"); 
+      //
+			$("#audio_submit").prop("disabled", false);
+    }
+
+		function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url + " - " + g_cur_tab_page);
+		  $.get(src_url+"/command/inquiry.cgi?inqjs=video_input_status", 
+            {inqjs: "av_input", cgi_time: $.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+        try {
+          fresh_page(data);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+          _console_log("loadcgi()-- wrong data!!");
+        //setTimeout(function(){loadcgi();}, 2000);
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var VideoInputStatus="SDI"\n' +
+                'var VideoInputActive="SDI"\n' +
+                'var FrameWidth="1920"\n' +
+                'var FrameHeight="1080"\n' +
+                'var FrameInterval="16683"\n' +
+                'var Interlaced="0"\n' +
+                //------------------------
+                'var VideoInput="hdmi"\n' +
+                'var VideoSource="sdi,hdmi"\n' +
+                'var AudInCodec="64000"\n' +
+                'var AudioIn="external"\n' +
+                'var MicLineSelect="mic"\n' +
+                'var VideoInput="sdi"\n' +
+                'var AudCodec1="aac_lc"\n' +
+                'var AudBitRate1="128000"\n' +
+                'var AudSampleRate1="48000"\n' +
+                'var AudSrcStereo1="1"\n' +
+                'var AudAttVideo1="1"\n' +
+                'var AudCodec2="aac_lc"\n' +
+                'var AudBitRate2="128000"\n' +
+                'var AudSampleRate2="48000"\n' +
+                'var AudSrcStereo2="2"\n' +
+                'var AudAttVideo2="2"\n';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+      });
+		}
+    //
+    adv_init();
+    var g_cur_tab_page = "video";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+	  setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

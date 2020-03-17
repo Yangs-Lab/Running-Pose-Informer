@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Stream</h1></div>
+        </div>
+
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#info1">Channel 1</a></li>
+					<li><a data-toggle="tab" href="#info2">Channel 2</a></li>
+				</ul>
+				
+				<div class="tab-content" id="tab-contents" style="display:none">
+          <!-- Channel 1 -->
+					<div id="info1" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top"><!-- Channel1 / Preset -->
+									<td class="col-lg-4px-mobile">Preset</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_preset" /></td>
+								</tr>
+								<tr class="channel1_Preset col-wow"><!-- Channel1 / Protocol1 -->
+									<td class="col-lg-4px-mobile">
+                    Protocol 1&nbsp;&nbsp;&nbsp;
+                    <i class="channel1_Protocol1_i fa fa-fw fa-caret-down" />
+                  </td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_protocol1" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_HLS col-wow"><!-- Channel1 / HLS -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Duration (second)</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_hls_duration" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Segment</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_hls_segment" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Server URL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_hls_srvurl" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow"><!-- Channel1 / RTP1 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_ip1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_port1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_ttl1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_video_pid1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_audio_pid1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow channel1_RTP1_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec_L1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_RTP1 col-wow channel1_RTP1_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec_D1" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_TS1 col-wow"><!-- Channel1 / TS1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_protocol1" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_ip1" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_port1" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_ttl1" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_ts_video_pid1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_ts_audio_pid1" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_RTMP1 col-wow"><!-- Channel1 / RTMP1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_rtmp_url1" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_RTMP1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_rtmp_key1" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow"><!-- Channel1 / SRT1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_srt_url1" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_tos1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_ttl1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_mtu1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_latency1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_encryption1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_bandwidth_overhead1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_ZIXI1 col-wow"><!-- Channel1 / Zixi1 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Stream ID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_zixi_streamid1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Max. Bitrate (kbps)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_zixi_maxbps1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Max. Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_zixi_maxlatency1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TLS Certificate</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_zixi_tls_cert1" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol1 channel1_ZIXI1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_zixi_encryption1" /></td>
+								</tr>
+                  <!-- start Zixi HOST/PORT/IP
+								<tr id="channel1_zixi_host1" class="channel1_Preset channel1_Protocol1 channel1_ZIXI1 col-wow" value="0">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Host</td>
+									<td>&nbsp;&nbsp;IP</td>
+									<td>&nbsp;&nbsp;Port</td>
+									<td>Limit (kbps)</td>
+									<td>Backup</td>
+									<td><i id="channel1_zixi_host1_add" class="fa fa-fw fa-plus zixi_add" style="border:1px solid #eee"></i></td>
+								</tr>
+								<tr id="channel1_zixi_host1_end" style="display:none"></tr>
+                    end Zixi HOST/PORT/IP -->
+								<tr class="channel1_Preset col-wow"><!-- Channel1 / Protocol2 -->
+									<td class="col-lg-4px-mobile">
+                    Protocol 2&nbsp;&nbsp;&nbsp;
+                    <i class="channel1_Protocol2_i fa fa-fw fa-caret-down" />
+                  </td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_protocol2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow"><!-- Channel1 / RTP2 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_ip2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_port2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_ttl2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_video_pid2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_audio_pid2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow channel1_RTP2_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec_L2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_RTP2 col-wow channel1_RTP2_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec_D2" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_TS2 col-wow"><!-- Channel1 / TS2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_protocol2" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_ip2" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_port2" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_ttl2" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_ts_video_pid2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_ts_audio_pid2" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_RTMP2 col-wow"><!-- Channel1 / RTMP2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_rtmp_url2" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_RTMP2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_rtmp_key2" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow"><!-- Channel1 / SRT2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_srt_url2" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_tos2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_ttl2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_mtu2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_latency2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_encryption2" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol2 channel1_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_bandwidth_overhead2" /></td>
+								</tr>
+								<tr class="channel1_Preset col-wow"><!-- Channel1 / Protocol3 -->
+									<td class="col-lg-4px-mobile">
+                    Protocol 3&nbsp;&nbsp;&nbsp;
+                    <i class="channel1_Protocol3_i fa fa-fw fa-caret-down" />
+                  </td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_protocol3" /></td>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow"><!-- Channel1 / RTP3 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_ip3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_port3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_ttl3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_video_pid3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_audio_pid3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow channel1_RTP3_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec_L3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_RTP3 col-wow channel1_RTP3_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_rtp_fec_D3" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_TS3 col-wow"><!-- Channel1 / TS3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_protocol3" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_ip3" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_port3" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_ts_ttl3" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_ts_video_pid3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_ts_audio_pid3" /></td>
+								</tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_RTMP3 col-wow"><!-- Channel1 / RTMP3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_rtmp_url3" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_RTMP3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_rtmp_key3" /></td>
+                </tr>
+                <tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow"><!-- Channel1 / SRT3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel1_srt_url3" /></td>
+                </tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_tos3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_ttl3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_mtu3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_latency3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_encryption3" /></td>
+								</tr>
+								<tr class="channel1_Preset channel1_Protocol3 channel1_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel1_srt_bandwidth_overhead3" /></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+
+        <!-- Channel2 ------------>
+					<div id="info2" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top"><!-- Channel2 / Preset -->
+									<td class="col-lg-4px-mobile">Preset</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_preset" /></td>
+								</tr>
+								<tr class="channel2_Preset col-wow"><!-- Channel2 / Protocol1 -->
+									<td class="col-lg-4px-mobile">
+                    Protocol 1&nbsp;&nbsp;&nbsp;
+                    <i class="channel2_Protocol1_i fa fa-fw fa-caret-down" />
+                  </td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_protocol1" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_HLS col-wow"><!-- Channel2 / HLS -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Duration (second)</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_hls_duration" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Segment</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_hls_segment" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_HLS col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Server URL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_hls_srvurl" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_RTP1 col-wow"><!-- Channel2 / RTP1 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_ip1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_port1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_ttl1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_video_pid1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_audio_pid1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow channel2_RTP1_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec_L1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_RTP1 col-wow channel2_RTP1_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec_D1" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_RTMP1 col-wow"><!-- Channel2 / RTMP1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_rtmp_url1" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_RTMP1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_rtmp_key1" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_TS1 col-wow"><!-- Channel2 / TS1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_protocol1" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_ip1" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_port1" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_TS1 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_ttl1" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_ts_video_pid1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_TS1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_ts_audio_pid1" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow"><!-- Channel2 / SRT1 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_srt_url1" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_tos1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_ttl1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_mtu1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_latency1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_encryption1" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol1 channel2_SRT1 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_bandwidth_overhead1" /></td>
+								</tr>
+								<tr class="channel2_Preset col-wow"><!-- Channel2 / Protocol2 -->
+									<td class="col-lg-4px-mobile">
+                    Protocol 2&nbsp;&nbsp;&nbsp;
+                    <i class="channel2_Protocol2_i fa fa-fw fa-caret-down" />
+                  </td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_protocol2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow"><!-- Channel2 / RTP2 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_ip2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_port2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_ttl2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_video_pid2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_audio_pid2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow channel2_RTP2_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec_L2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_RTP2 col-wow channel2_RTP2_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec_D2" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_RTMP2 col-wow"><!-- Channel2 / RTMP2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_rtmp_url2" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_RTMP2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_rtmp_key2" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_TS2 col-wow"><!-- Channel2 / TS2 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_protocol2" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_ip2" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_port2" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_TS2 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_ttl2" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_ts_video_pid2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_TS2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_ts_audio_pid2" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow"><!-- Channel2 / SRT -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_srt_url2" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_tos2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_ttl2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_mtu2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_latency2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_encryption2" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol2 channel2_SRT2 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_bandwidth_overhead2" /></td>
+								</tr>
+								<tr class="channel2_Preset col-wow"><!-- Channel2 / Protocol3 -->
+									<td class="col-lg-4px-mobile">
+                    Protocol 3&nbsp;&nbsp;&nbsp;
+                    <i class="channel2_Protocol3_i fa fa-fw fa-caret-down" />
+                  </td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_protocol3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow"><!-- Channel2 / RTP3 -->
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_ip3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_port3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_ttl3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_video_pid3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_audio_pid3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;FEC</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow channel2_RTP3_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of L</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec_L3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_RTP3 col-wow channel2_RTP3_fec">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Matrix of D</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_rtp_fec_D3" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_RTMP3 col-wow"><!-- Channel2 / RTMP3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_rtmp_url3" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_RTMP3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Key</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_rtmp_key3" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_TS3 col-wow"><!-- Channel2 / TS3 -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Protocol</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_protocol3" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;IP</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_ip3" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;Port</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_port3" /></td>
+                </tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_TS3 col-wow">
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_ts_ttl3" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Video PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_ts_video_pid3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_TS3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Audio PID</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_ts_audio_pid3" /></td>
+								</tr>
+                <tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow"><!-- Channel2 / SRT -->
+                  <td class="col-lg-4px-mobile">&nbsp;&nbsp;URL</td>
+                  <td class="col-lg-4px" colspan="2"><label id="channel2_srt_url3" /></td>
+                </tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;ToS</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_tos3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;TTL</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_ttl3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;MTU</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_mtu3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Latency (msec)</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_latency3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Encryption</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_encryption3" /></td>
+								</tr>
+								<tr class="channel2_Preset channel2_Protocol3 channel2_SRT3 col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;Bandwidth O/H %</td>
+									<td class="col-lg-4px" colspan="2"><label id="channel2_srt_bandwidth_overhead3" /></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+    var stream_json;  
+    $.getJSON("test-2001.json"+"?_="+$.now(), function(data) {
+			stream_json = data["streamForm"];
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      setTimeout(function(){loadcgi()}, 300);
+     });
+
+    $(".fa-caret-down").on('click', function() {
+    //_console_log(".fa-caret-down click!! ", $(this));
+      var names = $(this)[0].className.split(" ")[0].split("_");
+      var chan = names[0].replace("channel", "");
+      var prot = names[1].replace("Protocol", "");
+      var protClass = "channel" + chan + "_Protocol" + prot;
+      var protID = "channel" + chan + "_protocol" + prot;
+      var protName = $("#"+protID)[0].innerText;
+      var protNameClass = protName=="TSoverIP"? 'channel' + chan + '_' + 'TS' + prot:
+                          protName=="HLS"?      'channel' + chan + '_' + protName:
+                                                'channel' + chan + '_' + protName + prot;
+    //_console_log("chan/protocol: " + chan + "/" + prot);
+    //_console_log("protClass: " + protClass + ", " + $('.'+protClass).css("display"));
+    //_console_log("protID: " + protID + ", protName: " + protName);
+    //_console_log("protNameClass: " + protNameClass + ", " + $('.'+protNameClass).css("display"));
+      if ($('.'+protNameClass).css("display") == "none") {
+        $('.'+protNameClass).css("display", "");
+        if (protName == "RTP") {
+          var rtp_fec = $("#channel"+chan+"_rtp_fec"+prot)[0].innerText;
+          $('.channel'+chan+'_RTP'+prot+'_fec').css("display", rtp_fec=="on"? "": "none");
+        }
+      } else {  
+        $('.'+protNameClass).css("display", "none");
+        if (protName == "RTP") {
+          $('.channel'+chan+'_RTP'+prot+'_fec').css("display", "none");
+        }
+      }
+      //
+      for (var ch=1; ch<=2; ch++) {
+        if (ch != chan) continue;
+        for (var pr=1; pr<=3; pr++) {
+          if (ch == chan && pr == prot) continue;
+          var protName = $("#channel"+ch+"_protocol"+pr)[0].innerText;
+          var protNameClass = protName=="TSoverIP"? 'channel' + ch + '_' + 'TS' + pr:
+                              protName=="HLS"?      'channel' + ch + '_' + protName:
+                                                    'channel' + ch + '_' + protName + pr;
+          $('.'+protNameClass).css("display", "none");
+        }
+      }
+    });
+    
+    function fresh_page(data) {
+		//_console_log("fresh_page()-- enter");
+			if (data == 0) {
+				_console_log("fresh_pag()-- data == 0");
+			//setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+
+			eval(data);
+      //      
+      for (var ch=1; ch<=2; ch++) {
+        // Customize
+        eval('if (typeof Customize'+ch+'=="undefined") var Customize'+ch+' = "off";');
+        // Preset
+        eval('if (typeof Preset'+ch+'=="undefined") var Preset'+ch+' = "off";'
+           + 'var preset_idx = Preset'+ch+'=="off"? 0: parseInt(Preset'+ch+')+1;'
+           + 'var val'+ch+' = "off";'
+           + 'if (Preset'+ch+' != "off") {'
+           + '  var opt = stream_json['+(ch-1)+'].preset_index[preset_idx];'
+           + '  for(key in opt) val'+ch+' = opt[key].replace(/h264/g,"H264").replace(/h265/g,"H265");'
+           + '}'
+           + 'if (Customize'+ch+' == "on") val'+ch+' = Channel'+ch+'Customize;'
+           + '$("#channel'+ch+'_preset").text(val'+ch+');');
+      }
+      // show/hide protocol, 
+      for (var ch=1; ch<=2; ch++) {
+        for (var pr=1; pr<=3; pr++) {
+          if (pr == 1)
+        //eval('$(".channel'+ch+'_HLS"       ).css("display", (Channel'+ch+'Protocol'+pr+'=="HLS"?      "": "none"))');
+          eval('$(".channel'+ch+'_HLS"       ).css("display", "none")');
+        //eval('$(".channel'+ch+'_RTP' +pr+'").css("display", (Channel'+ch+'Protocol'+pr+'=="RTP"?      "": "none"))');
+        //eval('$(".channel'+ch+'_RTMP'+pr+'").css("display", (Channel'+ch+'Protocol'+pr+'=="RTMP"?     "": "none"))');
+        //eval('$(".channel'+ch+'_SRT' +pr+'").css("display", (Channel'+ch+'Protocol'+pr+'=="SRT"?      "": "none"))');
+        //eval('$(".channel'+ch+'_TS'  +pr+'").css("display", (Channel'+ch+'Protocol'+pr+'=="TSoverIP"? "": "none"))');
+        //eval('$(".channel'+ch+'_ZIXI'+pr+'").css("display", (Channel'+ch+'Protocol'+pr+'=="ZIXI"?     "": "none"))');
+          eval('$(".channel'+ch+'_RTP' +pr+'").css("display", "none")');
+          eval('$(".channel'+ch+'_RTMP'+pr+'").css("display", "none")');
+          eval('$(".channel'+ch+'_SRT' +pr+'").css("display", "none")');
+          eval('$(".channel'+ch+'_TS'  +pr+'").css("display", "none")');
+          eval('$(".channel'+ch+'_ZIXI'+pr+'").css("display", "none")');
+        }
+      }
+      // Channel1 / Protocol
+      for (var ch=1; ch<=2; ch++) {
+        // Preset on/off 
+        eval('var Preset = Preset'+ch+';'
+           + 'if (Preset == "off") {'
+           + '  $(".channel'+ch+'_Preset").css("display", Preset=="off"?"none":"");'
+           + '}');
+        if (Preset == "off") continue;
+        //    
+        for (var pr=1; pr<=3; pr++) {
+          // Protocol on/off
+          eval('if (typeof Channel'+ch+'Protocol'+pr+'=="undefined") var Channel'+ch+'Protocol'+pr+' = "off";'
+             + '$("#channel'+ch+'_protocol'+pr+'").text(Channel'+ch+'Protocol'+pr+');'
+             + 'var Protocol = Channel'+ch+'Protocol'+pr+';'
+             + 'if (Protocol == "off") {'
+             + '  $(".channel'+ch+'_Protocol'+pr+'").css("display", Protocol=="off"?"none":"");'
+             + '  $(".channel'+ch+'_Protocol'+pr+'_i").css("display", Protocol=="off"?"none":"");'
+             + '}');
+          if (Protocol == "off") continue;
+          // HLS, protocol 1 only  
+          if (pr == 1) {
+            eval('if (typeof Channel'+ch+'HLSduration=="undefined") var Channel'+ch+'HLSduration = "";'
+               + '$("#channel'+ch+'_hls_duration").text(Channel'+ch+'HLSduration);'
+               + 'if (typeof Channel'+ch+'HLSsegment=="undefined") var Channel'+ch+'HLSsegment = "";'
+               + 'var segm = Channel'+ch+'HLSsegment;'
+               + '$("#channel'+ch+'_hls_segment").text(segm=="fmp4"? "Fragmented MP4": "MPEG-2 TS");'
+               + 'if (typeof Channel'+ch+'HLSsrvurl=="undefined") var Channel'+ch+'HLSsrvurl = "";'
+               + '$("#channel'+ch+'_hls_srvurl").text(Channel'+ch+'HLSsrvurl)');
+          }
+          // ZIXI, channel 1 - protocol 1 only  
+          if (ch == 1 && pr == 1) {
+            eval('if (typeof Channel'+ch+'ZixiStreamId'+pr+'=="undefined") var Channel'+ch+'ZixiStreamId'+pr+' = "";'
+               + '$("#channel'+ch+'_zixi_streamid'+pr+'").text(Channel'+ch+'ZixiStreamId'+pr+');'
+               + 'if (typeof Channel'+ch+'ZixiMaxbps'+pr+'=="undefined") var Channel'+ch+'ZixiMaxbps'+pr+' = "";'
+               + '$("#channel'+ch+'_zixi_maxbps'+pr+'").text(Channel'+ch+'ZixiMaxbps'+pr+');'
+               + 'if (typeof Channel'+ch+'ZixiMaxlatency'+pr+'=="undefined") var Channel'+ch+'ZixiMaxlatency'+pr+' = "";'
+               + '$("#channel'+ch+'_zixi_maxlatency'+pr+'").text(Channel'+ch+'ZixiMaxlatency'+pr+');'
+               + 'if (typeof Channel'+ch+'ZixiTLSCert'+pr+'=="undefined") var Channel'+ch+'ZixiTLSCert'+pr+' = "disable";'
+               + 'var cert = Channel'+ch+'ZixiTLSCert'+pr+';'
+               + '$("#channel'+ch+'_zixi_tls_cert'+pr+'").text(cert=="enable"?"Enable":cert=="disable"?"Disable":cert);'
+               + 'if (typeof Channel'+ch+'ZixiEncryption'+pr+'=="undefined") var Channel'+ch+'ZixiEncryption'+pr+' = "none";'
+               + 'var encr = Channel'+ch+'ZixiEncryption'+pr+';'
+               + '$("#channel'+ch+'_zixi_encryption'+pr+'").text(encr=="aes128"?"AES 128":encr=="aes192"?"AES 192":encr=="aes256"?"AES 256":"None")');
+          }
+          // RTP
+          eval('if (typeof Channel'+ch+'RTPclientIP'+pr+'=="undefined") var Channel'+ch+'RTPclientIP'+pr+' = "";'
+             + '$("#channel'+ch+'_rtp_ip'+pr+'").text(Channel'+ch+'RTPclientIP'+pr+');'
+             + 'if (typeof Channel'+ch+'RTPclientPort'+pr+'=="undefined") var Channel'+ch+'RTPclientPort'+pr+' = "";'
+             + '$("#channel'+ch+'_rtp_port'+pr+'").text(Channel'+ch+'RTPclientPort'+pr+');'
+             + 'if (typeof Channel'+ch+'RTPTTL'+pr+'=="undefined") var Channel'+ch+'RTPTTL'+pr+' = "64";'
+             + '$("#channel'+ch+'_rtp_ttl'+pr+'").text(Channel'+ch+'RTPTTL'+pr+');'
+             + 'if (typeof Channel'+ch+'RTPVideoPid'+pr+'=="undefined") var Channel'+ch+'RTPVideoPid'+pr+' = "";'
+             + 'var vpid = Channel'+ch+'RTPVideoPid'+pr+';'
+             + '$("#channel'+ch+'_rtp_video_pid'+pr+'").text(vpid==""?"100":vpid);'
+             + 'if (typeof Channel'+ch+'RTPAudioPid'+pr+'=="undefined") var Channel'+ch+'RTPAudioPid'+pr+' = "";'
+             + 'var apid = Channel'+ch+'RTPAudioPid'+pr+';'
+             + '$("#channel'+ch+'_rtp_audio_pid'+pr+'").text(apid==""?"101":apid);'
+             + 'if (typeof Channel'+ch+'RTPFecEnable'+pr+'=="undefined") var Channel'+ch+'RTPFecEnable'+pr+' = "off";'
+             + '$("#channel'+ch+'_rtp_fec'+pr+'").text(Channel'+ch+'RTPFecEnable'+pr+');'
+             + 'if (Channel'+ch+'RTPFecEnable'+pr+' == "on") {'
+             + '  if (typeof Channel'+ch+'RTPFecMatrixL'+pr+'=="undefined") var Channel'+ch+'RTPFecMatrixL'+pr+' = "8";'
+             + '  $("#channel'+ch+'_rtp_fec_L'+pr+'").text(Channel'+ch+'RTPFecMatrixL'+pr+');'
+             + '  if (typeof Channel'+ch+'RTPFecMatrixD'+pr+'=="undefined") var Channel'+ch+'RTPFecMatrixD'+pr+' = "4";'
+             + '  $("#channel'+ch+'_rtp_fec_D'+pr+'").text(Channel'+ch+'RTPFecMatrixD'+pr+');'
+             + '} else {'
+             + '  $(".channel'+ch+'_RTP'+pr+'_fec").css("display", "none");'
+             + '}');
+          // RTMP
+          eval('if (typeof Channel'+ch+'RTMPurl'+pr+'=="undefined") var Channel'+ch+'RTMPurl'+pr+' = "";'
+             + '$("#channel'+ch+'_rtmp_url'+pr+'").text(Channel'+ch+'RTMPurl'+pr+');'
+             + 'if (typeof Channel'+ch+'RTMPkey'+pr+'=="undefined") var Channel'+ch+'RTMPkey'+pr+' = "";'
+             + '$("#channel'+ch+'_rtmp_key'+pr+'").text(Channel'+ch+'RTMPkey'+pr+')');
+          // TS over IP
+          eval('if (typeof Channel'+ch+'TSprotocol'+pr+'=="undefined") var Channel'+ch+'TSprotocol'+pr+' = "";'
+             + '$("#channel'+ch+'_ts_protocol'+pr+'").text(Channel'+ch+'TSprotocol'+pr+'.toUpperCase());'
+             + 'if (typeof Channel'+ch+'TSclientIP'+pr+'=="undefined") var Channel'+ch+'TSclientIP'+pr+' = "";'
+             + '$("#channel'+ch+'_ts_ip'+pr+'").text(Channel'+ch+'TSclientIP'+pr+');'
+             + 'if (typeof Channel'+ch+'TSclientPort'+pr+'=="undefined") var Channel'+ch+'TSclientPort'+pr+' = "";'
+             + '$("#channel'+ch+'_ts_port'+pr+'").text(Channel'+ch+'TSclientPort'+pr+');'
+             + 'if (typeof Channel'+ch+'TSTTL'+pr+'=="undefined") var Channel'+ch+'TSTTL'+pr+' = "64";'
+             + '$("#channel'+ch+'_ts_ttl'+pr+'").text(Channel'+ch+'TSTTL'+pr+');'
+             + 'if (typeof Channel'+ch+'TSVideoPid'+pr+'=="undefined") var Channel'+ch+'TSVideoPid'+pr+' = "";'
+             + 'var vpid = Channel'+ch+'TSVideoPid'+pr+';'
+             + '$("#channel'+ch+'_ts_video_pid'+pr+'").text(vpid==""?"100":vpid);'
+             + 'if (typeof Channel'+ch+'TSAudioPid'+pr+'=="undefined") var Channel'+ch+'TSAudioPid'+pr+' = "";'
+             + 'var apid = Channel'+ch+'TSAudioPid'+pr+';'
+             + '$("#channel'+ch+'_ts_audio_pid'+pr+'").text(apid==""?"101":apid)');
+          // SRT
+          eval('if (typeof Channel'+ch+'SRTUrl'+pr+'=="undefined") var Channel'+ch+'SRTUrl'+pr+' = "";'
+             + '$("#channel'+ch+'_srt_url'+pr+'").text(Channel'+ch+'SRTUrl'+pr+');'
+             + 'if (typeof Channel'+ch+'SRTLatency'+pr+'=="undefined") var Channel'+ch+'SRTLatency'+pr+' = "120";'
+             + '$("#channel'+ch+'_srt_latency'+pr+'").text(Channel'+ch+'SRTLatency'+pr+');'
+             + 'if (typeof Channel'+ch+'SRTEncryption'+pr+'=="undefined") var Channel'+ch+'SRTEncryption'+pr+' = "none";'
+             + '$("#channel'+ch+'_srt_encryption'+pr+'").text(Channel'+ch+'SRTEncryption'+pr+'.replace(/aes/g,"AES "));'
+             + 'if (typeof Channel'+ch+'SRTBandwidthOverhead'+pr+'=="undefined") var Channel'+ch+'SRTBandwidthOverhead'+pr+' = "25";'
+             + '$("#channel'+ch+'_srt_bandwidth_overhead'+pr+'").text(Channel'+ch+'SRTBandwidthOverhead'+pr+');'
+             + 'if (typeof Channel'+ch+'SRTMTU'+pr+'=="undefined") var Channel'+ch+'SRTMTU'+pr+' = "1456";'
+             + '$("#channel'+ch+'_srt_mtu'+pr+'").text(Channel'+ch+'SRTMTU'+pr+');'
+             + 'if (typeof Channel'+ch+'SRTTTL'+pr+'=="undefined") var Channel'+ch+'SRTTTL'+pr+' = "64";'
+             + '$("#channel'+ch+'_srt_ttl'+pr+'").text(Channel'+ch+'SRTTTL'+pr+');'
+             + 'if (typeof Channel'+ch+'SRTToS'+pr+'=="undefined") var Channel'+ch+'SRTToS'+pr+' = "0";'
+             + '$("#channel'+ch+'_srt_tos'+pr+'").text(Channel'+ch+'SRTToS'+pr+')');
+        }
+      }    
+    }
+     
+    function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url + " - " + g_cur_tab_page);
+      $.get(src_url+"/command/inquiry.cgi?inqjs=stream&inqjs=video", 
+            {inqjs:"video_input_status", cgi_time:$.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+        try {
+          fresh_page(data);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+          _console_log("loadcgi()-- wrong data!!");
+				//setTimeout(function(){loadcgi();}, 2000);
+        }
+      }).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var Preset1="0"\n' +
+                'var Customize1="off"\n' +
+                'var Channel1Customize="Customize-1.2"\n' +                
+                'var Preset2="2"\n' +
+                'var Customize2="off"\n' +
+                'var Channel2Customize="Customize-2.1"\n' +
+                //
+                'var Channel1Protocol1="ZIXI"\n' +
+                'var Channel1Protocol2="RTP"\n' +
+                'var Channel1Protocol3="RTMP"\n' +
+                'var Channel2Protocol1="HLS"\n' +
+                'var Channel2Protocol2="TSoverIP"\n' +
+                'var Channel2Protocol3="SRT"\n' +
+                // Channel1 / Protocol ---------------
+                // Channel1 / Protocol / HLS
+                'var Channel1HLSduration="10"\n' +
+                'var Channel1HLSsegment="mpegts"\n' +
+                'var Channel1HLSsrvurl="192.168.1.1000"\n' +
+                // Channel1 / ZIXI
+                'var Channel1ZixiStreamId1="demo"\n' +
+                'var Channel1ZixiMaxbps1="8000"\n' +
+                'var Channel1ZixiMaxlatency1="1000"\n' +
+                'var Channel1ZixiTLSCert1="disable"\n' +
+                'var Channel1ZixiEncryption1="aes128"\n' +
+                'var Channel1ZixiHost1_num="1"\n' +
+                'var Channel1ZixiHost1_1="192.168.10.10,any,8000,,0"\n' +
+                // Channel1 / Protocol / RTP
+                'var Channel1RTPclientIP1="192.168.1.100"\n' +
+                'var Channel1RTPclientPort1="1000"\n' +
+                'var Channel1RTPVideoPid1="100"\n' +
+                'var Channel1RTPAudioPid1="101"\n' +
+                'var Channel1RTPFecEnable1="off"\n' +
+                'var Channel1RTPFecMatrixL1="8"\n' +
+                'var Channel1RTPFecMatrixD1="4"\n' +
+                //
+                'var Channel1RTPclientIP2="192.168.1.200"\n' +
+                'var Channel1RTPclientPort2="2000"\n' +
+                'var Channel1RTPVideoPid2="200"\n' +
+                'var Channel1RTPAudioPid2="201"\n' +
+                'var Channel1RTPFecEnable2="on"\n' +
+                'var Channel1RTPFecMatrixL2="8"\n' +
+                'var Channel1RTPFecMatrixD2="4"\n' +
+                //
+                'var Channel1RTPclientIP3="192.168.1.300"\n' +
+                'var Channel1RTPclientPort3="3000"\n' +
+                'var Channel1RTPVideoPid3="300"\n' +
+                'var Channel1RTPAudioPid3="301"\n' +
+                'var Channel1RTPFecEnable3="off"\n' +
+                'var Channel1RTPFecMatrixL3="8"\n' +
+                'var Channel1RTPFecMatrixD3="4"\n' +
+                // Channel1 / Protocol / RTMP
+                'var Channel1RTMPurl1="192.168.1.100"\n' +
+                'var Channel1RTMPkey1="channel1-key1"\n' +
+                //    
+                'var Channel1RTMPurl2="192.168.1.200"\n' +
+                'var Channel1RTMPkey2="channel1-key2"\n' +
+                //    
+                'var Channel1RTMPurl3="192.168.1.300"\n' +
+                'var Channel1RTMPkey3="channel1-key3"\n' +
+                // Channel1 / Protocol / TS over IP
+                'var Channel1TSprotocol1="tcp"\n' +
+                'var Channel1TSclientIP1="192.168.1.100"\n' +
+                'var Channel1TSclientPort1="1000"\n' +
+                'var Channel1TSVideoPid1=""\n' +
+                'var Channel1TSAudioPid1=""\n' +
+                //    
+                'var Channel1TSprotocol2="udp"\n' +
+                'var Channel1TSclientIP2="192.168.1.200"\n' +
+                'var Channel1TSclientPort2="2000"\n' +
+                'var Channel1TSVideoPid2=""\n' +
+                'var Channel1TSAudioPid2=""\n' +
+                //    
+                'var Channel1TSprotocol3="udp"\n' +
+                'var Channel1TSclientIP3="192.168.1.300"\n' +
+                'var Channel1TSclientPort3="3000"\n' +
+                'var Channel1TSVideoPid3=""\n' +
+                'var Channel1TSAudioPid3=""\n' +
+                // Channel1 / Protocol / SRT
+                'var Channel1SRTUrl1="192.168.1.100"\n' +
+                'var Channel1SRTLatency1="120"\n' +
+                'var Channel1SRTEncryption1="aes128"\n' +
+                'var Channel1SRTBandwidthOverhead1="25"\n' +
+                'var Channel1SRTMTU1="1456"\n' +
+                'var Channel1SRTTTL1="64"\n' +
+                'var Channel1SRTToS1="0"\n' +
+                //
+                'var Channel1SRTUrl2="192.168.1.200"\n' +
+                'var Channel1SRTLatency2="120"\n' +
+                'var Channel1SRTEncryption2="none"\n' +
+                'var Channel1SRTBandwidthOverhead2="25"\n' +
+                'var Channel1SRTMTU2="1456"\n' +
+                'var Channel1SRTTTL2="64"\n' +
+                'var Channel1SRTToS2="0"\n' +
+                //
+                'var Channel1SRTUrl3="192.168.1.300"\n' +
+                'var Channel1SRTLatency3="120"\n' +
+                'var Channel1SRTEncryption3="aes256"\n' +
+                'var Channel1SRTBandwidthOverhead3="25"\n' +
+                'var Channel1SRTMTU3="1456"\n' +
+                'var Channel1SRTTTL3="64"\n' +
+                'var Channel1SRTToS3="0"\n' +
+                // Channel2 / Protocol ---------------
+                // Channel2 / Protocol / HLS
+                'var Channel2HLSduration="10"\n' +
+                'var Channel2HLSsegment="fmp4"\n' +
+                'var Channel2HLSsrvurl="192.168.2.2000"\n' +
+                // Channel2 / Protocol / RTP
+                'var Channel2RTPclientIP1="192.168.2.100"\n' +
+                'var Channel2RTPclientPort1="1000"\n' +
+                'var Channel2RTPVideoPid1="100"\n' +
+                'var Channel2RTPAudioPid1="101"\n' +
+                'var Channel2RTPFecEnable1="on"\n' +
+                'var Channel2RTPFecMatrixL1="8"\n' +
+                'var Channel2RTPFecMatrixD1="4"\n' +
+                //
+                'var Channel2RTPclientIP2="192.168.2.200"\n' +
+                'var Channel2RTPclientPort2="2000"\n' +
+                'var Channel2RTPVideoPid2="200"\n' +
+                'var Channel2RTPAudioPid2="201"\n' +
+                'var Channel2RTPFecEnable2="off"\n' +
+                'var Channel2RTPFecMatrixL2="8"\n' +
+                'var Channel2RTPFecMatrixD2="4"\n' +
+                //
+                'var Channel2RTPclientIP3="192.168.2.300"\n' +
+                'var Channel2RTPclientPort3="3000"\n' +
+                'var Channel2RTPVideoPid3="300"\n' +
+                'var Channel2RTPAudioPid3="301"\n' +
+                'var Channel2RTPFecEnable3="on"\n' +
+                'var Channel2RTPFecMatrixL3="8"\n' +
+                'var Channel2RTPFecMatrixD3="4"\n' +
+                // Channel2 / Protocol / RTMP
+                'var Channel2RTMPurl1="192.168.2.100"\n' +
+                'var Channel2RTMPkey1="channel2-key1"\n' +
+                //    
+                'var Channel2RTMPurl2="192.168.2.200"\n' +
+                'var Channel2RTMPkey2="channel2-key2"\n' +
+                //    
+                'var Channel2RTMPurl3="192.168.2.300"\n' +
+                'var Channel2RTMPkey3="channel2-key3"\n' +
+                // Channel2 / Protocol / TS over IP
+                'var Channel2TSprotocol1="udp"\n' +
+                'var Channel2TSclientIP1="192.168.2.100"\n' +
+                'var Channel2TSclientPort1="1000"\n' +
+                'var Channel2TSVideoPid1=""\n' +
+                'var Channel2TSAudioPid1=""\n' +
+                //    
+                'var Channel2TSprotocol2="tcp"\n' +
+                'var Channel2TSclientIP2="192.168.2.200"\n' +
+                'var Channel2TSclientPort2="2000"\n' +
+                'var Channel2TSVideoPid2=""\n' +
+                'var Channel2TSAudioPid2=""\n' +
+                //    
+                'var Channel2TSprotocol3="udp"\n' +
+                'var Channel2TSclientIP3="192.168.2.300"\n' +
+                'var Channel2TSclientPort3="3000"\n' +
+                'var Channel2TSVideoPid3=""\n' +
+                'var Channel2TSAudioPid3=""\n' +
+                // Channel2 / Protocol / SRT
+                'var Channel2SRTUrl1="192.168.2.100"\n' +
+                'var Channel2SRTLatency1="120"\n' +
+                'var Channel2SRTEncryption1="aes128"\n' +
+                'var Channel2SRTBandwidthOverhead1="25"\n' +
+                'var Channel2SRTMTU1="1456"\n' +
+                'var Channel2SRTTTL1="64"\n' +
+                'var Channel2SRTToS1="0"\n' +
+                //
+                'var Channel2SRTUrl2="192.168.2.200"\n' +
+                'var Channel2SRTLatency2="120"\n' +
+                'var Channel2SRTEncryption2="aes192"\n' +
+                'var Channel2SRTBandwidthOverhead2="25"\n' +
+                'var Channel2SRTMTU2="1456"\n' +
+                'var Channel2SRTTTL2="64"\n' +
+                'var Channel2SRTToS2="0"\n' +
+                //
+                'var Channel2SRTUrl3="192.168.2.300"\n' +
+                'var Channel2SRTLatency3="120"\n' +
+                'var Channel2SRTEncryption3="aes256"\n' +
+                'var Channel2SRTBandwidthOverhead3="25"\n' +
+                'var Channel2SRTMTU3="1456"\n' +
+                'var Channel2SRTTTL3="64"\n' +
+                'var Channel2SRTToS3="0"\n' +
+                '';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+      });
+    }
+    //
+    adv_init();
+    var g_cur_tab_page = "info1";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+		setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

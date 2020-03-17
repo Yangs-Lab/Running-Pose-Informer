@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="scan_message" class="scan_div">
+    <label id="id_message">Device scanning ...</label>
+  </div>
+  <style>
+    .scan_div {
+      color: #999; font-size: 30px; text-align: center;
+      margin-top: 70% !important;
+    }
+  </style>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/advcls.js"></script>
+	<script type="text/javascript">
+    var src_url, scan_sec = 20;  // 20 x 0.5 = 10 sec.
+    function searching() {
+      if (scan_sec <= 0) {
+        $('#id_message')[0].innerHTML = 'No device found !';
+        ADVC.curtain().create().display(false);
+        return;
+      }
+      // Check if source/target url is ready 
+      src_url = _get_source_url();
+      if (src_url != '') {
+        ADVC.curtain().create().display(false);
+        var ip_addr = src_url.replace(/https/g,'').replace(/http/g,'').replace('://','');
+        $('#id_message')[0].innerHTML = 'Device found, using ' + ip_addr;
+        setTimeout(function() {
+          parent.document.getElementById('content_page').src = 'dashboard.html';
+        }, 1000);
+      } else {
+        scan_sec -= 1;
+        setTimeout(function(){searching()}, 500);
+      }
+    }
+    //
+    adv_init(true);
+    ADVC.curtain().create().display(true);
+	  setTimeout(function(){searching()}, 200);
+  </script>
+</body>
+</html>

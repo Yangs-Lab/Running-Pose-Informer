@@ -1,0 +1,21 @@
+{
+  "name": "SSDP Browser",
+  "version": "0.1",
+  "manifest_version": 2,
+  "minimum_chrome_version": "27",
+  "description": "Discovers SSDP devices on the network",
+  "sockets": {
+    "udp": {
+      "send": "*"
+    },
+    "tcp": {
+    }
+  },
+  "permissions": [
+    "http://*/",
+    "storage",
+    {
+      "socket": ["udp-send-to", "udp-bind", "udp-multicast-membership"]
+    }
+  ]
+}

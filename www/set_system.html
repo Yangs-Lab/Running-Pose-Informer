@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+	<link rel="stylesheet" href="css/DateTimePicker.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">System</h1></div>
+        </div>
+		
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#init">Initialize</a></li>
+					<li><a data-toggle="tab" href="#timesetting">Date / Time</a></li>
+				</ul>	
+
+				<div class="tab-content" id="tab-contents" style="display:none">	
+					<div id="init" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+							  <tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Reboot system</td>
+									<td class="col-lg-4px">
+                    <button type="submit" id="reboot" class="btn btn-primary"> Go </button>
+                  </td>
+                  <td></td>
+								</tr>
+                <tr class="col-wow">
+									<td class="col-lg-4px-mobile">Factory default</td>
+									<td class="col-lg-4px">
+										<button type="submit" id="factory_default" class="btn btn-primary"> Go </button>
+										<input type="checkbox" id="retain_network" style="margin-left:12px" checked> Retain network
+									</td>
+									<td></td>
+								</tr>
+							</tbody></table>
+						</div>
+          </div>
+
+					<div id="timesetting" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+                <tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile" style="vertical-align:middle">Device time</td>
+									<td><input type="text" id="device_time" class="form-control small-control" style="max-width:400px" readonly></td>
+									<td></td><td></td>
+                </tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Time zone</td>
+									<td class="col-lg-4px"><select id="time_zone" class="form-control small-control" style="max-width:400px"></select></td>
+									<td></td><td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile"><input type="checkbox" id="ntp"> NTP</td>
+									<td></td><td></td><td></td>
+								</tr>
+                <tr class="withNTP col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;<input type="checkbox" id="ntp_auto"> NTP auto</td>
+									<td></td><td></td><td></td>
+                </tr>
+								<tr class="withNTP col-wow NTPManual" style="display:none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NTP server</td>
+									<td class="col-lg-4px">
+										<input type="text" id="server" name="ntp_server" list="ntp_server" placeholder="" class="form-control small-control" style="max-width:400px" />
+										<datalist id="ntp_server" />
+                  </td>
+									<td></td><td></td>
+								</tr>
+								<tr class="noNTP col-wow" style="display:none">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;Date & Time</td>
+									<td class="col-lg-4px">
+										<input type="text" id="date_time" data-field="datetime" class="form-control small-control" style="max-width:400px" readonly>
+										<div id="dtBox1" style="max-width:200px"></div>
+                  </td>
+									<td id="S_TD" class="item_TD stm6TranslatedDone"></td>
+									<td></td>
+								</tr>
+								<tr class="tr-btn">
+									<td><button type="submit" id="time_submit" class="btn btn-primary">Submit</button></td>
+									<td></td><td></td><td></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+
+<!--<script src="js/jquery.js"></script>-->
+  <!-- DateTimePicker -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/DateTimePicker.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#dtBox1").DateTimePicker({
+        isPopup: false,
+				buttonsToDisplay: ["HeaderCloseButton", "SetButton"],
+			//dateTimeFormat: "yyyy-MM-dd HH:mm:ss",
+				dateTimeFormat: "yyyy-MM-dd HH:mm",
+        minDateTime: '2000-01-02 00:00',
+        addEventHandlers: function() {
+					var dtPickerObj = this;
+					$(window).resize(function() {
+          //dtPickerObj.setIsPopup(false);
+					});
+				},
+        afterShow: function(input, inst) {
+          var dtRect = document.getElementById('date_time').getBoundingClientRect();
+          var bxRect = document.getElementById('dtBox1').getBoundingClientRect();
+          var realX = bxRect.x - (bxRect.width<=dtRect.width? 0: bxRect.width-dtRect.width);
+          $(this.element).css({left: realX});
+        }
+			});
+		});
+	</script>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+		var ntp_server_list, time_zone_trans, _time_zone;
+    $.getJSON("test-2001.json?_="+$.now(), function(data) {
+			_time_zone = data["timeForm_2"]["time_zone"];
+			time_zone_trans = data["timeForm_2"]["time_zone_trans"];
+			ntp_server_list = data["timeServer"]["ntp_server"];
+		  $.each(data["timeForm_2"], function(func, opts) {
+		    for (var opt in opts) {
+			    $("#"+func).append($('<option>', {value: opt, text: opts[opt]}));
+        }
+		  });
+			$.each(data["timeServer"], function(func, opts) {
+				for (var opt in opts) {
+					$("#"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));
+				}
+			});
+			$.each(data["usbMode"], function(func, opts) {
+        for (var opt in opts) {
+          if (typeof opts[opt] === "object") {
+            for(idx in opts[opt]) {
+            $("#"+func).append($('<option>', {value: idx, text: opts[opt][idx]})); break;
+            }							
+          } else
+            $("#"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));    
+        }
+			});
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      setTimeout(function(){loadcgi()}, 300);
+     });
+
+		function _reboot_() {
+      msleep(1000); $.get("command/reboot.cgi"); msleep(10000);			
+			_console_log("Reload...");
+			top.location.reload(true);
+		}
+		
+    $("#reboot").on("click", function() {  
+      _console_log("submit_reboot.on(click)--");
+      if(true == confirm("Do you want to reboot device?\n\n")) {
+        $("#factory_default").prop("disabled", true);
+        $("#reboot").prop("disabled", true);
+				g_curtain.display(true);
+				$.get(src_url+"/command/inquiry.cgi", {inqjs: "system"}).done(function (data) {
+          _console_log("Ready to reboot!!");
+          _reboot_();
+				});
+		  }
+		});
+		
+    $("#factory_default").on("click", function() {
+      _console_log("factory_default.on(click)--");
+      if (true == confirm("This system will be rebooted to enable system changes.\n"
+                        + "Are you sure?\n\n")) {
+        $("#factory_default").prop("disabled", true);
+        $("#reboot").prop("disabled", true);
+        g_curtain.display(true);
+        var mode = $("#retain_network").prop("checked")? "soft": "hard";
+        $.get(src_url+"/command/user.cgi", {FactoryDefault: mode}).done(function (data) {
+          _console_log("Factory default DONE!!");
+          _reboot_();
+        });
+      }
+    });
+    
+	  $("#ntp").on("change", function() {
+    //_console_log("ntp.on(change)-- " + this.checked);
+      if (this.checked) {
+        $(".noNTP").css("display", "none");
+        $(".withNTP").css("display", "");
+        $(".NTPManual").css("display", ($("#ntp_auto")[0].checked? "none": ""));
+      } else {
+        $(".noNTP").css("display", "");
+        $(".withNTP").css("display", "none");
+      }
+	  });
+
+	  $("#ntp_auto").on("change", function() {
+    //_console_log("ntp_auto.on(change)-- " + this.checked);
+	   	$(".NTPManual").css("display", (this.checked? "none": ""));
+	  });
+
+		// time_submit ----
+	  $("#time_submit").on("click", function() {
+		  _console_log("time_submit.on(click)-- " + $("#server").val() + ", " + $("#time_zone").val());
+      diff_time = false; // terminate device time loop
+      //
+      g_curtain.display(true); msleep(1000);
+		  var is_ntp = $("#ntp").prop("checked");
+		  if (is_ntp == false) {
+				var sDT = $("#date_time").val(); // YYYY-MM-DD hh:mm  ==> MMDDhhmmYYYY
+				var sDateTime = sDT.substr(5,2) + sDT.substr(8,2) + sDT.substr(11,2)
+											+ sDT.substr(14,2) + sDT.substr(0,4);
+			  var writeNtp = {NtpEnable: "off", DateTime: sDateTime};
+      } else
+		  if ($("#ntp_auto").prop("checked")) {
+			  var writeNtp = {NtpEnable: "on", NtpAuto: "on"};
+		  } else {
+				var srvr = $("#server").val();
+			  var writeNtp = {NtpEnable: "on", NtpAuto: "off", NtpServer: (srvr==""?" ":srvr)};
+		  }
+		  writeNtp.TimeZone = $("#time_zone").val();
+		  //
+      $("#time_submit").prop("disabled", true);
+      g_cur_tab_page = "timesetting";
+			writeNtp.cgi_time = $.now();
+		  $.get(src_url+"/command/system.cgi", writeNtp).done(function (data) {
+				msleep(2000);
+				// reset NTP need to read twice	
+        if (is_ntp == true) {
+					$.get(src_url+"/command/inquiry.cgi", {inqjs: "system", cgi_time: $.now()}); msleep(2000);
+					$.get(src_url+"/command/inquiry.cgi", {inqjs: "system", cgi_time: $.now()}); msleep(5000);
+				}
+				setTimeout(function() {
+					loadcgi(g_cur_tab_page);
+					_check_to_page(g_cur_tab_page, false);
+				}, 2000);
+		  });
+	  });	
+
+    var diff_time = -1;
+    
+    function set_device_time(time) {
+    //_console_log("set_device_time()-- time: " + time);
+      if (diff_time === false) {
+				diff_time = -1; 
+				$("#device_time").val("");
+				return;
+			}
+      //
+      var now = $.now();
+      if (typeof time == "undefined") time = parseInt(now) + diff_time;
+      else if (diff_time == -1)       diff_time = parseInt(time) - parseInt(now);
+      //
+      var tt = new Date(parseInt(time));
+      var tzOffs = parseInt(tt.getTimezoneOffset()); // by hours.
+			var tzCurr = parseInt(_time_zone[$("#time_zone").val()].split(") ")[0].replace(/\(GMT/g,""));
+			var timeNew = parseInt(time) + parseInt(tzOffs +tzCurr*60) * 60 * 1000;
+      var tm = new Date(timeNew);
+      $("#device_time").val(tm.getFullYear()+'-'
+                           +("0"+(tm.getMonth()+1)).substr(-2)+'-'
+                           +("0"+tm.getDate()).substr(-2)+' '+("0"+tm.getHours()).substr(-2)+':'
+                           +("0"+tm.getMinutes()).substr(-2)+':'+("0"+tm.getSeconds()).substr(-2));
+			tt = 0; delete tt;
+      setTimeout(function(){set_device_time();}, 1000);
+    }
+
+    function fresh_page(data) {
+		//_console_log("fresh_page()-----");
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+        alert("null data!!");
+      //setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      //
+			if (typeof TimeZone !== "undefined") {
+        TimeZone = TimeZone || time_zone_trans[TimeZone];
+        if (TimeZone.substr(0,3) == "GMT")   TimeZone = time_zone_trans[TimeZone];
+      }
+      if (typeof NtpEnable == "undefined") var NtpEnable = typeof NtpService=="undefined"? "off": NtpService;
+      //
+			(typeof NtpAuto   !== "undefined") && $("#ntp_auto").prop("checked",NtpAuto==="on").trigger("change");
+			(typeof NtpServer !== "undefined") && $("#server").val(NtpServer.replace(/[ +]/g,""));
+			(typeof TimeZone  !== "undefined") && $("#time_zone").val(TimeZone);
+			(typeof NtpEnable !== "undefined") && $("#ntp").prop("checked",NtpEnable==="on").trigger("change");
+			var sDT = DateTime.substr(8,4) + '-' + DateTime.substr(0,2) + '-' + DateTime.substr(2,2) + ' '
+							+ DateTime.substr(4,2) + ':' + DateTime.substr(6,2);
+			(typeof DateTime  !== "undefined") && $("#date_time").val(sDT); // MMDDhhmmYYYY
+      (typeof LocalTime !== "undefined") && set_device_time(LocalTime);
+      //
+			$("#time_submit").prop("disabled", false);
+    }
+
+		function loadcgi() {
+    //_console_log("loadcgi()-----"+src_url+"/command/inquiry.cgi?inqjs=video_input_status&inqjs=av_input");
+		  $.get(src_url+"/command/inquiry.cgi", 
+            {inqjs: "system", cgi_time: $.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+        try {
+          fresh_page(data);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+          _console_log("loadcgi()-- wrong data!!");
+        //setTimeout(function(){loadcgi();}, 2000);
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var TimeZone="GMT+8"\n' +
+                'var LocalTime="1578474160881"\n' +
+                'var NtpService="on"\n' +
+                'var NtpAuto="on"\n' +
+                'var NtpServer=""\n' +
+                'var ModelName="VEGA-2001"\n' +
+                'var Serial="ES_Sample"\n' +
+                'var SoftVersion="v1.7.11b14199"\n' +
+                'var UcodeVersion="280096.287458"\n' +
+                'var UcodeDate="2019/8/20"\n' +
+                'var FPGAVersion="0x00000401"\n' +
+                'var ChipId="H199"\n' +
+                'var DateTime="030210252020"\n' +
+                '';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+      });
+		}
+    //
+    adv_init();
+    var g_cur_tab_page = "init";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+	  setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

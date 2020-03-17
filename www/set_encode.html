@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Encode</h1></div>
+        </div>
+
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#info1">Channel 1</a></li>
+					<li><a data-toggle="tab" href="#info2">Channel 2</a></li>
+				</ul>
+				
+				<div class="tab-content" id="tab-contents" style="display:none">
+					<div id="info1" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Preset definition</td>
+									<td class="col-lg-4px"><select id="channel1_preset" class="form-control small-control channel_prof_list"></select></td>
+                  <td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Name</td>
+									<td class="col-lg-4px"><input id="channel1_prof_name" maxlength="48" class="form-control small-control channel_prof_name channel1_db_enable"></input></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Encoding</td>
+									<td class="col-lg-4px"><select id="channel1_encoding" class="form-control small-control channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Resolution</td>
+									<td class="col-lg-4px"><select id="channel1_resolution" class="form-control small-control channel_resolution channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Frame rate</td>
+									<td class="col-lg-4px"><select id="channel1_framerate" class="form-control small-control channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">I-pic interval</td>
+									<td class="col-lg-4px"><select id="channel1_ipic" class="form-control small-control channel_ipic channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="channel1_h264 col-wow">
+									<td class="col-lg-4px-mobile">H264 profile</td>
+									<td class="col-lg-4px"><select id="channel1_h264profile" class="form-control small-control db_enable channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Bitrate encode mode</td>
+									<td class="col-lg-4px"><select id="channel1_compression" class="form-control small-control channel_compression channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="channel1_cbr col-wow">
+									<td class="col-lg-4px-mobile">Bitrate (kbps)</td>
+									<td class="col-lg-4px"><select id="channel1_cbrbitrate" class="form-control small-control channel1_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="channel1_vbr col-wow">
+									<td class="col-lg-4px-mobile">Image quality</td>
+									<td class="col-lg-4px"><select id="channel1_vbrquality" class="form-control small-control channel1_db_enable"></select></td>
+									<td></td>
+								</tr>				
+								<tr class="channel1_crop_cls col-wow" style="display:none">
+									<td class="col-lg-4px-mobile" colspan="2"><input type="checkbox" id="channel1_crop" disabled> Cropping to 1920x960</input></td>
+									<td></td>
+								</tr>
+								<tr class="tr-btn">
+									<td><button type="submit" id="channel1_submit" class="btn btn-primary">Submit</button></td>
+									<td></td><td></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+
+					<div id="info2" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Preset</td>
+									<td class="col-lg-4px"><select id="channel2_preset" class="form-control small-control channel_prof_list"></select></td>
+                  <td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Profile name</td>
+									<td class="col-lg-4px"><input id="channel2_prof_name" maxlength="48" class="form-control small-control channel_prof_name channel2_db_enable"></input></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Encoding</td>
+									<td class="col-lg-4px"><select id="channel2_encoding" class="form-control small-control channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">Resolution</td>
+									<td class="col-lg-4px"><select id="channel2_resolution" class="form-control small-control channel_resolution channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">Frame rate</td>
+									<td class="col-lg-4px"><select id="channel2_framerate" class="form-control small-control channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">I-pic interval</td>
+									<td class="col-lg-4px"><select id="channel2_ipic" class="form-control small-control channel_ipic channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="channel2_h264 nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">H264 profile</td>
+									<td class="col-lg-4px"><select id="channel2_h264profile" class="form-control small-control channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">Bitrate encode mode</td>
+									<td class="col-lg-4px"><select id="channel2_compression" class="form-control small-control channel_compression channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="channel2_cbr nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">Bitrate (kbps)</td>
+									<td class="col-lg-4px"><select id="channel2_cbrbitrate" class="form-control small-control channel2_db_enable"></select></td>
+									<td></td>
+								</tr>
+								<tr class="channel2_vbr nochannel2 col-wow">
+									<td class="col-lg-4px-mobile">Image quality</td>
+									<td class="col-lg-4px"><select id="channel2_vbrquality" class="form-control small-control channel2_db_enable"></select></td>
+									<td></td>
+								</tr>					
+								<tr class="channel2_crop_cls col-wow" style="display:none">
+									<td class="col-lg-4px-mobile" colspan="2"><input type="checkbox" id="channel2_crop" disabled> Cropping to 1920x960</input></td>
+									<td></td>
+								</tr>
+								<tr class="tr-btn">
+									<td><button type="submit" id="channel2_submit" class="btn btn-primary">Submit</button></td>
+									<td></td><td></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .channel_db_disable {opacity: 0.5 !important;}
+  </style>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+		var db_json, json_preset_detail = [];
+    $.getJSON("test-2001.json?_="+$.now(), function(data) {
+			db_json = data;
+      json_preset_detail[0] = data["streamForm"][0]["preset_detail"];
+      json_preset_detail[1] = data["streamForm"][1]["preset_detail"];
+      json_preset_detail[2] = data["streamForm"][2]["preset_detail"];
+      $.each(data["streamForm"], function(key, val) {
+        $.each(val, function(func, opts) {
+          for (var opt in opts) {
+						if (typeof opts[opt] === "object") {
+							for(idx in opts[opt]) {
+                if (func == "preset" && idx == "off") continue; // remove 'off' item
+							$("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: idx, text: opts[opt][idx]})); break;
+							}							
+						} else {
+              $("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));    
+            }
+          }
+        });
+      });
+      $.each(data["videoForm"], function(key, val) {
+	      $.each(val, function(func, opts) {
+	        for (var opt in opts) {
+		        if(opts[opt]=="Adaptive rate control")
+		          $("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: opts[opt], text: opts[opt],disabled:"disabled",style:"color:#999"}));
+		        else
+		        if(opts[opt]=="VBR")
+		          $("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: opts[opt], text: opts[opt],disabled:"disabled",style:"color:#999"}));
+		        else
+						if (typeof opts[opt] === "object")
+							for(idx in opts[opt]) {
+							$("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: idx, text: opts[opt][idx]})); break;
+							}							
+						else
+							$("#channel"+(key+1).toString()+"_"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));    
+	        }
+	      });
+      });
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+		// channel<n>_encoding: 'click' ------------
+		$("#channel1_encoding").on("change", function() {
+			$(".channel1_h264").css("display", this.value=="h265"?"none":"");
+			$(".channel1_h265").css("display", this.value=="h265"?"":"none");
+    //enable_video_crop($("#channel1_resolution")[0], 1);
+		});
+    //
+		$("#channel2_encoding").on("change", function() {
+			var compss = $("#channel2_compression").get(0).value;
+			if (this.value=="h265") {
+				$(".nochannel2").css("display", "");
+				$(".channel2_h264").css("display", "none");
+				$(".channel2_h265").css("display", "");
+				$(".channel2_cbr").css("display", compss=="CBR"?"":"none");
+				$(".channel2_vbr").css("display", compss=="VBR"?"":"none");
+				$(".channel2_adaptive").css("display", compss!="CBR"&&compss!="VBR"?"":"none");
+			} else 
+			if (this.value=="h264") {
+				$(".nochannel2").css("display", "");	
+				$(".channel2_h264").css("display", "");
+				$(".channel2_h265").css("display", "none");
+				$(".channel2_cbr").css("display", compss=="CBR"?"":"none");
+				$(".channel2_vbr").css("display", compss=="VBR"?"":"none");
+				$(".channel2_adaptive").css("display", compss!="CBR"&&compss!="VBR"?"":"none");
+			} else {
+			  $(".nochannel2").css("display", "none");	
+			}
+    //enable_video_crop($("#channel2_resolution")[0], 2);
+		});
+
+    $(".channel_prof_list").on("change", function() {
+      var chan = parseInt(this.id.substr(7,1));
+    //_console_log(this.id + ".on(change)-- " + chan + ", " + $(this).val());
+		//_console_log(this.id + ".on(change)-- selectIndex: " + this.selectedIndex);
+      var idx, dbinfo;
+      if ($(this).val().substr(0,14) == "channel"+chan+"_prof_") {
+        $("#channel"+chan+"_submit").prop("disabled", false);
+        $(".channel"+chan+"_db_enable").attr("disabled", false);
+        $(".channel"+chan+"_db_enable").removeClass("channel_db_disable");
+        idx = parseInt($(this).val().substr(14)) - 1;
+        dbinfo = db_customize[chan-1][idx];
+      } else {
+        $("#channel"+chan+"_submit").prop("disabled", true);
+        $(".channel"+chan+"_db_enable").attr("disabled", true);
+        $(".channel"+chan+"_db_enable").addClass("channel_db_disable");
+        idx = this.selectedIndex;
+        dbinfo = db_preset[chan-1][idx];
+      }
+      //    
+			$("#channel"+chan+"_prof_name").val(dbinfo["name"]);
+			$("#channel"+chan+"_encoding").val(dbinfo["enco"]);
+			$("#channel"+chan+"_resolution").val(dbinfo["reso"]);
+			$("#channel"+chan+"_framerate").val(dbinfo["frme"]);
+      $("#channel"+chan+"_ipic").val(dbinfo["ipic"]);
+			$("#channel"+chan+"_h264profile").val(dbinfo["prof"]);
+			$("#channel"+chan+"_compression").val(dbinfo["comp"].toUpperCase());
+			$("#channel"+chan+"_cbrbitrate").val(dbinfo["cbrb"]);
+			$("#channel"+chan+"_vbrquality").val(dbinfo["vbrq"]);
+      $(".channel"+chan+"_h264").css("display", dbinfo["enco"]=="h264"?"":"none");
+      $(".channel"+chan+"_cbr").css("display", dbinfo["comp"]=="cbr" ?"":"none");
+      $(".channel"+chan+"_vbr").css("display", dbinfo["comp"]=="cbr"?"":"none");
+      //
+      $("#channel"+chan+"_encoding").trigger("change");
+    });
+
+    function calc_pic(freq, fps, pic) {
+      if (fps == "") return "N/A";
+      if (typeof pic == "undefined") return "N/A";
+      //
+      var interval = pic.split(",");
+      if (interval.length < 3) return "N/A";
+      
+      var ipic = parseInt(interval[1]);
+      var ifps = parseInt(fps);
+      /* */if (fps == "60"   ) ipic = (ipic  )/(ifps==0?60.0:ifps==-1?30.0:ifps);
+      else if (fps == "59.94") ipic = (ipic+1)/(ifps==0?60.0:ifps==-1?30.0:ifps);
+      else if (fps == "50"   ) ipic = (ipic  )/(ifps==0?50.0:ifps==-1?25.0:ifps);
+      else if (fps == "30"   ) ipic = (ipic  )/(ifps==0?30.0:ifps==-1?15.0:ifps);
+      else if (fps == "29.97") ipic = (ipic+1)/(ifps==0?30.0:ifps==-1?15.0:ifps);
+      else if (fps == "25"   ) ipic = (ipic  )/(ifps==0?25.0:ifps==-1?12.5:ifps);
+      else                     ipic = (ipic  )/(ifps==0?30.0:ifps==-1?15.0:ifps);
+      return ipic.toString();
+    }
+    
+    // submit ----------------
+    function before_submit(ch) {
+      console.log($("#channel"+ch+"_encoding").val() + ", " +
+                  $("#channel"+ch+"_resolution").val() + ", " +
+                  $("#channel"+ch+"_framerate").val());
+      // check if H.265, 4K, 60fps
+      if ($("#channel"+ch+"_encoding").val() == "h265" &&
+          $("#channel"+ch+"_resolution").val() == "3840x2160" &&
+          ($("#channel"+ch+"_framerate").val() == "50" || 
+					 $("#channel"+ch+"_framerate").val() == "60" ||
+					 $("#channel"+ch+"_framerate").val() == "59.94")) {
+        alert("This encoder cannot set 'H265, 4K, 50P/60P'.\n ");
+        return false;
+      }
+      //
+      for (var chan=1; chan<=2; chan++) {
+        $("#channel"+chan+"_submit").prop("disabled", true);
+      //$("#channel"+chan+"_modify").prop("disabled", true);
+      }
+      //
+      g_curtain.display(true);
+      return true;
+		}
+		
+    function after_sumit(ch, url) {
+			console.log("after_submit()-- channel" + ch + ", url: " + url);
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("GET", url);
+			xmlHttp.onreadystatechange = function() {
+			//console.log("readyState: " + this.readyState + ", " + this.status);
+				if (this.readyState == XMLHttpRequest.DONE) {
+				//console.log("DONE--", this);
+          g_cur_tab_page = "info" + ch;
+          setTimeout(function(){loadcgi(false);}, 1000);
+				}
+			}			
+			xmlHttp.send();
+		}
+		
+		// submit / channel1 -------------
+    $("#channel1_submit").on("click", function() {  
+			_console_log("channel1_submit.on(click)-- enter");
+			if (before_submit(1) == false) return;
+			var url = "command/video.cgi?" + "ImageCodec1=" + $("#channel1_encoding").val();
+			if ($("#channel1_encoding").val() == "off") {
+				url += "&Customize1=off&Preset1=off";
+			} else {
+				var newPic, ipic = parseInt($("#channel1_ipic").val()); 
+				var fps = parseInt($("#channel1_framerate").val()); 
+				/* */if (freq_input == "60"   ) newPic = parseInt(ipic*(fps==0?60:fps==-1?30.0:fps));
+				else if (freq_input == "59.94") newPic = parseInt(ipic*(fps==0?60:fps==-1?30.0:fps))-1;
+				else if (freq_input == "50"   ) newPic = parseInt(ipic*(fps==0?50:fps==-1?25.0:fps));
+				else if (freq_input == "30"   ) newPic = parseInt(ipic*(fps==0?30:fps==-1?15.0:fps));
+				else if (freq_input == "29.97") newPic = parseInt(ipic*(fps==0?30:fps==-1?15.0:fps))-1;
+				else if (freq_input == "25"   ) newPic = parseInt(ipic*(fps==0?25:fps==-1?12.5:fps));
+				else                            newPic = parseInt(ipic*(fps==0?30:fps==-1?15.0:fps));
+        //
+				url += "&Customize1=on&Preset1=0";			
+				url += "&ImageSize1="+$("#channel1_resolution").val().replace("x", ",")
+						 + "&FrameRate1="+$("#channel1_framerate").val()
+						 + "&IFrameInterval1="+"1,"+newPic.toString()+",1";
+				if ($("#channel1_encoding").val() == "h264")
+					url += "&H264Profile1="+$("#channel1_h264profile").val();
+				if ($("#channel1_compression").val() == "CBR")
+					url += "&CBR1=on&BitRate1="+$("#channel1_cbrbitrate").val();
+				else
+					url += "&CBR1=off&Quality1="+$("#channel1_vbrquality").val();
+			}
+    //if (check_crop($("#channel1_resolution")[0], 1)) 
+		//  url += "&enable_crop1=1&crop_area_x1=0&crop_area_y1=60&crop_area_w1=1920&crop_area_h1=960";
+		//else
+			  url += "&enable_crop1=0";		
+			// add customize info.
+    //var sel_idx = $("#channel1_prof_list")[0].selectedIndex;
+			var sel_idx = parseInt($('#channel1_preset').val().substr(14)) - 1;
+			var prof_name = $('#channel1_prof_name').val();
+			if (prof_name == "") prof_name = "Customize-1." + (sel_idx+1);
+			var extra = "Channel1Customize=" + prof_name
+							 + "&Channel1Customize" + (sel_idx+1) + "=" + prof_name
+							 + "|" + $("#channel1_encoding").val()
+							 + "|" + $("#channel1_resolution").val()
+							 + "|" + $("#channel1_framerate").val()
+							 + "|" + $("#channel1_ipic").val()
+							 + "|" + $("#channel1_h264profile").val()
+							 + "|" + $("#channel1_compression").val().toLowerCase()
+							 + "|" + $("#channel1_cbrbitrate").val()
+							 + "|" + $("#channel1_vbrquality").val()
+						// + "|" + (check_crop($("#channel1_resolution")[0],1)? "on": "off")
+               ;
+      after_sumit(1, src_url+"/command/video.cgi?"+extra);
+    });
+
+		// submit / channel2 -------------
+    $("#channel2_submit").on("click", function() {  
+			_console_log("channel2_submit.on(click)-- enter");
+			if (before_submit(2) == false) return;
+			var url = "command/video.cgi?" + "ImageCodec2=" + $("#channel2_encoding").val();
+			if ($("#channel2_encoding").val() == "off") {
+				url += "&Customize2=off&Preset2=off";
+			} else {
+				var newPic, ipic = parseInt($("#channel2_ipic").val()); 
+				var fps = parseInt($("#channel2_framerate").val()); 
+				/* */if (freq_input == "60"   ) newPic = parseInt(ipic*(fps==0?60:fps==-1?30.0:fps));
+				else if (freq_input == "59.94") newPic = parseInt(ipic*(fps==0?60:fps==-1?30.0:fps))-1;
+				else if (freq_input == "50"   ) newPic = parseInt(ipic*(fps==0?50:fps==-1?25.0:fps));
+				else if (freq_input == "30"   ) newPic = parseInt(ipic*(fps==0?30:fps==-1?15.0:fps));
+				else if (freq_input == "29.97") newPic = parseInt(ipic*(fps==0?30:fps==-1?15.0:fps))-1;
+				else if (freq_input == "25"   ) newPic = parseInt(ipic*(fps==0?25:fps==-1?12.5:fps));
+				else                            newPic = parseInt(ipic*(fps==0?30:fps==-1?15.0:fps));
+				//
+			  url += "&Customize2=on&Preset2=0";
+				url += "&ImageSize2="+$("#channel2_resolution").val().replace("x", ",")
+						 + "&FrameRate2="+$("#channel2_framerate").val()
+						 + "&IFrameInterval2="+"1,"+newPic.toString()+",1";
+				if ($("#channel2_encoding").val() == "h264")
+					url += "&H264Profile2="+$("#channel2_h264profile").val();
+				if ($("#channel2_compression").val() == "CBR")
+					url += "&CBR2=on&BitRate2="+$("#channel2_cbrbitrate").val();
+				else
+					url += "&CBR2=off&Quality2="+$("#channel2_vbrquality").val();
+      } 
+    //if (check_crop($("#channel2_resolution")[0], 2)) 
+		//  url += "&enable_crop2=1&crop_area_x2=0&crop_area_y2=60&crop_area_w2=1920&crop_area_h2=960";
+		//else
+			  url += "&enable_crop2=0";		
+			// add customize info.
+		//var sel_idx = $("#channel2_prof_list")[0].selectedIndex;
+			var sel_idx = parseInt($('#channel2_preset').val().substr(14)) - 1;
+			var prof_name = $('#channel2_prof_name').val();
+			if (prof_name == "") prof_name = "Customize-2." + (sel_idx+1);
+			var extra = "Channel2Customize=" + prof_name
+							 + "&Channel2Customize" + (sel_idx+1) + "=" + prof_name
+							 + "|" + $("#channel2_encoding").val()
+							 + "|" + $("#channel2_resolution").val()
+							 + "|" + $("#channel2_framerate").val()
+							 + "|" + $("#channel2_ipic").val()
+							 + "|" + $("#channel2_h264profile").val()
+							 + "|" + $("#channel2_compression").val().toLowerCase()
+							 + "|" + $("#channel2_cbrbitrate").val()
+							 + "|" + $("#channel2_vbrquality").val()
+						// + "|" + (check_crop($("#channel2_resolution")[0],1)? "on": "off")
+               ;
+      after_sumit(2, src_url+"/command/video.cgi?"+extra);
+		});
+
+    var db_customize = [], db_preset = [], freq_input = 60;
+    
+		function build_preset(chan, num, str) {
+			// "h265, 4KP, 30FPS, 16M|h265|3840x2160|1|1|high|cbr|16000|5|off"
+			var items = str.split("|");
+			var vidForm = db_json.videoForm[chan];
+			var name = items[0].substr(0,48);
+			//
+			if (typeof db_preset[chan] == 'undefined')
+			db_preset[chan] = [];
+			if (typeof db_preset[chan][num] == 'undefined')
+			db_preset[chan][num] = [];
+			//
+			db_preset[chan][num]["name"] = name;
+			db_preset[chan][num]["enco"] = vidForm["encoding0"   ].indexOf(items[1])>-1? items[1]: "h264";
+			db_preset[chan][num]["reso"] = vidForm["resolution"  ].indexOf(items[2])>-1? items[2]: "720x480";
+			db_preset[chan][num]["frme"] = vidForm["framerate1"  ].indexOf(items[3])>-1? items[3]: "30";
+			db_preset[chan][num]["ipic"] = vidForm["ipic0"       ].indexOf(items[4])>-1? items[4]: "1";
+			db_preset[chan][num]["prof"] = vidForm["h264profile0"].indexOf(items[5])>-1? items[5]: "high";
+			db_preset[chan][num]["comp"] = vidForm["compression" ].indexOf(items[6].toUpperCase())>-1? items[6]: "cbr";
+			db_preset[chan][num]["cbrb"] = vidForm["cbrbitrate"  ].indexOf(items[7])>-1? items[7]: "1500";
+			db_preset[chan][num]["vbrq"] = vidForm["vbrquality"  ].indexOf(items[8])>-1? items[8]: "5";
+			db_preset[chan][num]["crop"] = items[9];
+		}
+		
+		function build_customize(chan, num, str) {
+			// "Customize-1|h264|740x480|30|1|high|on|1500|5"
+			var items = str.split("|");
+			var vidForm = db_json.videoForm[chan];
+			var name = items[0].substr(0,48);
+			//
+			if (typeof db_customize[chan] == 'undefined')
+			db_customize[chan] = [];
+			if (typeof db_customize[chan][num] == 'undefined')
+			db_customize[chan][num] = [];
+			//
+			db_customize[chan][num]["name"] = name==""? "Customize-"+(chan+1): name;
+			db_customize[chan][num]["enco"] = vidForm["encoding0"   ].indexOf(items[1])>-1? items[1]: "h264";
+			db_customize[chan][num]["reso"] = vidForm["resolution"  ].indexOf(items[2])>-1? items[2]: "720x480";
+			db_customize[chan][num]["frme"] = vidForm["framerate1"  ].indexOf(items[3])>-1? items[3]: "30";
+			db_customize[chan][num]["ipic"] = vidForm["ipic0"       ].indexOf(items[4])>-1? items[4]: "1";
+			db_customize[chan][num]["prof"] = vidForm["h264profile0"].indexOf(items[5])>-1? items[5]: "high";
+			db_customize[chan][num]["comp"] = vidForm["compression" ].indexOf(items[6].toUpperCase())>-1? items[6]: "cbr";
+			db_customize[chan][num]["cbrb"] = vidForm["cbrbitrate"  ].indexOf(items[7])>-1? items[7]: "1500";
+			db_customize[chan][num]["vbrq"] = vidForm["vbrquality"  ].indexOf(items[8])>-1? items[8]: "5";
+			db_customize[chan][num]["crop"] = items[9];
+		}
+		
+    function fresh_page(data, is_reload) {
+		//_console_log("fresh_page()-----");
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+      //alert("null data!!");
+			//setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      // Channel<n>Preset<n> list
+			//  default: <name>|<encoding>|<resloution>|<fps>|<I-interval>|<profile>|<bit-mode>|<bitrate>|<quality>|<crop on|off>
+      //    <prset_value>|h264|740x480|0|1|high|cbr|1500|5|off
+      db_preset = [];
+      for (var chan=0; chan<2; chan++) {
+        for (var prof in json_preset_detail[chan]) {
+        //var key = Object.keys(json_preset_detail[chan][prof])[0]; 
+          var value = Object.values(json_preset_detail[chan][prof])[0];
+          value = value.replace(/h264,/g,'H264').replace(/h265,/g,'H265'); 
+          build_preset(chan, prof, value);
+        }
+      }
+			// Check Channel<n>Customize=<profile_name>
+      //  default is Cutomize-<1.1|2.1|3.1>
+			// Check Channel<n>Customize<n> list
+			//  default: <name>|<encoding>|<resloution>|<fps>|<I-interval>|<profile>|<bit-mode>|<bitrate>|<quality>|<crop on|off>
+      db_customize = [];
+      for (var chan=0,chanI=1; chan<2; chan++,chanI++) {
+        eval('if (typeof Channel'+chanI+'Customize == "undefined")' +
+             '  var Channel'+chanI+'Customize = "Customize-'+chanI+'.1";' +
+             'Channel'+chanI+'Customize = decodeURIComponent(Channel'+chanI+'Customize);');
+        for (var prof=0,profI=1; prof<3; prof++,profI++) {
+          eval('if (typeof Channel'+chanI+'Customize'+profI+' == "undefined")' +
+               '  var Channel'+chanI+'Customize'+profI+' = "Customize-'+chanI+'.'+profI+'|h264|740x480|0|1|high|cbr|1500|5|off";' +
+               'Channel'+chanI+'Customize'+profI+' = decodeURIComponent(Channel'+chanI+'Customize'+profI+');' +
+               'build_customize('+chan+', '+prof+', '+'Channel'+chanI+'Customize'+profI+');');
+        }
+        if (is_reload == false) continue;
+        // insert customize 'preset'
+        var db_custom_chan = db_customize[chan];
+        for (var num=0; num<db_custom_chan.length; num++) {
+          $("#channel"+chanI+"_preset").append($('<option>', 
+                                    {value: "channel"+chanI+"_prof_"+(num+1),
+                                     text: db_custom_chan[num]['name']}));
+        }
+      }
+    //console.log("db_preset: ", db_preset);
+    //console.log("db_customize:", db_customize);
+			$("#channel1_preset").trigger('change');
+			$("#channel2_preset").trigger('change');
+    }
+     
+    function loadcgi(is_reload) {
+		//_console_log("loadcgi()-----");
+      $.get(src_url+"/command/inquiry.cgi?inqjs=video", 
+            {inqjs:"video_input_status", cgi_time:$.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+        try {
+          fresh_page(data, is_reload);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+          _console_log("loadcgi()-- wrong data!!");
+				//alert("wrong data!!");
+				//setTimeout(function(){loadcgi();}, 2000);
+        }
+      }).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var ImageCodec1="h264"\n' +
+                'var ImageSize1="1920,1080"\n' +
+                'var FrameRate1="0"\n' +
+                'var Interlace1="on"\n' +
+                'var CBR1="on"\n' +
+                'var BitRate1="1000"\n' +
+                'var H264Profile1="high"\n' +
+                'var IFrameInterval1="1,150,4"\n' +
+                'var Quality1="7"\n' +
+                'var H264Quality1="6"\n' +
+                'var VBRMode1="standard"\n' +
+                'var VBRBitrateMax1="32000"\n' +
+                'var H264FrameSkip1="off"\n' +
+                'var ImageCodec2="h265"\n' +
+                'var ImageSize2="720,480"\n' +
+                'var FrameRate2="0"\n' +
+                'var Interlace2="on"\n' +
+                'var CBR2="off"\n' +
+                'var BitRate2="1500"\n' +
+                'var H264Profile2="main"\n' +
+                'var IFrameInterval2="1,30,4"\n' +
+                'var Quality2="3"\n' +
+                'var H264Quality2="6"\n' +
+                'var VBRMode2="standard"\n' +
+                'var VBRBitrateMax2="4000"\n' +
+                'var H264FrameSkip2="off"\n' +
+                'var enable_crop1="1"\n' +
+                'var enable_crop2="0"\n' +
+                'var FrameInterval="0"\n' +
+                'var VideoInput="hdmi"\n' +
+                '';
+        fresh_page(data, is_reload);
+        _check_to_page(g_cur_tab_page, false);
+      });
+    }
+    //
+    adv_init();
+    var g_cur_tab_page = "info1";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+		setTimeout(function(){loadcgi(true)}, 100);
+  </script>
+</body>
+</html>

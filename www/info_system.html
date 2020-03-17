@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">System</h1></div>
+        </div>	
+		
+				<ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#info">Information</a></li>
+					<li><a data-toggle="tab" href="#timesetting">Date / Time</a></li>
+				</ul>
+				
+				<div class="tab-content" id="tab-contents" style="display:none">
+					<div id="info" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top cls-lmodel">
+									<td class="col-lg-4px-mobile">Model name</td>
+									<td class="col-lg-4px" colspan="2"><label id="lmodel" /></td>
+								</tr>
+								<tr class="col-wow cls-lsn">
+									<td class="col-lg-4px-mobile">Serial number</td>
+									<td class="col-lg-4px" colspan="2"><label id="lsn" /></td>
+								</tr>
+								<tr class="col-wow cls-lversion">
+									<td class="col-lg-4px-mobile">Software version</td>
+									<td class="col-lg-4px" colspan="2"><label id="lversion" /></td>
+								</tr>
+								<tr class="col-wow cls-chip_id" style="display:none">
+									<td class="col-lg-4px-mobile">Chipset ID</td>
+									<td class="col-lg-4px" colspan="2"><label id="chip_id" /></td>
+								</tr>
+								<tr class="col-wow cls-fpga_version" style="display:none">
+									<td class="col-lg-4px-mobile">FPGA version</td>
+									<td class="col-lg-4px" colspan="2"><label id="fpga_version" /></td>
+								</tr>
+								<tr class="col-wow cls-ucode_version" style="display:none">
+									<td class="col-lg-4px-mobile">Ucode version</td>
+									<td class="col-lg-4px"><label id="ucode_version" /></td>
+                  <td class="col-lg-4px"><label id="ucode_date" /></td>
+								</tr>
+								<tr class="col-wow cls-usb_mode" style="display:none">
+									<td class="col-lg-4px-mobile">USB mode</td>
+									<td class="col-lg-4px"><label id="usb_phy0" /></td>
+                  <td class="col-lg-4px"><label id="usb_mode" /></td>
+								</tr>
+							</tbody></table>
+						</div>
+					</div>
+
+					<div id="timesetting" class="tab-pane fade">
+						<div class="table-responsive table-responsive-0">
+							<table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top cls-date_time">
+									<td class="col-lg-4px-mobile">System time</td>
+									<td class="col-lg-4px" colspan="2"><label id="datetime" /></td>
+								</tr>
+								<tr class="col-wow cls-time_zone">
+									<td class="col-lg-4px-mobile">Time zone</td>
+									<td class="col-lg-4px" colspan="2"><label id="timezone" /></td>
+								</tr>
+								<tr class="col-wow cls-ntp_server" style="display:none">
+									<td class="col-lg-4px-mobile">NTP server</td>
+									<td class="col-lg-4px" colspan="2"><label id="ntpserver" /></td>
+								</tr>
+							</tbody></table>
+            </div>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+	<script type="text/javascript">
+    var time_zone_trans, _time_zone;
+    $.getJSON("test-2001.json?_="+$.now(), function(data) {
+      _time_zone = data["timeForm_2"]["time_zone"];
+      time_zone_trans = data["timeForm_2"]["time_zone_trans"];
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+    $('a').on('click', function(event) {
+      var cur_page = $(this)[0].hash.substr(1);
+      if (cur_page == g_cur_tab_page) return;
+      g_cur_tab_page = cur_page;
+      setTimeout(function(){loadcgi()}, 300);
+     });
+
+    var diff_time=-1, g_time_zone="";
+    function set_device_time(time) {
+    //_console_log("set_device_time()-- time: " + time);
+      if (diff_time === false) {
+				diff_time = -1; 
+				$("#datetime").val("");
+				return;
+			}
+      //
+      var now = $.now();
+      if (typeof time == "undefined") time = parseInt(now) + diff_time;
+      else if (diff_time == -1)       diff_time = parseInt(time) - parseInt(now);
+      //
+      var tt = new Date(parseInt(time));
+      var tzOffs = parseInt(tt.getTimezoneOffset()); // by hours.
+			var tzCurr = parseInt(_time_zone[g_time_zone].split(") ")[0].replace(/\(GMT/g,""));
+			var timeNew = parseInt(time) + parseInt(tzOffs +tzCurr*60) * 60 * 1000;
+      var tm = new Date(timeNew);
+      $("#datetime").text(tm.getFullYear()+'-'
+                         +("0"+(tm.getMonth()+1)).substr(-2)+'-'
+                         +("0"+tm.getDate()).substr(-2)+' '+("0"+tm.getHours()).substr(-2)+':'
+                         +("0"+tm.getMinutes()).substr(-2)+':'+("0"+tm.getSeconds()).substr(-2));
+			tt = 0; delete tt;
+      setTimeout(function(){set_device_time();}, 1000);
+    }
+
+    function fresh_page(data) {
+    //_console_log("fresh_page()-----\n" + data);
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+			//setTimeout(function(){loadcgi();}, 2000);
+        return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      //
+			if (typeof ModelName == "undefined") var ModelName = "N/A";
+			$("#lmodel").text(ModelName);
+
+			if (typeof Serial == "undefined") var Serial = "N/A";
+			$("#lsn").text(Serial);
+
+			if (typeof SoftVersion == "undefined") var SoftVersion = "N/A";
+			$("#lversion").text(SoftVersion);
+
+			if (typeof UcodeVersion == "undefined") var UcodeVersion = "N/A";
+      else                $(".cls-ucode_version").css('display', '');
+			$("#ucode_version").text(UcodeVersion);
+
+			if (typeof ChipId == "undefined") var ChipId = "N/A";
+      else          $(".cls-chip_id").css('display', '');
+			$("#chip_id").text(ChipId);
+
+			if (typeof FPGAVersion == "undefined") var FPGAVersion = "N/A";
+      else               $(".cls-fpga_version").css('display', '');
+			$("#fpga_version").text(FPGAVersion);
+
+			if (typeof USBPhy0 == "undefined") var USBPhy0 = "N/A";
+      else                $(".cls-usb_mode").css('display', '');
+			$("#usb_phy0").text(USBPhy0);
+
+			if (typeof UcodeDate == "undefined") var UcodeDate = "N/A";
+      else                $(".cls-ucode_version").css('display', '');
+			$("#ucode_date").text(UcodeDate);
+
+			if (typeof USBMode == "undefined") var USBMode = "N/A";
+      else                $(".cls-usb_mode").css('display', '');
+			$("#usb_mode").text(USBMode);
+			if (typeof TimeZone !== "undefined") {
+        TimeZone = TimeZone || time_zone_trans[TimeZone];
+        if (TimeZone.substr(0,3) == "GMT")   TimeZone = time_zone_trans[TimeZone];
+      }
+      g_time_zone = TimeZone;
+      $("#timezone").text(_time_zone[g_time_zone]);
+      if (typeof LocalTime != "undefined") set_device_time(LocalTime);
+
+      if (typeof NtpEnable == "undefined") var NtpEnable = typeof NtpService=="undefined"? "off": NtpService;
+      if (NtpEnable == "on") {
+        if (typeof NtpAuto == "undefined") var NtpAuto = "off";
+        if (typeof NtpServer == "undefined") var NtpServer = "";
+        $(".cls-ntp_server").css('display', '');
+        $("#ntpserver").text(NtpAuto=="on"?"(Auto)":NtpServer);
+      }
+    } 
+    
+	  function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url + " - " + g_cur_tab_page);
+		  $.get(src_url+"/command/inquiry.cgi", 
+            {inqjs: "system", cgi_time: $.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+        try {
+				  fresh_page(data);
+          _check_to_page(g_cur_tab_page, false);
+        } catch(err) {
+					_console_log("loadcgi()-- wrong data!!");
+        //setTimeout(function(){loadcgi();}, 2000);
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var TimeZone="GMT+8"\n' +
+                'var LocalTime="1578474160881"\n' +
+                'var NtpService="on"\n' +
+                'var NtpAuto="on"\n' +
+                'var NtpServer=""\n' +
+                'var ModelName="VEGA-2001"\n' +
+                'var Serial="ES_Sample"\n' +
+                'var SoftVersion="v1.7.11b14199"\n' +
+                'var UcodeVersion="280096.287458"\n' +
+                'var UcodeDate="2019/8/20"\n' +
+                'var FPGAVersion="0x00000401"\n' +
+                'var ChipId="H199"\n' +
+                'var USBPhy0="host"\n' +
+                'var USBMode="network"\n' +
+                '';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+			});
+	  }
+    //
+    adv_init();
+    var g_cur_tab_page = "info";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+    setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>

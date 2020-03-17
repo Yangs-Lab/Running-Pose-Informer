@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-adminex.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+</head>
+
+<body class="body-content">
+  <div id="wrapper">
+	  <nav class="navbar navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation" style="display:none"></nav>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div id="title_row" class="row">
+          <div class="col-lg-12"><h1 class="page-header page-headerh1">Network</h1></div>
+        </div>
+				
+        <ul id="menu_nav" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="#ipv4">IPv4</a></li>
+				</ul>	
+				
+				<div class="tab-content" id="tab-contents" style="display:none">	
+					<div id="ipv4" class="tab-pane fade">				
+            <div class="table-responsive table-responsive-0">
+              <table class="table table-hover"><tbody>
+								<tr class="col-wow tr-top">
+									<td class="col-lg-4px-mobile">Hostname</td>
+									<td class="col-lg-4px"><input type="text" id="hostname" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">Device & Priority</td>
+									<td class="col-lg-4px"><select id="device_list_high" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;</td>
+									<td class="col-lg-4px"><select id="device_list_medium" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;</td>
+									<td class="col-lg-4px"><select id="device_list_low" class="form-control small-control" /></td>
+									<td></td>
+								</tr>
+								<tr class="eth0_only col-wow" style="height:43px">
+									<td class="col-lg-4px-mobile" colspan="3"><input type="checkbox" id="dhcp" /> DHCP (Lan only)</td>
+								</tr>
+								<tr class="nodhcp col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;IP address</td>
+									<td class="col-lg-4px"><input type="text" id="setip" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="nodhcp col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Subnet mask</td>
+									<td class="col-lg-4px"><input type="text" id="setmask" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="nodhcp col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Default gateway</td>
+									<td class="col-lg-4px"><input type="text" id="setgateway" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="nodhcp col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Primary DNS</td>
+									<td class="col-lg-4px"><input type="text" id="setdns1" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="nodhcp col-wow">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Secondary DNS</td>
+									<td class="col-lg-4px"><input type="text" id="setdns2" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="withdhcp col-wow hide_tr">
+									<td class="col-lg-4px-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Domain suffix</td>
+									<td class="col-lg-4px"><input type="text" id="domainsuffix" class="form-control small-control"></td>
+									<td></td>
+								</tr>
+								<tr class="tr-btn">
+									<td><button type="submit" id="ipv4_submit" class="btn btn-primary">Submit</button></td>
+									<td></td><td></td>
+								</tr>
+              </tbody></table>
+            </div>
+					</div>	
+				</div>	
+      </div>
+    </div>
+  </div>
+  <style>
+    tr.hide_tr {display: none}
+  </style>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/advcls.js"></script>
+  <script type="text/javascript">
+    var json_network;
+    $.getJSON("test-2001.json?_="+$.now(), function(data) {
+      json_network = data["networkForm"];
+      $.each(data["networkForm"], function(func, opts) {
+        for (var opt in opts) {
+          if (typeof opts[opt] === "object") {
+            for(idx in opts[opt]) {
+            $("#"+func).append($('<option>', {value: idx, text: opts[opt][idx]})); break;
+            }							
+          } else {
+            $("#"+func).append($('<option>', {value: opts[opt], text: opts[opt]}));    
+          }
+        }
+      });
+    });
+
+    $('body').on('click', function() {
+      var doc = parent.document;
+      if (doc.getElementById("sidebar").className.indexOf('on') < 0) return;
+      doc.getElementById("sidemenu").click();
+    });
+    
+		var g_prev_name_high, g_prev_name_medium, g_prev_name_low; 
+
+    function get_prev_list_names() {
+      g_prev_name_high = $("#device_list_high").val();
+      g_prev_name_medium = $("#device_list_medium").val();
+      g_prev_name_low = $("#device_list_low").val();
+    }
+    
+		function set_device_priority(device, priority, prev_name, idx) {
+    //console.log("set_device_priority: " + device + ', ' + priority + ", " + prev_name + ", " +idx);
+			var list_name = "device_list_" + (priority=="p0"? "high":
+																			  priority=="p1"? "medium": "low");
+			if (typeof prev_name == "undefined") {
+				document.getElementById(list_name).value = device + '-' + priority;
+				prev_name = device + '-' + priority;
+			}
+			var dev_name = prev_name.split("-")[0];
+			for (var i=0; i<3; i++) {
+        if (i == idx) continue;
+				var l_name =  "device_list_" + (i==0? "high": i==1? "medium": "low");
+				if (l_name == list_name) continue;
+				var d_name = document.getElementById(l_name).value.split("-")[0];
+				if (d_name != device) continue;
+				document.getElementById(l_name).value = dev_name + '-' + 
+																								(i==0? "p0": i==1? "p1": "p2");
+        break;
+			}
+		}
+    
+    $("#device_list_high").on('focus', function() {
+    //console.log("device_list_high(focus): " + this.value);
+    //prev_name_high = this.value;
+		}).on("change", function() {
+    //console.log("device_list_high: " + this.value);
+      set_device_priority(this.value.split("-")[0], "p0", g_prev_name_high, 0);
+      get_prev_list_names();
+	  });
+    $("#device_list_medium").on('focus', function() {
+    //console.log("device_list_medium(focus): " + this.value);
+    //prev_name_medium = this.value;
+    }).on("change", function() {
+    //console.log("device_list_medium(change): " + this.value);
+      set_device_priority(this.value.split("-")[0], "p1", g_prev_name_medium, 1);
+      get_prev_list_names();
+	  });
+		$("#device_list_low").on('focus', function() {
+    //console.log("device_list_low(focus): " + this.value);
+    //prev_name_low = this.value;
+    }).on("change", function() {
+    //console.log("device_list_low: " + this.value);
+      set_device_priority(this.value.split("-")[0], "p2", g_prev_name_low, 2);
+      get_prev_list_names();
+	  });
+ 
+		function check_dev_name(devName) {
+			var idx = ["eth0","eth1","eth2","usb0","usb1","wlan1"].indexOf(devName);
+			return idx>=0? devName: "usb0";
+		}
+		
+		function check_dev_priority(devPriority) {
+			var idx = ["p0","p1","p2"].indexOf(devPriority);
+			return idx>=0? devPriority: "p2";
+		}
+
+		function set_lte_device(devName) {
+			if (["eth1","eth2","usb0","usb1"].indexOf(devName) >= 0) {
+				$('#usb0-p0').attr('value', devName+'-p0');	// set 'value=' before 'id='
+				$('#usb0-p0').attr('id',    devName+'-p0');
+				$('#usb0-p1').attr('value', devName+'-p1');
+				$('#usb0-p1').attr('id',    devName+'-p1');
+				$('#usb0-p2').attr('value', devName+'-p2');
+				$('#usb0-p2').attr('id',    devName+'-p2');
+			}
+		}
+		
+    // Summit - ipv4_setting
+    $("#ipv4_submit").on("click", function() {
+    //_console_log("ipv4_submit.on(click)--");
+      //
+      g_curtain.display(true);
+      var cmnd = {};
+      cmnd.HostName = $("#hostname").val();
+      if ($("#dhcp").prop("checked")) {
+        cmnd.Dhcp = "on";
+        cmnd.DnsAuto = "on";
+        cmnd.DomainSuffix = $("#domainsuffix").val();
+		  } else {
+        cmnd.Dhcp = "off";
+        cmnd.DnsAuto = (cmnd.PrimaryDns==""&&cmnd.SecondaryDns==""? "on": "off");
+    	  cmnd.Ip = $("#setip").val();
+    	  cmnd.Subnetmask = $("#setmask").val(); 
+    	  cmnd.Gateway = $("#setgateway").val();
+        cmnd.PrimaryDns = $("#setdns1").val();
+        cmnd.SecondaryDns = $("#setdns2").val();
+			}
+			//		
+      for (var i=0; i<3; i++) {
+				var list_name = "device_list_" + (i==0? "high": i==1? "medium": "low");
+				var item = document.getElementById(list_name).value.split("-");
+        eval("cmnd.NetworkDev" + i + "= item[0];");
+        eval("cmnd.NetworkPriority" + i + "= item[1];");
+			}
+      //
+      $("#ipv4_submit")[0].disabled = true;
+      g_cur_tab_page = "ipv4";
+      _console_log("ipv4_submit.on(click)-- cmnd:\r\n" + cmnd);			
+   	  $.get(src_url+"/command/network.cgi", cmnd).done(function(data) {
+				setTimeout(function() {loadcgi();}, 2000);
+			});
+    });
+
+    $("#dhcp").on("change", function() {
+    //_console_log("dhcp.on(change)-- " + $("#dhcp").prop("checked"));
+      $(".eth0_only").css("display", "");
+      var flag_dhcp = $("#dhcp")[0].checked;
+      $(".nodhcp").css("display", flag_dhcp? "none": "");
+      $(".withdhcp").css("display", flag_dhcp? "": "none");
+    });
+
+    function fresh_page(data) {
+    //_console_log("fresh_page()-----");
+			if (data == 0) {
+				_console_log("fresh_page()-- data == 0");
+        alert("null data!!");
+			//setTimeout(function(){loadcgi();}, 2000);
+				return;
+			}
+			data = data.replace(/\n"/g, '"'); // avoid problem, ex.  var abc = "xyz\n"
+			eval(data);
+      //
+ 			if (typeof HostName=="undefined") var HostName = "";
+			$("#hostname").val(HostName);
+
+ 			if (typeof Dhcp=="undefined") var Dhcp = "off";
+			$("#dhcp").prop("checked", Dhcp==="on").trigger("change");
+
+			if (typeof Ip=="undefined") var Ip = "";
+      $("#setip").val(Ip);
+      
+			if (typeof Subnetmask=="undefined") var Subnetmask = "";
+      $("#setmask").val(Subnetmask);
+
+			if (typeof Gateway=="undefined") var Gateway = "";
+      $("#setgateway").val(Gateway);
+
+			if (typeof DomainSuffix=="undefined") var DomainSuffix = "";
+      $("#domainsuffix").val(DomainSuffix);
+
+			if (typeof DnsAuto=="undefined") var DnsAuto = "off";
+			$("#autodns").prop("checked", DnsAuto==="on").trigger("change"); 
+
+			if (typeof PrimaryDns=="undefined") PrimaryDns = "";
+				$("#setdns1").val(PrimaryDns);
+
+			if (typeof SecondaryDns=="undefined") SecondaryDns = "";
+				$("#setdns2").val(SecondaryDns);
+      //
+			//AvailableNetwork = "eth0(p3), eth1(p2), eth2(p1), wlan1(p0), usb0, usb1";
+      // replace AvailableNetwork by NetworkDev[n] & NetworkPriority[n]
+      if (typeof NetworkDev0 == "undefined") var NetworkDev0 = "eth0";
+      if (typeof NetworkDev1 == "undefined") var NetworkDev1 = "wlan1";
+      if (typeof NetworkDev2 == "undefined") var NetworkDev2 = "usb0";
+      if (typeof NetworkPriority0 == "undefined") var NetworkPriority0 = "p0";
+      if (typeof NetworkPriority1 == "undefined") var NetworkPriority1 = "p1";
+      if (typeof NetworkPriority2 == "undefined") var NetworkPriority2 = "p2";
+			if (typeof AvailableNetwork == "undefined") var AvailableNetwork = ""; 
+      AvailableNetwork = "";
+      for (var i=0; i<3; i++) {
+				eval("var Dev = check_dev_name(NetworkDev" + i + ");");
+				eval("var Pri = check_dev_priority(NetworkPriority" + i + ");");
+			//if (Dev == "") continue;
+				if (AvailableNetwork != "") AvailableNetwork += ", ";
+				AvailableNetwork += Dev + "(" + Pri + ")";
+				// check/set if 4G-LTE device, eth1, eth2, usb0, usb1
+				set_lte_device(Dev);
+			}
+      if (typeof AvailableNetwork == "undefined") {
+        AvailableNetwork = "eth0(p0), wlan1(p1), usb0(p2)";
+      }
+			var dev = AvailableNetwork.replace(/\s+/g,"").split(",");
+			console.log("AvailableNetwork: " + dev.length + ", ", dev);
+			for (var i=0; i<dev.length; i++) {
+				var item = dev[i].replace(")","").split("(");
+				set_device_priority(item[0], item[1]);
+			}
+      get_prev_list_names();
+      //
+      $("#ipv4_submit")[0].disabled = false;
+    } 
+
+    function loadcgi() {
+    //_console_log("loadcgi()-----" + src_url + " - " + g_cur_tab_page);
+      $.get(src_url+"/command/inquiry.cgi", {inqjs: "network", cgi_time: $.now()}).done(function (data) {
+				// Add to fix wrong data from CGI
+				data = correct_cgi(data);
+				try {
+				  fresh_page(data);
+          _check_to_page("ipv4", false);
+        } catch(err) {
+					_console_log("loadcgi()-- wrong data!!");
+				//alert("wrong data!!");
+        //setTimeout(function(){loadcgi();}, 2000);
+        }
+			}).error(function(xhr, status, err) {
+        if (_is_emulator() == "") {
+          _console_log("Inquiry '" + src_url + "' failed!!");
+          return;
+        }
+        _console_log("Inquiry '" + src_url + "' failed, emulation mode!!");
+        var data = 'var cgi_time=000000\n';
+        data += 'var MacAddress="00:0c:29:77:00:02"\n' +
+                'var PhyStat="1000full"\n' +
+                'var PhyMdi="AutoMDI"\n' +
+                'var CurrentIp="172.17.4.101"\n' +
+                'var CurrentSubnetmask="255.255.254.0"\n' +
+                'var CurrentGateway="172.17.5.254"\n' +
+                'var LinkLocalIp=""\n' +
+                'var CurrentPrimaryDns="172.17.1.1"\n' +
+                'var CurrentSecondaryDns="172.20.1.100"\n' +
+                'var HostName="VEGA-2002"\n' +
+                'var Ip="192.168.1.10"\n' +
+                'var Subnetmask="255.255.255.0"\n' +
+                'var Gateway=""\n' +
+                'var Mtu="1500"\n' +
+                'var DomainSuffix=""\n' +
+                'var Dhcp="on"\n' +
+                'var DnsAuto="on"\n' +
+                'var HttpPort="80"\n';
+        fresh_page(data);
+        _check_to_page(g_cur_tab_page, false);
+	    });
+    }
+    //
+    adv_init();
+    var g_cur_tab_page = "ipv4";
+    var src_url = _get_source_url();
+		var g_curtain = ADVC.curtain().create();
+		g_curtain.display(true);
+	  setTimeout(function(){loadcgi()}, 100);
+  </script>
+</body>
+</html>
