@@ -41,8 +41,8 @@ For more information on the Content Security Policy, see the [section on CSP in 
 Another good resource for generating a good CSP declaration is [CSP is Awesome][csp-is-awesome]
 
 
-[app-img]: ./www/img/logo-vega2001_64x64.png
-[app-url]: https://yangslib.com.tw/products/runpaceinform
+[app-img]: ./www/img/logo_64x64.png
+[app-url]: https://github.com/orgs/Yangs-Lab/products/Running-Pose-Informer/index.html
 [config-xml]: ./config.xml
 [index-html]: ./www/index.html
 [csp-is-awesome]: http://cspisawesome.com
