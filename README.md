@@ -1,4 +1,4 @@
-# Running Pace Informer [![VEGA Series][app-img]][app-url]
+# Running Pace Informer [![app Series][app-img]][app-url]
 
 # Running Pace Informer -- The informing application of Running Pace
 
