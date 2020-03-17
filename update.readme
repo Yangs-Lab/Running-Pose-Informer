@@ -40,7 +40,7 @@ cordova build android --release
   
 
 .Generating a private key
-keytool -genkey -v -keyalg RSA -keysize 2048 -validity [validity_days]
+keytool -genkey -v -keyalg RSA -keysize 2048 -validity [validity_days] \
 -keystore [keystore_path_name].keystore -alias [alias_path_name]
 
 ex.:
